@@ -1,0 +1,12 @@
+1 /: Changer le composer + symfony
+2 / : Supprimer la base de donnée li 3andkom ou a3mlou base de donne jdida fel php myAdmin esmha Troc
+3 / : fel projet parameters a3mlou database_name=Troc
+4 / : s schema update --force
+5 / : emchiw lel php my admin ou thabtou fel base
+
+
+
+////////// LES ROUTINGS ///////////// 
+app_dev.php/troc howa naffsou app_dev.php/ ===> fichier index.html.twig fel appBundle 
+
+
