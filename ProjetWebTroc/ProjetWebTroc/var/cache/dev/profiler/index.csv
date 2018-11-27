@@ -1,0 +1,11 @@
+53d659,::1,GET,http://localhost/integration1/ProjetWebTroc/web/app_dev.php/,1543283387,ea0476,200
+ea0476,::1,GET,http://localhost/integration1/ProjetWebTroc/web/app_dev.php/,1543283387,,500
+17dee5,::1,GET,http://localhost/integration1/ProjetWebTroc/web/app_dev.php/,1543283421,,200
+9adb79,::1,GET,http://localhost/integration1/ProjetWebTroc/web/app_dev.php/login,1543283425,,200
+3ad28e,::1,POST,http://localhost/integration1/ProjetWebTroc/web/app_dev.php/login_check,1543283434,,302
+f250ea,::1,GET,http://localhost/integration1/ProjetWebTroc/web/app_dev.php/,1543283435,,200
+279766,::1,GET,http://localhost/integration1/ProjetWebTroc/web/app_dev.php/,1543283462,,200
+c1286b,::1,GET,http://localhost/integration1/ProjetWebTroc/web/app_dev.php/,1543283491,,200
+c9abd2,::1,GET,http://localhost/integration1/ProjetWebTroc/web/app_dev.php/login,1543283494,,200
+47848b,::1,POST,http://localhost/integration1/ProjetWebTroc/web/app_dev.php/login_check,1543283503,,302
+ecdf53,::1,GET,http://localhost/integration1/ProjetWebTroc/web/app_dev.php/,1543283504,,200
