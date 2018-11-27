@@ -62,7 +62,12 @@ class User extends BaseUser
      * @ORM\Column(name="userImage", type="string", length=255, nullable=true)
      */
     private $userimage;
-
+    public function __construct()
+    {
+        parent::__construct();
+        // your own logic
+        $this->roles = array('ROLE_USER');
+    }
     public function getId()
     {
         return $this->id;
