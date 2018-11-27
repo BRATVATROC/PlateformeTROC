@@ -1,0 +1,41 @@
+
+       {% block comment %}
+
+            <h3>Comments</h3>
+           <br>
+       {% if commentaires %}
+            {% for comment in commentaires %}
+                <hr>
+                <strong>{{ comment.idUser.username }}</strong> said : {{ comment.commentaire }} <br>  {{ comment.dateCommentaire|date }} <br>
+            {% else %}
+                No comments yet.
+            {% endfor %}
+       {% endif %}
+            <br>
+            <h3>Add a comment</h3>
+           <br>
+
+           {{ form_start(form, {'action': path('create_commentaire'), 'method': 'POST'}) }}
+                <div class="form-group">
+                    {{ form_errors(form.commentaire) }}
+                    {{ form_widget(form.commentaire, { 'attr':  {
+                        'rows': '4',
+                        'class': 'form-control',
+                        'placeholder': 'Enter your comment'
+                    }}) }}
+
+                    <input type="submit" value="envoyer">
+
+                </div>
+
+                {{ form_end(form) }}
+                {% for flashMessage in app.session.flashbag.get('success') %}
+                    <div class="alert alert-success">
+                        {{ flashMessage }}
+                    </div>
+                {% endfor %}
+
+
+     </div>
+       {% endblock %}
+
