@@ -1,0 +1,24 @@
+troc:
+    resource: "@TrocBundle/Resources/config/routing.yml"
+    prefix:   /troc
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+troc_opinion:
+    resource: "@TrocBundle/Controller/OpinionController.php"
+    type:     annotation
+troc_feedback:
+    resource: "@TrocBundle/Controller/FeedbackController.php"
+    type:     annotation
+
+troc_feedback:
+    resource: "@TrocBundle/Controller/FeedbackController.php"
+    type:     annotation
+
+
+rec:
+    resource: '@TrocBundle/Controller/'
+    type: annotation
