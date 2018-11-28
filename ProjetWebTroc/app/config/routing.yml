@@ -1,3 +1,11 @@
+items:
+    resource: "@ItemsBundle/Resources/config/routing.yml"
+    prefix:   /items
+
+annonce:
+    resource: "@AnnonceBundle/Resources/config/routing.yml"
+    prefix:   /annonce
+
 troc:
     resource: "@TrocBundle/Resources/config/routing.yml"
     prefix:   /troc
@@ -17,7 +25,6 @@ troc_feedback:
 troc_feedback:
     resource: "@TrocBundle/Controller/FeedbackController.php"
     type:     annotation
-
 
 rec:
     resource: '@TrocBundle/Controller/'

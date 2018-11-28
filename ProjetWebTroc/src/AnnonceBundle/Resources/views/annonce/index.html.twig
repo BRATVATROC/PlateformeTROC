@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+{% block titre %} Liste annonces {% endblock %}
+{% block Main %}
+<div class="container">
+    <div class="row" style="margin-top: 40px; margin-bottom: 50px;">
+        <div class="col-md-2">
+            <a style="border-radius: 5px;  width: 182px;" class="btn btn-success" href="{{ path('annonce_new') }}"><i class="fa fa-plus-square"></i>&emsp;Ajouter un nouveau</a><br/>
+            <a style="border-radius: 5px; margin-top: 5px; margin-left: 8px" class="btn btn-success" href="{{ path('items_new') }}"><i class="fa fa-plus-square"></i>&emsp;Ajouter un article</a>
+        </div>
+        <div class="col-md-8">
+            <h1 style="text-align: center; margin-bottom: 20px">Liste des annonces</h1>
+
+    <table class="table table-hover">
+        <thead >
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Titre</th>
+                <th scope="col">Prix</th>
+                <th scope="col">Date</th>
+                <th scope="col">Type</th>
+                <th scope="col">Etat</th>
+                <th scope="col">Adresse</th>
+                <th scope="col">Description</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for annonce in annonces %}
+            <tr>
+                <td scope="row><a href="{{ path('annonce_show', { 'idAnnonce': annonce.idAnnonce }) }}">{{ annonce.idAnnonce }}</a></td>
+                <td>{{ annonce.titreAnnonce }}</td>
+                <td>{{ annonce.prix }}</td>
+                <td>{% if annonce.date %}{{ annonce.date|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ annonce.typeAnnonce }}</td>
+                <td>{{ annonce.etatAnnonce }}</td>
+                <td>{{ annonce.adresse }}</td>
+                <td>{{ annonce.description }}</td>
+                <td>
+                    <a style="margin-bottom: -4px; " class="btn btn-warning btn-block" href="{{ path('annonce_show', { 'idAnnonce': annonce.idAnnonce }) }}">Visionner</a>
+                    <a class="btn btn-danger btn-block" href="{{ path('annonce_edit', { 'idAnnonce': annonce.idAnnonce }) }}">Modifier</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+{% endblock %}

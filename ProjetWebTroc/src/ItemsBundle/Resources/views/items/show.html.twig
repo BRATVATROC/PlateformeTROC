@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block titre %} Article details {% endblock %}
+{% block stylesheet %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+{% block Main %}
+<style>
+    .details li {
+        list-style: none;
+    }
+    li {
+        margin-bottom:10px;
+
+    }
+</style>
+
+<div class="container" style="margin-top: 50px">
+    <a style="border-radius: 5px; margin-bottom: 20px" class="btn btn-success" href="{{ path('items_homepage') }}"><i class="fa fa-caret-left"></i>&emsp;Retour a la liste</a>
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4" style="vertical-align: middle">
+                <img src="{{ asset('upload/' ~ item.imgiems) }}" alt="stack photo" class="img">
+            </div>
+            <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+                <div class="container" style="border-bottom:1px solid black">
+                    <h2>Article</h2>
+                </div>
+                <hr>
+                <ul class="container details">
+                    <li>
+                        <p>
+                            <span class="fa fa-opencart" style="width:50px;"></span>
+                            <span style="font-weight: 600;">Nom: </span>{{ item.nomitems }}
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <span class="fa fa-certificate" style="width:50px;"></span>
+                            <span style="font-weight: 600;">Sous Categorie: </span>{{ item.idsouscat.nomsouscat }}
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <span class="fa fa-edit" style="width:50px;"></span>
+                            <a class="btn btn-warning" style="width: 100px" href="{{ path('items_edit', { 'iditems': item.iditems }) }}">Edit</a>
+                        </p>
+                    </li>
+                    <li>
+                        <span style="font-size: 20px;">
+                            <i class="fa fa-trash"></i>
+                            {{ form_start(delete_form) }}
+                            <input class="btn" style="width: 100px;background-color: red; color: #fff; position: absolute; margin-left: 55px; margin-top: -30px;" type="submit" value="Delete">
+                            {{ form_end(delete_form) }}
+
+                        </span>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
