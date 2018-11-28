@@ -1,0 +1,77 @@
+{% extends "base.html.twig" %}
+
+
+{% block Main %}
+    <h1>Pannier Actuel</h1>
+    <center>
+
+        <table class="table">
+
+
+                    <thead>
+                    <tr>
+                        <th scope="col">Type</th>
+                        <th scope="col">Date Commande</th>
+                        <th scope="col">Client</th>
+                        <th scope="col">Demande de livraison</th>
+                        <th scope="col">Annonce Proposé</th>
+                        <th scope="col">Annonce Reçue</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for m in commandes %}
+                    {% if m.idAnnonce1 %}
+                    <tr>
+                        <th scope="row">Echange</th>
+                        <th scope="row">{{ m.dateCommande | date }}</th>
+                        <th scope="row">{{ m.idClient.usernom }} {{ m.idClient.userprenom }}</th>
+                        <th scope="row">{% if m.livraison == 1 %}
+                                Demandé
+                            {% else %}
+                                Non Demandé
+                            {% endif %}
+                        </th>
+                        <th>
+                            <a href="{{ path('affiche_annonce',{'id':m.idAnnonce1.idAnnonce}) }}" style="color: grey">{{ m.idAnnonce1.titreAnnonce }}</a>
+                        </th>
+                        <th>
+                            <a href="{{ path('affiche_annonce',{'id':m.idAnnonce2.idAnnonce}) }}" style="color: grey">{{ m.idAnnonce2.titreAnnonce }}</a>
+                        </th>
+                        <th scope="row">
+                            <a href="{{ path('update_commande',{'id':m.idCommande}) }}"><button type="button" class="btn btn-success">Details</button></a>
+                            <a href="{{ path('delete_commande',{'id':m.idCommande}) }}"><button type="button" class="btn btn-danger">Supprimer</button></a>
+                        </th>
+                    </tr>
+                {% else %}
+
+                    <tbody>
+                    <tr>
+                        <th scope="row">Vente</th>
+                        <th scope="row">{{ m.dateCommande | date }}</th>
+                        <th scope="row">{{ m.idClient.usernom}} {{ m.idClient.userprenom }}</th>
+                        <th scope="row">{{ m.montant }} DT</th>
+                        <th scope="row"> {% if m.livraison == 1 %}
+                                Demandé
+                            {% else %}
+                                Non Demandé
+                            {% endif %}
+                        </th>
+                        <th scope="row">{% if m.paye ==1 %}
+                                Payé
+                            {% else %}
+                                Non Payé
+                            {% endif %}
+                        </th>
+                        <th scope="row">
+                            <a href="{{ path('update_commande',{'id':m.idCommande}) }}"><button type="button" class="btn btn-success">Details</button></a>
+                            <a href="{{ path('delete_commande',{'id':m.idCommande}) }}"><button type="button" class="btn btn-danger">Supprimer</button></a>
+                        </th>
+                    </tr>
+                    </tbody>
+                {% endif %}
+            {% endfor %}
+        </table>
+
+    </center>
+{% endblock %}

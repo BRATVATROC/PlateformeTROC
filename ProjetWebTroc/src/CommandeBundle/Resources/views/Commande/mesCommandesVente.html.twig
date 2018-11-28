@@ -1,0 +1,41 @@
+{% extends "base.html.twig" %}
+
+{% block Main %}
+    <h1>Liste de mes Annonces</h1>
+    <center>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Titre Annonce</th>
+                <th scope="col">Prix</th>
+                <th scope="col">Date d'ajout</th>
+                <th scope="col">Adresse</th>
+                <th scope="col">Description</th>
+                <th scope="col">Nom de l'item</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for a in annonces %}
+            <tr>
+                {% if a.idAnnonce != id %}
+                    <th scope="row">{{ a.titreAnnonce }}</th>
+                    <th scope="row">{{ a.prix }} DT</th>
+                    <th scope="row">{{ a.date | date }}</th>
+                    <th scope="row"> {{ a.adresse }} </th>
+                    <th scope="row">{{ a.description }} </th>
+                    <th scope="row">{{ a.iditems.nomitems }}</th>
+                    <th scope="row">
+                        <a href="{{ path('valider_troc_annonce',{'idA1':a.idAnnonce,'idA2':id}) }}" >
+                            <button type="button" class="btn btn-success">Troquer</button>
+                        </a>
+                    </th>
+                {% endif %}
+            </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+
+    </center>
+{% endblock %}

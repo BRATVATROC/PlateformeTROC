@@ -1,0 +1,92 @@
+{% extends "base.html.twig" %}
+
+
+{% block Main %}
+    <div class="single-page main-grid-border">
+        <div class="container">
+            <div class="product-desc">
+                <div class="col-md-7 product-view">
+                    <h2>{{ annonce.TitreAnnonce }}</h2>
+                    <p> <i class="glyphicon glyphicon-map-marker"></i><a href="#">{{ annonce.adresse }}</a>| Added at {{ annonce.date |date }}, Ad ID: {{ annonce.idAnnonce }}</p>
+                    <div class="flexslider">
+                        <ul class="slides">
+                            <li data-thumb="images/ss1.jpg">
+                                <img src="{{ asset('images/'~ annonce.idAnnonce ~'.jpg') }}" style="width: 100px;height: 150px">
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- FlexSlider -->
+                    <script defer src="js/jquery.flexslider.js"></script>
+
+                    <script>
+                        // Can also be used with $(document).ready()
+                        $(window).load(function() {
+                            $('.flexslider').flexslider({
+                                animation: "slide",
+                                controlNav: "thumbnails"
+                            });
+                        });
+                    </script>
+                    <!-- //FlexSlider -->
+                    <div class="product-details">
+                        <h4><span class="w3layouts-agileinfo">Brand </span> : Company name<div class="clearfix"></div></h4>
+                        <h4><span class="w3layouts-agileinfo">Views </span> : <strong>150</strong></h4>
+                        <h4><span class="w3layouts-agileinfo">Fuel </span> : Petrol</h4>
+                        <h4><span class="w3layouts-agileinfo">Summary</span> :<p>{{ annonce.description }}</p><div class="clearfix"></div></h4>
+
+                    </div>
+                    {% if annonce.idcommande %}
+                        <a href="{{ path('supprimer_pannier',{'id':annonce.idAnnonce}) }}" >
+                            <button type="button" class="btn btn-danger fa fa-remove" >Supprimer Du Pannier</button>
+                        </a>
+                    {% else %}
+                        <a href="{{ path('ajouter_pannier',{'id':annonce.idAnnonce}) }}" >
+                            <button type="button" class="btn btn-primary fa fa-plus">Ajouter Au Pannier</button>
+                        </a>
+                        <a href="{{ path('troc_annonce',{'id':annonce.idAnnonce}) }}" >
+                            <button type="button" class="btn btn-success fa fa-exchange">Troquer</button>
+                        </a>
+                    {% endif %}
+                </div>
+                <div class="col-md-5 product-details-grid">
+                    <div class="item-price">
+                        <div class="product-price">
+                            <p class="p-price">Price</p>
+                            <h3 class="rate">{{ annonce.prix }} DT</h3>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="condition">
+                            <p class="p-price">Condition</p>
+                            <h4>Good</h4>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="itemtype">
+                            <p class="p-price">Item Type</p>
+                            <h4>{{ annonce.iditems.idsouscat.nomsouscat }}</h4>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="interested text-center">
+                        <h4>Interested in this Ad?<small> Contact the Seller!</small></h4>
+                        <p><i class="glyphicon glyphicon-earphone"></i>{{ annonce.iditems.idUser.userPhone }}</p>
+                    </div>
+                    <div class="tips">
+                        <h4>Safety Tips for Buyers</h4>
+                        <ol>
+                            <li><a href="#">Contrary to popular belief.</a></li>
+                            <li><a href="#">Contrary to popular belief.</a></li>
+                            <li><a href="#">Contrary to popular belief.</a></li>
+                            <li><a href="#">Contrary to popular belief.</a></li>
+                            <li><a href="#">Contrary to popular belief.</a></li>
+                            <li><a href="#">Contrary to popular belief.</a></li>
+                            <li><a href="#">Contrary to popular belief.</a></li>
+                            <li><a href="#">Contrary to popular belief.</a></li>
+                            <li><a href="#">Contrary to popular belief.</a></li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

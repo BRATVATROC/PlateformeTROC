@@ -1,0 +1,43 @@
+commande_homepage:
+    path:     /
+    defaults: { _controller: CommandeBundle:Default:index }
+
+read_commande:
+    path:     /read
+    defaults: { _controller: CommandeBundle:Commande:read }
+
+create_commande:
+    path:     /create
+    defaults: { _controller: CommandeBundle:Commande:create }
+
+update_commande:
+    path:     /update/{id}
+    defaults: { _controller: CommandeBundle:Commande:update }
+
+delete_commande:
+    path:     /delete/{id}
+    defaults: { _controller: CommandeBundle:Commande:delete }
+
+affiche_annonce:
+    path:     /affichanoonce/{id}
+    defaults: { _controller: CommandeBundle:Commande:affichAnnonce }
+
+supprimer_pannier:
+    path:     /deletefromcart/{id}
+    defaults: { _controller: CommandeBundle:Commande:deleteFromCart }
+
+ajouter_pannier:
+    path:     /addtocart/{id}
+    defaults: { _controller: CommandeBundle:Commande:addToCart }
+
+troc_annonce:
+    path:     /troquer/{id}
+    defaults: { _controller: CommandeBundle:Commande:troquer }
+
+valider_troc_annonce:
+    path:     /validertroc/{idA1,idA2}
+    defaults: { _controller: CommandeBundle:Commande:validerTroc }
+
+test:
+    path:     /test
+    defaults: { _controller: CommandeBundle:Commande:test }

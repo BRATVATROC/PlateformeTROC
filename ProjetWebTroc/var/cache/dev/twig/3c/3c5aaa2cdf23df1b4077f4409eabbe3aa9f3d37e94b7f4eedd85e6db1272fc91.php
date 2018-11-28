@@ -88,6 +88,6 @@ class __TwigTemplate_285c8c3f3bc655819e59fe13dbe1756a7cde061d7db9480d4146d37c524
 {% block fos_user_content %}
     {{ include('@FOSUser/Security/login_content.html.twig') }}
 {% endblock fos_user_content %}
-", "@FOSUser/Security/login.html.twig", "C:\\xampp\\htdocs\\Integration1\\ProjetWebTroc\\vendor\\friendsofsymfony\\user-bundle\\Resources\\views\\Security\\login.html.twig");
+", "@FOSUser/Security/login.html.twig", "C:\\xampp\\htdocs\\PlateformeTROC\\ProjetWebTroc\\vendor\\friendsofsymfony\\user-bundle\\Resources\\views\\Security\\login.html.twig");
     }
 }

@@ -107,6 +107,77 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
+        elseif (0 === strpos($pathinfo, '/commande')) {
+            // commande_homepage
+            if ('/commande' === $trimmedPathinfo) {
+                $ret = array (  '_controller' => 'CommandeBundle\\Controller\\DefaultController::indexAction',  '_route' => 'commande_homepage',);
+                if ('/' === substr($pathinfo, -1)) {
+                    // no-op
+                } elseif ('GET' !== $canonicalMethod) {
+                    goto not_commande_homepage;
+                } else {
+                    return array_replace($ret, $this->redirect($rawPathinfo.'/', 'commande_homepage'));
+                }
+
+                return $ret;
+            }
+            not_commande_homepage:
+
+            // read_commande
+            if ('/commande/read' === $pathinfo) {
+                return array (  '_controller' => 'CommandeBundle\\Controller\\CommandeController::readAction',  '_route' => 'read_commande',);
+            }
+
+            // create_commande
+            if ('/commande/create' === $pathinfo) {
+                return array (  '_controller' => 'CommandeBundle\\Controller\\CommandeController::createAction',  '_route' => 'create_commande',);
+            }
+
+            // update_commande
+            if (0 === strpos($pathinfo, '/commande/update') && preg_match('#^/commande/update/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'update_commande')), array (  '_controller' => 'CommandeBundle\\Controller\\CommandeController::updateAction',));
+            }
+
+            if (0 === strpos($pathinfo, '/commande/delete')) {
+                // delete_commande
+                if (preg_match('#^/commande/delete/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'delete_commande')), array (  '_controller' => 'CommandeBundle\\Controller\\CommandeController::deleteAction',));
+                }
+
+                // supprimer_pannier
+                if (0 === strpos($pathinfo, '/commande/deletefromcart') && preg_match('#^/commande/deletefromcart/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'supprimer_pannier')), array (  '_controller' => 'CommandeBundle\\Controller\\CommandeController::deleteFromCartAction',));
+                }
+
+            }
+
+            // affiche_annonce
+            if (0 === strpos($pathinfo, '/commande/affichanoonce') && preg_match('#^/commande/affichanoonce/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'affiche_annonce')), array (  '_controller' => 'CommandeBundle\\Controller\\CommandeController::affichAnnonceAction',));
+            }
+
+            // ajouter_pannier
+            if (0 === strpos($pathinfo, '/commande/addtocart') && preg_match('#^/commande/addtocart/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'ajouter_pannier')), array (  '_controller' => 'CommandeBundle\\Controller\\CommandeController::addToCartAction',));
+            }
+
+            // troc_annonce
+            if (0 === strpos($pathinfo, '/commande/troquer') && preg_match('#^/commande/troquer/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'troc_annonce')), array (  '_controller' => 'CommandeBundle\\Controller\\CommandeController::troquerAction',));
+            }
+
+            // test
+            if ('/commande/test' === $pathinfo) {
+                return array (  '_controller' => 'CommandeBundle\\Controller\\CommandeController::testAction',  '_route' => 'test',);
+            }
+
+            // valider_troc_annonce
+            if ('/commande/validertroc/{idA1,idA2}' === $pathinfo) {
+                return array (  '_controller' => 'CommandeBundle\\Controller\\CommandeController::validerTrocAction',  '_route' => 'valider_troc_annonce',);
+            }
+
+        }
+
         elseif (0 === strpos($pathinfo, '/troc')) {
             // troc_homepage
             if ('/troc' === $trimmedPathinfo) {
