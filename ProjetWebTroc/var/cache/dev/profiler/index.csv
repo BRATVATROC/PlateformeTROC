@@ -21,3 +21,17 @@ afc7bc,::1,POST,http://localhost/PlateformeTroc/ProjetWebTroc/web/app_dev.php/lo
 c27f53,::1,GET,http://localhost/PlateformeTroc/ProjetWebTroc/web/app_dev.php/login,1543343611,,200
 dde72e,::1,GET,http://localhost/PlateformeTroc/ProjetWebTroc/web/app_dev.php/login,1543343624,,200
 2a22db,::1,GET,http://localhost/PlateformeTroc/ProjetWebTroc/web/app_dev.php/register/,1543343631,,200
+1a7bba,::1,GET,http://localhost/PlateformeTroc/ProjetWebTroc/web/app_dev.php/troc/ajouto,1543438456,,200
+f19eda,::1,GET,http://localhost/PlateformeTroc/ProjetWebTroc/web/app_dev.php/troc/ajouto,1543438469,,200
+f4561a,::1,GET,http://localhost/PlateformeTroc/ProjetWebTroc/web/app_dev.php/troc/ajouto,1543438480,,200
+be8dd3,::1,GET,http://localhost/PlateformeTroc/ProjetWebTroc/web/app_dev.php/troc/electronics-appliances.html,1543438528,76ad5f,200
+76ad5f,::1,GET,http://localhost/PlateformeTroc/ProjetWebTroc/web/app_dev.php/troc/electronics-appliances.html,1543438528,,404
+10c9e8,::1,GET,http://localhost/PlateformeTroc/ProjetWebTroc/web/app_dev.php/troc/ajouto,1543438547,af3f4a,200
+af3f4a,::1,POST,http://localhost/PlateformeTroc/ProjetWebTroc/web/app_dev.php/troc/ajouto,1543438547,,500
+f28c0b,::1,GET,http://localhost/PlateformeTroc/ProjetWebTroc/web/app_dev.php/troc/ajouto,1543438811,d382c7,200
+d382c7,::1,POST,http://localhost/PlateformeTroc/ProjetWebTroc/web/app_dev.php/troc/ajouto,1543438811,,500
+c0cdbd,::1,GET,http://localhost/PlateformeTroc/ProjetWebTroc/web/app_dev.php/troc/ajouto,1543438816,,200
+3d6269,::1,GET,http://localhost/PlateformeTroc/ProjetWebTroc/web/app_dev.php/,1543438917,,200
+c23503,::1,GET,http://localhost/PlateformeTroc/ProjetWebTroc/web/app_dev.php/login,1543438934,,200
+67b7b8,::1,POST,http://localhost/PlateformeTroc/ProjetWebTroc/web/app_dev.php/login_check,1543438944,,302
+46a4d9,::1,GET,http://localhost/PlateformeTroc/ProjetWebTroc/web/app_dev.php/,1543438945,,200

@@ -77,6 +77,6 @@ class __TwigTemplate_9d052ca71b8ca3cee1eb189861108cb91ff14c0524ab9afc1b416533154
     v0.8c0,0-0.6-0.1-1.1-0.1H17z M20.7,16.8c-1-1.1-1.6-1.9-2.3-3.6L19,13c0.5,1.1,0.8,1.7,1.4,2.4c0.3,0.3,0.5,0.5,0.8,0.9
     C21.1,16.4,20.9,16.6,20.7,16.8z\"/>
 </svg>
-", "@WebProfiler/Icon/translation.svg", "C:\\xampp\\htdocs\\Integration1\\ProjetWebTroc\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\WebProfilerBundle\\Resources\\views\\Icon\\translation.svg");
+", "@WebProfiler/Icon/translation.svg", "C:\\xampp\\htdocs\\PlateformeTROC\\ProjetWebTroc\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\WebProfilerBundle\\Resources\\views\\Icon\\translation.svg");
     }
 }

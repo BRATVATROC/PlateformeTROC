@@ -124,6 +124,6 @@ class __TwigTemplate_68c5b1c6a7eacbf2c446060aa0356e8fc1c633c92a57891e0493e833555
         </div>
     </section>
 {% endblock %}
-", "@FOSUser/layout.html.twig", "C:\\xampp\\htdocs\\Integration1\\ProjetWebTroc\\vendor\\friendsofsymfony\\user-bundle\\Resources\\views\\layout.html.twig");
+", "@FOSUser/layout.html.twig", "C:\\xampp\\htdocs\\PlateformeTROC\\ProjetWebTroc\\vendor\\friendsofsymfony\\user-bundle\\Resources\\views\\layout.html.twig");
     }
 }

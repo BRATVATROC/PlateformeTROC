@@ -390,6 +390,6 @@ class __TwigTemplate_09b7cd3fd12405ae9428e7e53b62e9b10079b70d85ba23e5a6ceeb2d883
         );
     })();
 /*]]>*/</script>
-", "@WebProfiler/Profiler/toolbar_js.html.twig", "C:\\xampp\\htdocs\\Integration1\\ProjetWebTroc\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\WebProfilerBundle\\Resources\\views\\Profiler\\toolbar_js.html.twig");
+", "@WebProfiler/Profiler/toolbar_js.html.twig", "C:\\xampp\\htdocs\\PlateformeTROC\\ProjetWebTroc\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\WebProfilerBundle\\Resources\\views\\Profiler\\toolbar_js.html.twig");
     }
 }

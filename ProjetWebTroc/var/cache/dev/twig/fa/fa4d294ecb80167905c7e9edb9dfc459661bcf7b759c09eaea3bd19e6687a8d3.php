@@ -86,6 +86,6 @@ class __TwigTemplate_24fb4c98d02ba9dfc05693d3a66bd0006a2081f85b28b59b871c5492207
 {% block Main %}
 
 {% endblock %}
-", "@App/Default/index.html.twig", "C:\\xampp\\htdocs\\Integration1\\ProjetWebTroc\\src\\AppBundle\\Resources\\views\\default\\index.html.twig");
+", "@App/Default/index.html.twig", "C:\\xampp\\htdocs\\PlateformeTROC\\ProjetWebTroc\\src\\AppBundle\\Resources\\views\\default\\index.html.twig");
     }
 }

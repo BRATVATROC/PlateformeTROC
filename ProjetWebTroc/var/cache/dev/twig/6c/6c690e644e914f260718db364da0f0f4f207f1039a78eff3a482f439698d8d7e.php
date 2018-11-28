@@ -397,6 +397,6 @@ class __TwigTemplate_074cab523f3c0309b267158c62cb2024857a0d4347f2ea5f4d0b60c36a2
         </div>
     {% endif %}
 {% endblock %}
-", "@WebProfiler/Collector/twig.html.twig", "C:\\xampp\\htdocs\\Integration1\\ProjetWebTroc\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\WebProfilerBundle\\Resources\\views\\Collector\\twig.html.twig");
+", "@WebProfiler/Collector/twig.html.twig", "C:\\xampp\\htdocs\\PlateformeTROC\\ProjetWebTroc\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\WebProfilerBundle\\Resources\\views\\Collector\\twig.html.twig");
     }
 }

@@ -31,7 +31,7 @@ class __TwigTemplate_00b3eafa71c0d0f039a3ad3a208b5e92b446f82a6cd5b6a2a3f2a1721b5
 <html>
 <head>
     <head>
-        <title>Resale_v2 a Classified ads Category Flat Bootstrap Responsive Website Template | All Classifieds :: w3layouts</title>
+        <title>We TROC</title>
         <link rel=\"stylesheet\" href=\"";
         // line 6
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("css/bootstrap.min.css"), "html", null, true);
@@ -1015,7 +1015,7 @@ class __TwigTemplate_00b3eafa71c0d0f039a3ad3a208b5e92b446f82a6cd5b6a2a3f2a1721b5
 <html>
 <head>
     <head>
-        <title>Resale_v2 a Classified ads Category Flat Bootstrap Responsive Website Template | All Classifieds :: w3layouts</title>
+        <title>We TROC</title>
         <link rel=\"stylesheet\" href=\"{{asset('css/bootstrap.min.css')}}\"><!-- bootstrap-CSS -->
         <link rel=\"stylesheet\" href=\"{{asset('css/bootstrap-select.css')}}\"><!-- bootstrap-select-CSS -->
         <link href=\"{{asset('css/style.css')}}\" rel=\"stylesheet\" type=\"text/css\" media=\"all\" /><!-- style.css -->
@@ -1734,6 +1734,6 @@ class __TwigTemplate_00b3eafa71c0d0f039a3ad3a208b5e92b446f82a6cd5b6a2a3f2a1721b5
     </script>
 {% endblock %}
 </html>
-", "base.html.twig", "C:\\xampp\\htdocs\\Integration1\\ProjetWebTroc\\app\\Resources\\views\\base.html.twig");
+", "base.html.twig", "C:\\xampp\\htdocs\\PlateformeTROC\\ProjetWebTroc\\app\\Resources\\views\\base.html.twig");
     }
 }
