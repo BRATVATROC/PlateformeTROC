@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Opinion
  *
  * @ORM\Table(name="opinion")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="TrocBundle\Repository\OpinionRepository")
  */
 class Opinion
 {

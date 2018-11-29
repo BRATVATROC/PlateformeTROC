@@ -43,9 +43,17 @@ class OpinionController extends Controller
         $form=$form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $opinion->setNote(2);
+
+           $n= $request->get('note');
+
+
+            $opinion->setNote($n);
             $opinion->setIdUser($this->getUser()->getId());
             $em = $this->getDoctrine()->getManager();
+
+
+
+            die();
             $em->persist($opinion);
             $em->flush();
 
@@ -132,5 +140,13 @@ class OpinionController extends Controller
             ->setMethod('DELETE')
             ->getForm()
             ;
+    }
+    private function moyNote(Request $reques)
+    {   $em = $this->getDoctrine()->getManager();
+        $a= $em->getRepository('TrocBundle:Opinion')->MoynoteOpinion();
+
+        //$a array contenant count et sum
+        var_dump($a[1]/$a[2]);
+        return $a;
     }
 }
