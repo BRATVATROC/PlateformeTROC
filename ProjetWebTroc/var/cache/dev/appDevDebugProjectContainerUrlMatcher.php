@@ -107,6 +107,160 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
         }
 
+        elseif (0 === strpos($pathinfo, '/items')) {
+            // items_show
+            if (0 === strpos($pathinfo, '/items/show') && preg_match('#^/items/show/(?P<iditems>[^/]++)$#sD', $pathinfo, $matches)) {
+                $ret = $this->mergeDefaults(array_replace($matches, array('_route' => 'items_show')), array (  '_controller' => 'ItemsBundle\\Controller\\ItemsController::showAction',));
+                if (!in_array($canonicalMethod, array('GET'))) {
+                    $allow = array_merge($allow, array('GET'));
+                    goto not_items_show;
+                }
+
+                return $ret;
+            }
+            not_items_show:
+
+            // items_new
+            if ('/items/new' === $pathinfo) {
+                $ret = array (  '_controller' => 'ItemsBundle\\Controller\\ItemsController::newAction',  '_route' => 'items_new',);
+                if (!in_array($canonicalMethod, array('GET', 'POST'))) {
+                    $allow = array_merge($allow, array('GET', 'POST'));
+                    goto not_items_new;
+                }
+
+                return $ret;
+            }
+            not_items_new:
+
+            // items_edit
+            if (0 === strpos($pathinfo, '/items/edit') && preg_match('#^/items/edit/(?P<iditems>[^/]++)$#sD', $pathinfo, $matches)) {
+                $ret = $this->mergeDefaults(array_replace($matches, array('_route' => 'items_edit')), array (  '_controller' => 'ItemsBundle\\Controller\\ItemsController::editAction',));
+                if (!in_array($canonicalMethod, array('GET', 'POST'))) {
+                    $allow = array_merge($allow, array('GET', 'POST'));
+                    goto not_items_edit;
+                }
+
+                return $ret;
+            }
+            not_items_edit:
+
+            // items_delete
+            if (0 === strpos($pathinfo, '/items/delete') && preg_match('#^/items/delete/(?P<iditems>[^/]++)$#sD', $pathinfo, $matches)) {
+                $ret = $this->mergeDefaults(array_replace($matches, array('_route' => 'items_delete')), array (  '_controller' => 'ItemsBundle\\Controller\\ItemsController::deleteAction',));
+                if (!in_array($requestMethod, array('DELETE'))) {
+                    $allow = array_merge($allow, array('DELETE'));
+                    goto not_items_delete;
+                }
+
+                return $ret;
+            }
+            not_items_delete:
+
+            // items_homepage
+            if ('/items' === $trimmedPathinfo) {
+                $ret = array (  '_controller' => 'ItemsBundle\\Controller\\DefaultController::indexAction',  '_route' => 'items_homepage',);
+                if ('/' === substr($pathinfo, -1)) {
+                    // no-op
+                } elseif ('GET' !== $canonicalMethod) {
+                    goto not_items_homepage;
+                } else {
+                    return array_replace($ret, $this->redirect($rawPathinfo.'/', 'items_homepage'));
+                }
+
+                return $ret;
+            }
+            not_items_homepage:
+
+        }
+
+        elseif (0 === strpos($pathinfo, '/annonce')) {
+            // annonce_index
+            if ('/annonce' === $trimmedPathinfo) {
+                $ret = array (  '_controller' => 'AnnonceBundle\\Controller\\AnnonceController::indexAction',  '_route' => 'annonce_index',);
+                if ('/' === substr($pathinfo, -1)) {
+                    // no-op
+                } elseif ('GET' !== $canonicalMethod) {
+                    goto not_annonce_index;
+                } else {
+                    return array_replace($ret, $this->redirect($rawPathinfo.'/', 'annonce_index'));
+                }
+
+                if (!in_array($canonicalMethod, array('GET'))) {
+                    $allow = array_merge($allow, array('GET'));
+                    goto not_annonce_index;
+                }
+
+                return $ret;
+            }
+            not_annonce_index:
+
+            // annonce_show
+            if (0 === strpos($pathinfo, '/annonce/show') && preg_match('#^/annonce/show/(?P<idAnnonce>[^/]++)$#sD', $pathinfo, $matches)) {
+                $ret = $this->mergeDefaults(array_replace($matches, array('_route' => 'annonce_show')), array (  '_controller' => 'AnnonceBundle\\Controller\\AnnonceController::showAction',));
+                if (!in_array($canonicalMethod, array('GET'))) {
+                    $allow = array_merge($allow, array('GET'));
+                    goto not_annonce_show;
+                }
+
+                return $ret;
+            }
+            not_annonce_show:
+
+            // annonce_single
+            if (0 === strpos($pathinfo, '/annonce/single') && preg_match('#^/annonce/single/(?P<idAnnonce>[^/]++)$#sD', $pathinfo, $matches)) {
+                $ret = $this->mergeDefaults(array_replace($matches, array('_route' => 'annonce_single')), array (  '_controller' => 'AnnonceBundle\\Controller\\AnnonceController::singleAction',));
+                if (!in_array($canonicalMethod, array('GET'))) {
+                    $allow = array_merge($allow, array('GET'));
+                    goto not_annonce_single;
+                }
+
+                return $ret;
+            }
+            not_annonce_single:
+
+            // annonce_new
+            if ('/annonce/new' === $pathinfo) {
+                $ret = array (  '_controller' => 'AnnonceBundle\\Controller\\AnnonceController::newAction',  '_route' => 'annonce_new',);
+                if (!in_array($canonicalMethod, array('GET', 'POST'))) {
+                    $allow = array_merge($allow, array('GET', 'POST'));
+                    goto not_annonce_new;
+                }
+
+                return $ret;
+            }
+            not_annonce_new:
+
+            // annonce_edit
+            if (0 === strpos($pathinfo, '/annonce/edit ') && preg_match('#^/annonce/edit /(?P<idAnnonce>[^/]++)$#sD', $pathinfo, $matches)) {
+                $ret = $this->mergeDefaults(array_replace($matches, array('_route' => 'annonce_edit')), array (  '_controller' => 'AnnonceBundle\\Controller\\AnnonceController::editAction',));
+                if (!in_array($canonicalMethod, array('GET', 'POST'))) {
+                    $allow = array_merge($allow, array('GET', 'POST'));
+                    goto not_annonce_edit;
+                }
+
+                return $ret;
+            }
+            not_annonce_edit:
+
+            // annonce_delete
+            if (0 === strpos($pathinfo, '/annonce/delete') && preg_match('#^/annonce/delete/(?P<idAnnonce>[^/]++)$#sD', $pathinfo, $matches)) {
+                $ret = $this->mergeDefaults(array_replace($matches, array('_route' => 'annonce_delete')), array (  '_controller' => 'AnnonceBundle\\Controller\\AnnonceController::deleteAction',));
+                if (!in_array($requestMethod, array('DELETE'))) {
+                    $allow = array_merge($allow, array('DELETE'));
+                    goto not_annonce_delete;
+                }
+
+                return $ret;
+            }
+            not_annonce_delete:
+
+            // annonce_homepage
+            if ('/annonce/h' === $pathinfo) {
+                return array (  '_controller' => 'AnnonceBundle\\Controller\\DefaultController::indexAction',  '_route' => 'annonce_homepage',);
+            }
+
+        }
+
         elseif (0 === strpos($pathinfo, '/troc')) {
             // troc_homepage
             if ('/troc' === $trimmedPathinfo) {
@@ -131,7 +285,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
 
                 // read
                 if (preg_match('#^/troc/read/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
-                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'read')), array (  '_controller' => 'TrocBundle\\Controller\\AnnonceController::readAction',));
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'read')), array (  '_controller' => 'TrocBundle:Annonce:read',));
                 }
 
             }

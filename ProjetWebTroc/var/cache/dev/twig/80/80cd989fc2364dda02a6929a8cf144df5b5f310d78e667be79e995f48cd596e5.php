@@ -791,7 +791,7 @@ class __TwigTemplate_00b3eafa71c0d0f039a3ad3a208b5e92b446f82a6cd5b6a2a3f2a1721b5
                     </form>
                     <a class=\"post-w3layouts-ad\" href=\"";
         // line 598
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("post-ad.html"), "html", null, true);
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("annonce_new");
         echo "\">Post Free Ad</a>
                 </div>
                 <div class=\"clearfix\"></div>
@@ -1608,7 +1608,7 @@ class __TwigTemplate_00b3eafa71c0d0f039a3ad3a208b5e92b446f82a6cd5b6a2a3f2a1721b5
                             <i class=\"fa fa-search\" aria-hidden=\"true\"> </i>
                         </button>
                     </form>
-                    <a class=\"post-w3layouts-ad\" href=\"{{asset('post-ad.html')}}\">Post Free Ad</a>
+                    <a class=\"post-w3layouts-ad\" href=\"{{ path('annonce_new') }}\">Post Free Ad</a>
                 </div>
                 <div class=\"clearfix\"></div>
             </div>

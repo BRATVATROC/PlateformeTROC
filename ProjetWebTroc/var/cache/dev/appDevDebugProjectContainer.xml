@@ -19,6 +19,8 @@
       <parameter key="AppBundle">AppBundle\AppBundle</parameter>
       <parameter key="TrocBundle">TrocBundle\TrocBundle</parameter>
       <parameter key="FOSUserBundle">FOS\UserBundle\FOSUserBundle</parameter>
+      <parameter key="AnnonceBundle">AnnonceBundle\AnnonceBundle</parameter>
+      <parameter key="ItemsBundle">ItemsBundle\ItemsBundle</parameter>
       <parameter key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
       <parameter key="SensioDistributionBundle">Sensio\Bundle\DistributionBundle\SensioDistributionBundle</parameter>
@@ -76,6 +78,16 @@
         <parameter key="path">C:\xampp\htdocs\PlateformeTROC\ProjetWebTroc\vendor\friendsofsymfony\user-bundle</parameter>
         <parameter key="namespace">FOS\UserBundle</parameter>
       </parameter>
+      <parameter key="AnnonceBundle" type="collection">
+        <parameter key="parent">null</parameter>
+        <parameter key="path">C:\xampp\htdocs\PlateformeTROC\ProjetWebTroc\src\AnnonceBundle</parameter>
+        <parameter key="namespace">AnnonceBundle</parameter>
+      </parameter>
+      <parameter key="ItemsBundle" type="collection">
+        <parameter key="parent">null</parameter>
+        <parameter key="path">C:\xampp\htdocs\PlateformeTROC\ProjetWebTroc\src\ItemsBundle</parameter>
+        <parameter key="namespace">ItemsBundle</parameter>
+      </parameter>
       <parameter key="DebugBundle" type="collection">
         <parameter key="parent">null</parameter>
         <parameter key="path">C:\xampp\htdocs\PlateformeTROC\ProjetWebTroc\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle</parameter>
@@ -117,6 +129,7 @@
     <parameter key="mailer_password">null</parameter>
     <parameter key="secret">ThisTokenIsNotSoSecretChangeIt</parameter>
     <parameter key="locale">fr</parameter>
+    <parameter key="image_dir">C:\xampp\htdocs\PlateformeTROC\ProjetWebTroc/web/upload</parameter>
     <parameter key="fragment.renderer.hinclude.global_template"></parameter>
     <parameter key="fragment.path">/_fragment</parameter>
     <parameter key="kernel.secret">ThisTokenIsNotSoSecretChangeIt</parameter>
@@ -2383,14 +2396,6 @@
         <argument>2048</argument>
       </call>
       <call method="addListener">
-        <argument>console.command</argument>
-        <argument type="collection">
-          <argument type="service" id="debug.debug_handlers_listener"/>
-          <argument>configure</argument>
-        </argument>
-        <argument>2048</argument>
-      </call>
-      <call method="addListener">
         <argument>kernel.request</argument>
         <argument type="collection">
           <argument type="service" id="router_listener"/>
@@ -3767,6 +3772,22 @@
       <call method="addPath">
         <argument>C:\xampp\htdocs\PlateformeTROC\ProjetWebTroc\src\TrocBundle/Resources/views</argument>
         <argument>!Troc</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\xampp\htdocs\PlateformeTROC\ProjetWebTroc\src\AnnonceBundle/Resources/views</argument>
+        <argument>Annonce</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\xampp\htdocs\PlateformeTROC\ProjetWebTroc\src\AnnonceBundle/Resources/views</argument>
+        <argument>!Annonce</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\xampp\htdocs\PlateformeTROC\ProjetWebTroc\src\ItemsBundle/Resources/views</argument>
+        <argument>Items</argument>
+      </call>
+      <call method="addPath">
+        <argument>C:\xampp\htdocs\PlateformeTROC\ProjetWebTroc\src\ItemsBundle/Resources/views</argument>
+        <argument>!Items</argument>
       </call>
       <call method="addPath">
         <argument>C:\xampp\htdocs\PlateformeTROC\ProjetWebTroc\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle/Resources/views</argument>
