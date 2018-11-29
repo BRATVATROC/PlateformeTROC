@@ -21,6 +21,8 @@ class CommentaireController extends Controller
 
     public function createcAction(Request $request)
     {
+        $annonce=$request->get('annonce');
+
         //1-preparer le formulaire
         //1-a passer un objet vide car la methode createForm prend en parametre cet objet
         $commentaire= new Commentaire();
@@ -28,47 +30,84 @@ class CommentaireController extends Controller
         $form=$this->createForm(CommentaireType::class,$commentaire);
         $form=$form->handleRequest($request);
         $commentaires=$this->readcAction();
-
+     // test si le formulaire est remplie
         if($form->isValid())
         {
+
             $user=$this->getUser();
             $commentaire->setIdUser($user);
 
+            $commentaire->setIdAnnonce();
+
+            //connex bdd et sauvegarde de notre objet dans la base gràce à la méthode flush
             $em=$this->getDoctrine()->getManager();
             $em->persist($commentaire);
 
             $em->flush();
-            $a=$this->getDoctrine()->getRepository(Annonce::class);
+            $commentaires=$this->readcAction();
+            //appel à la View de formulaire CreateCommentaire et affichage des commentaires
+            return $this->render('@Troc/Commentaire/createc.html.twig', array(
+                'form' => $form->createView(),'commentaires'=>$commentaires,
+                // ...
+            ));
 
-            return $this->render('@Troc/Default/index.html.twig',
-                array('id'=>2));
-
-            // ... further modify the response or return it directly
-
-            return $response;
         }
+        // si le formulaire est vide
         return $this->render('@Troc/Commentaire/createc.html.twig', array(
             'form' => $form->createView(),'commentaires'=>$commentaires,
             // ...
         ));
-
     }
 
+    public function deleteAction(Request $request , $idCommentaire)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $commentaire=$this->getDoctrine()->getRepository(Commentaire::class)->find($idCommentaire);
 
+        $em->remove($commentaire);
+        $em->flush();
+        return $this->redirectToRoute('create_commentaire');
 
-
-
-    public function searchAnnonceAction(Request $request)
-    {    $id=$request->get('id');
-        if(isset($id))
+    }
+    public function updateAction(Request $request,$idCommentaire)
+    { //1-form
+        //1-a
+        $em=$this->getDoctrine()->getManager();
+        $commentaire=$this->getDoctrine()->getRepository(Commentaire::class)->find($idCommentaire);
+        //1-b
+        $form=$this->createForm(CommentaireType::class,$commentaire);
+        //2
+        $form=$form->handleRequest($request);
+        //3
+        if($form->isValid())
         {
-            $commentaires=$this->getDoctrine()->getRepository(Modele::class)->getByAnnonce($id);
-            return $this->render('@Troc/Commentaire/createc.html.twig', array('commentaires'=>$commentaires
-            ));
-        }
-        return $this->render('@EspritParc/Modele/searchAnnonce.html.twig'
 
-        // ...
-        );
+            $em->flush();
+        }
+
+        //1.c
+        return $this->render('@Troc/Commentaire/update.html.twig', array(
+            'form'=>$form->createView()
+            // ...
+        ));
     }
+
+
+    public function  signalerAction()
+    {
+
+
+    }
+
+    public function topCommentaire()
+    {
+        $commentaires=$this->getDoctrine()->getRepository(Commentaire::class)->TopCommented();
+        return $this->render('@Troc/Commentaire/createc.html.twig', array('commentaires'=>$commentaires,
+        ));
+    }
+
+
+
+
+
 }

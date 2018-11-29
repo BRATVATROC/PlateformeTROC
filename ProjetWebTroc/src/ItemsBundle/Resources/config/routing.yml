@@ -1,7 +1,0 @@
-items_items:
-    resource: "@ItemsBundle/Resources/config/routing/items.yml"
-    prefix:   /
-
-items_homepage:
-    path:     /
-    defaults: { _controller: ItemsBundle:Default:index }
