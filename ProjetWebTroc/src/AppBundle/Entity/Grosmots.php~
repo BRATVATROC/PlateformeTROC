@@ -1,0 +1,33 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Grosmots
+ *
+ * @ORM\Table(name="grosmots")
+ * @ORM\Entity
+ */
+class Grosmots
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_mot", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idMot;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Grosmot", type="string", length=255, nullable=false)
+     */
+    private $grosmot;
+
+
+}
+
