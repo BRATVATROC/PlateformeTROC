@@ -1,0 +1,17 @@
+
+
+{% block title %}TrocBundle:Annonce:read{% endblock %}
+
+{% block body %}
+<h1>Welcome to the Annonce:read page</h1>
+    <table border="1px">
+        <tr>
+            <td>id</td><td>titre</td><td>Prix</td><td>Action</td></tr>
+        {% for m in annonce %}
+            <tr><td>{{ m.idAnnonce }}</td><td>{{ m.titreAnnonce }}</td><td>{{ m.prix }}</td>
+               <td><img src="{{ m.iditems.imgiems }}" style="width: 200px;height: 300px;"></td> </tr>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+
