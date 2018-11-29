@@ -1,0 +1,74 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Feedback
+ *
+ * @ORM\Table(name="feedback", indexes={@ORM\Index(name="id_user", columns={"id_user"}), @ORM\Index(name="id_Annonce", columns={"id_Annonce"})})
+ * @ORM\Entity
+ */
+class Feedback
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_feed", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idFeed;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="like_feed", type="integer", nullable=false)
+     */
+    private $likeFeed;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="dislike", type="integer", nullable=false)
+     */
+    private $dislike;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="note", type="float", precision=10, scale=0, nullable=false)
+     */
+    private $note;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime", nullable=false)
+     */
+    private $date;
+
+    /**
+     * @var \FosUser
+     *
+     * @ORM\ManyToOne(targetEntity="FosUser")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+     * })
+     */
+    private $idUser;
+
+    /**
+     * @var \Annonce
+     *
+     * @ORM\ManyToOne(targetEntity="Annonce")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_Annonce", referencedColumnName="id_annonce")
+     * })
+     */
+    private $idAnnonce;
+
+
+}
+
