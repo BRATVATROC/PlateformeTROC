@@ -1,41 +1,49 @@
 
-       {% block comment %}
-
-            <h3>Comments</h3>
-           <br>
-       {% if commentaires %}
-            {% for comment in commentaires %}
-                <hr>
-                <strong>{{ comment.idUser.username }}</strong> said : {{ comment.commentaire }} <br>  {{ comment.dateCommentaire|date }} <br>
-            {% else %}
-                No comments yet.
-            {% endfor %}
-       {% endif %}
-            <br>
-            <h3>Add a comment</h3>
-           <br>
-
-           {{ form_start(form, {'action': path('create_commentaire'), 'method': 'POST'}) }}
-                <div class="form-group">
-                    {{ form_errors(form.commentaire) }}
-                    {{ form_widget(form.commentaire, { 'attr':  {
-                        'rows': '4',
-                        'class': 'form-control',
-                        'placeholder': 'Enter your comment'
-                    }}) }}
-
-                    <input type="submit" value="envoyer">
-
-                </div>
-
-                {{ form_end(form) }}
-                {% for flashMessage in app.session.flashbag.get('success') %}
-                    <div class="alert alert-success">
-                        {{ flashMessage }}
-                    </div>
-                {% endfor %}
+{% block comment %}
 
 
-     </div>
-       {% endblock %}
+
+    <h3>Comments</h3>
+    <br>
+    {% if commentaires %}
+        {% for comment in commentaires %}
+            <hr>
+            <strong>{{ comment.idUser.username }}</strong> said : {{ comment.commentaire }} <br>  {{ comment.dateCommentaire|date }} <br>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+
+                {% if app.user.username==comment.idUser.username %}
+                    <a href="{{ path ('delete_commentaire',{'idCommentaire':comment.idCommentaire}) }}" style="color: #00a5f7"> Delete </a><br>
+                    <a href="{{ path ('update_commentaire',{'idCommentaire':comment.idCommentaire}) }}" style="color: #00a5f7"> Update </a>
+                {% else %}
+                    <a href="{{ path ('signaler_commentaire',{'idCommentaire':comment.idCommentaire}) }}" style="color: red"> Signaler </a>
+                {% endif %}
+            {% endif %}
+
+        {% else %}
+            No comments yet.
+        {% endfor %}
+    {% endif %}
+    <br>
+    <h3>Add a comment</h3>
+    <br>
+    {% if form %}
+        {{ form_start(form) }}
+        <div class="form-group">
+            {{ form_errors(form.commentaire) }}
+            {{ form_widget(form.commentaire, { 'attr':  {
+                'rows': '4',
+                'class': 'form-control',
+                'placeholder': 'Enter your comment'
+            }}) }}
+            <input type="submit" value="Publish Comment">
+        </div>
+        {{ form_end(form) }}
+    {% endif %}
+
+
+
+    </div>
+
+{% endblock %}
 
