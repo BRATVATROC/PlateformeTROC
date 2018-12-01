@@ -10,12 +10,19 @@ namespace TrocBundle\Repository;
  */
 class OpinionRepository extends \Doctrine\ORM\EntityRepository
 {
-
+    //CALCULER LA MOYENNE
     public function MoyNoteOpinion()
     {
         $query=$this->getEntityManager()
             ->createQuery("select SUM(o.note),COUNT(o.note)from TrocBundle:Opinion as o ");
         return $query->getSingleResult();
+
+    }
+    public function NbrNoteOpinion()
+    {
+        $query=$this->getEntityManager()
+            ->createQuery("select COUNT(o.idOp) as nbr from TrocBundle:Opinion as o group by o.note order by o.note DESC ");
+        return $query->getResult();
 
     }
 }

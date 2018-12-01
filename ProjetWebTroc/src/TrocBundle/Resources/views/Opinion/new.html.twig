@@ -11,21 +11,44 @@
                 <h3>Tell us what you think of us</h3>
 
                 <div class="feed-back-form">
+
                     {% block add %}
+                    <div class="col-md-7">
                     <h3 >Donner nous votre avis et n'oublier pas de nous noter ! </h3>
                         {{ form_start(form) }}
                         {{ form_widget(form) }}
-                        <input id ="rating" type="number" name="note">
-                        <input type="submit" value="Confirmer">
-
+                        <input id ="rating" type="number" name="note"  required>
+                        <input class="col-md-3"type="submit" value="Confirmer" id="send">
+                        <div class="col-md-6">
+                            <label id ="err"  style="color: red;size: 10px" hidden>Don't forget to rate us ! </label>
+                            {% include"@Troc/Opinion/rating.html.twig" %}
+                        </div>
+                        <script>
+                            $('#send').click(function(){
+                                if($('#rating').val()=="")
+                                    $('#err').show();
+                            });
+                            $('.star').click(function (){
+                                $('#err').hide();
+                            });
+                        </script>
                             {{ form_end(form) }}
+                    </div>
+
+                        <div class="col-md-5">
+                            {{ render(controller('TrocBundle:Opinion:NbreNote')) }}
+                        </div>
+                        <div></div>
+
                     {% endblock %}
-                    <img src="{{ asset('/images/feedback.png') }}">
                 </div>
-                {% include"@Troc/Opinion/rating.html.twig" %}
+                </div>
+
+                </div>
 
             </div>
-        </div>
+
     </div>
+
 
 {% endblock %}
