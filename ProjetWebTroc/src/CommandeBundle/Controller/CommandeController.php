@@ -14,10 +14,12 @@ class CommandeController extends Controller
 {
     public function readAction()
     {
-        $commandes = $this->getDoctrine()->getRepository(Commande::class)->findAll();
+        $commandesE = $this->getDoctrine()->getRepository(Commande::class)->findAllExchange();
+        $commandesS = $this->getDoctrine()->getRepository(Commande::class)->findAllSell();
         return $this->render('@Commande/Commande/read.html.twig', array(
             // ...
-            "commandes"=>$commandes
+            "commandesE"=>$commandesE,
+            "commandesS"=>$commandesS
         ));
     }
 
@@ -86,9 +88,11 @@ class CommandeController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $annonce = $em->getRepository(Annonce::class)->find($id);
+        $commande = $em->getRepository(Commande::class)->findLastCommande();
         return $this->render('@Commande/Commande/affichannonce.html.twig', array(
             // ...
             "annonce"=>$annonce,
+            "commande"=>$commande[0]
         ));
     }
 
@@ -97,13 +101,16 @@ class CommandeController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $annonce = $em->getRepository(Annonce::class)->find($id);
+        $commande = $em->getRepository(Commande::class)->findLastCommande();
+        $commande[0]->setMontant($commande[0]->getMontant()-$annonce->getPrix());
         $annonce->setIdCommande(null);
-        $commande = $em->getRepository(Commande::class)->find(1);
-        $commande->setMontant($commande->getMontant()-$annonce->getPrix());
         $em->flush();
-        return $this->render('@Commande/Commande/affichannonce.html.twig', array(
+        /*return $this->render('@Commande/Commande/affichannonce.html.twig', array(
             // ...
             "annonce"=>$annonce,
+        ));*/
+        return $this->redirectToRoute("affiche_annonce",array(
+            "id"=>$annonce->getIdannonce(),
         ));
     }
 
@@ -113,12 +120,16 @@ class CommandeController extends Controller
         $em = $this->getDoctrine()->getManager();
         $annonce = $em->getRepository(Annonce::class)->find($id);
         $commande = $em->getRepository(Commande::class)->findLastCommande();
-        $commande->setMontant($commande->getMontant()+$annonce->getPrix());
-        $annonce->setIdCommande($commande);
+        //var_dump($commande[0]);
+        $commande[0]->setMontant($commande[0]->getMontant()+$annonce->getPrix());
+        $annonce->setIdCommande($commande[0]);
         $em->flush();
-        return $this->render('@Commande/Commande/affichannonce.html.twig', array(
+        /*return $this->render('@Commande/Commande/affichannonce.html.twig', array(
             // ...
             "annonce"=>$annonce,
+        ));*/
+        return $this->redirectToRoute("affiche_annonce",array(
+            "id"=>$annonce->getIdannonce()
         ));
     }
 
@@ -164,12 +175,37 @@ class CommandeController extends Controller
         $em = $this->getDoctrine()->getManager();
         $var1 = $em->getRepository(Annonce::class)->calculAnnoncesPosté(1);
         $var2 = $em->getRepository(Annonce::class)->calculAnnoncesVendu(1);
-        var_dump($var1);
-        var_dump($var2);
         return $this->render('@Commande/Commande/create.html.twig', array(
-            // ...
+             //...
+            "var1"=>$var1,
+            "var2"=>$var2
         ));
 
     }
+
+    public function printAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $commande = $em->getRepository(Commande::class)->find($id);
+        $annonces = $em->getRepository(Annonce::class)->findMyCart($id);
+        $this->get('knp_snappy.pdf')->generateFromHtml(
+            $this->renderView(
+                '@Commande/Commande/template.html.twig',
+                array(
+                    "commande"=>$commande,
+                    "annonces"=>$annonces
+                )
+            ),
+            'C:\Users\CompuTech\Desktop\Facture'.$commande->getIdcommande().'.pdf'
+        );
+        /*return $this->render('@Commande/Commande/template.html.twig', array(
+            // ...
+            "commande"=>$commande,
+            "annonces"=>$annonces
+        ));*/
+
+        return $this->redirectToRoute("read_commande");
+    }
+
 
 }

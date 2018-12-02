@@ -19,7 +19,7 @@ delete_commande:
     defaults: { _controller: CommandeBundle:Commande:delete }
 
 affiche_annonce:
-    path:     /affichanoonce/{id}
+    path:     /affichannonce/{id}
     defaults: { _controller: CommandeBundle:Commande:affichAnnonce }
 
 supprimer_pannier:
@@ -41,3 +41,8 @@ valider_troc_annonce:
 test:
     path:     /test
     defaults: { _controller: CommandeBundle:Commande:test }
+
+imprimer_facture:
+    path:     /print/{id}
+    defaults: { _controller: CommandeBundle:Commande:print }
+

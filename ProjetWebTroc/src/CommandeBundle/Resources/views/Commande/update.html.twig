@@ -1,41 +1,41 @@
 {% extends "base.html.twig" %}
 
 {% block Main %}
-    <h1>Payment de la commande</h1>
+    <h1>Payment Of the Command</h1>
     <div class="row">
         <div class="col-8">
             <h2>Options</h2>
             <form>
 
-                <div class="btn-group-toggle" data-toggle="buttons">Choix de livraison :
+                <div class="btn-group-toggle" data-toggle="buttons">Asking For Livraison :
                     <label class="btn btn-info">
-                        <input type="radio" name="livraison1" id="livraison1" autocomplete="off"> Oui
+                        <input type="radio" name="livraison1" id="livraison1" autocomplete="off"> Yes
                     </label>
                     <label class="btn btn-info">
-                        <input type="radio" name="livraison2" id="livraison2" autocomplete="off"> Non
-                    </label>
-                </div>
-
-                <p>Montant de la commande sans livraison : {{ commande.montant }}</p>
-                <p>Frais de livraison 8 Dt</p>
-                <p>Montant de la commande avec livraison : {{ commande.montant+8 }}</p>
-
-
-                <div class="btn-group-toggle" data-toggle="buttons">Mode de Paiement :
-                    <label class="btn btn-info">
-                        <input type="radio" name="payment1" id="payment1" autocomplete="off"> Paiement à la livraison
-                    </label>
-                    <label class="btn btn-info">
-                        <input type="radio" name="payment2" id="payment2" autocomplete="off"> Paiement en ligne
+                        <input type="radio" name="livraison2" id="livraison2" autocomplete="off"> No
                     </label>
                 </div>
 
-                <a href="{{ path('read_commande') }}"><button type="submit" class="btn btn-outline-success">Valider</button></a>
+                <p>Price of the Command : {{ commande.montant }}</p>
+                <p>Livraison price 8 Dt</p>
+                <p>Price of the Command with Livraison : {{ commande.montant+8 }}</p>
+
+
+                <div class="btn-group-toggle" data-toggle="buttons">Payment :
+                    <label class="btn btn-info">
+                        <input type="radio" name="payment1" id="payment1" autocomplete="off"> Payment when Liraison
+                    </label>
+                    <label class="btn btn-info">
+                        <input type="radio" name="payment2" id="payment2" autocomplete="off"> Payment with Credit Card
+                    </label>
+                </div>
+
+                <a href="{{ path('read_commande') }}"><button type="submit" class="btn btn-outline-success">Update</button></a>
 
             </form>
         </div>
         <div class="col-4">
-            <h2>Pannier</h2>
+            <h2>Cart</h2>
             {% if annonces %}
             {% for a in annonces %}
                 <div>
@@ -44,9 +44,9 @@
                 </div>
             {% endfor %}
             {% else %}
-                <p>Pannier Vide</p>
+                <p>Cart Empty</p>
             {% endif %}
-            <a href="{{ path('read_commande') }}"><button type="button" class="btn btn-outline-success">Retour</button></a>
+            <a href="{{ path('read_commande') }}"><button type="button" class="btn btn-outline-success">Return</button></a>
         </div>
     </div>
 {% endblock %}

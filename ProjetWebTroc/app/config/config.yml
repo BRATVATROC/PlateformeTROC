@@ -82,3 +82,13 @@ fos_user:
     from_email:
         address: "nadia.boudhief@esprit.tn"
         sender_name: "Nadia"
+
+knp_snappy:
+    pdf:
+        enabled:    true
+        binary:     "\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\"" #"\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\"" for Windows users
+        options:    []
+    image:
+        enabled:    false
+        binary:     C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltoimage.exe\ #"\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltoimage.exe\"" for Windows users
+        options:    []

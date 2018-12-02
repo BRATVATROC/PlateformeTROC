@@ -135,22 +135,30 @@ class __TwigTemplate_00b3eafa71c0d0f039a3ad3a208b5e92b446f82a6cd5b6a2a3f2a1721b5
         echo "\"></script>
         <script src=\"";
         // line 62
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("js/jquery.uls.data.utils.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("js/Chart.min.js"), "html", null, true);
         echo "\"></script>
         <script src=\"";
         // line 63
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("js/jquery.uls.lcd.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("js/pretty-doughtnut.js"), "html", null, true);
         echo "\"></script>
         <script src=\"";
         // line 64
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("js/jquery.uls.languagefilter.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("js/jquery.uls.data.utils.js"), "html", null, true);
         echo "\"></script>
         <script src=\"";
         // line 65
-        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("js/jquery.uls.regionfilter.js"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("js/jquery.uls.lcd.js"), "html", null, true);
         echo "\"></script>
         <script src=\"";
         // line 66
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("js/jquery.uls.languagefilter.js"), "html", null, true);
+        echo "\"></script>
+        <script src=\"";
+        // line 67
+        echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("js/jquery.uls.regionfilter.js"), "html", null, true);
+        echo "\"></script>
+        <script src=\"";
+        // line 68
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("js/jquery.uls.core.js"), "html", null, true);
         echo "\"></script>
         <script>
@@ -167,7 +175,7 @@ class __TwigTemplate_00b3eafa71c0d0f039a3ad3a208b5e92b446f82a6cd5b6a2a3f2a1721b5
         <!-- //language-select -->
         <!-- switcher-grid and list alignment -->
         <script src=\"";
-        // line 80
+        // line 82
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("js/tabs.js"), "html", null, true);
         echo "\"></script>
         <script type=\"text/javascript\">
@@ -198,28 +206,28 @@ class __TwigTemplate_00b3eafa71c0d0f039a3ad3a208b5e92b446f82a6cd5b6a2a3f2a1721b5
     </head>
 <body>
 ";
-        // line 108
+        // line 110
         $this->displayBlock('menu', $context, $blocks);
-        // line 137
+        // line 139
         $this->displayBlock('header', $context, $blocks);
-        // line 273
+        // line 275
         echo "
 
 
 ";
-        // line 276
+        // line 278
         $this->displayBlock('Main', $context, $blocks);
-        // line 279
+        // line 281
         echo "
 ";
-        // line 280
+        // line 282
         $this->displayBlock('footer', $context, $blocks);
-        // line 357
+        // line 359
         echo "</body>
 ";
-        // line 358
+        // line 360
         $this->displayBlock('script', $context, $blocks);
-        // line 391
+        // line 393
         echo "</html>
 ";
         
@@ -230,7 +238,7 @@ class __TwigTemplate_00b3eafa71c0d0f039a3ad3a208b5e92b446f82a6cd5b6a2a3f2a1721b5
 
     }
 
-    // line 108
+    // line 110
     public function block_menu($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
@@ -239,7 +247,7 @@ class __TwigTemplate_00b3eafa71c0d0f039a3ad3a208b5e92b446f82a6cd5b6a2a3f2a1721b5
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "menu"));
 
-        // line 109
+        // line 111
         echo "    <div class=\"agiletopbar\">
         <div class=\"wthreenavigation\">
             <div class=\"menu-wrap\">
@@ -276,7 +284,7 @@ class __TwigTemplate_00b3eafa71c0d0f039a3ad3a208b5e92b446f82a6cd5b6a2a3f2a1721b5
 
     }
 
-    // line 137
+    // line 139
     public function block_header($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
@@ -285,7 +293,7 @@ class __TwigTemplate_00b3eafa71c0d0f039a3ad3a208b5e92b446f82a6cd5b6a2a3f2a1721b5
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "header"));
 
-        // line 138
+        // line 140
         echo "    <header>
         <div class=\"w3ls-header\"><!--header-one-->
             <div class=\"w3ls-header-left\">
@@ -294,25 +302,25 @@ class __TwigTemplate_00b3eafa71c0d0f039a3ad3a208b5e92b446f82a6cd5b6a2a3f2a1721b5
                 <ul>
 
                     ";
-        // line 145
+        // line 147
         if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
-            // line 146
+            // line 148
             echo "                        ";
             if ($this->env->getExtension('Symfony\Bridge\Twig\Extension\SecurityExtension')->isGranted("ROLE_ADMIN")) {
-                // line 147
+                // line 149
                 echo "
                             <a href=\"";
-                // line 148
+                // line 150
                 echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("rec_admin");
                 echo "\">";
                 echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("layout.logged_in_as", array("%username%" => $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", array()), "username", array())), "FOSUserBundle"), "html", null, true);
                 echo " |</a>
                             <a href=\"";
-                // line 149
+                // line 151
                 echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_security_logout");
                 echo "\">
                                 ";
-                // line 150
+                // line 152
                 echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("layout.logout", array(), "FOSUserBundle"), "html", null, true);
                 echo "
                             </a>
@@ -320,40 +328,40 @@ class __TwigTemplate_00b3eafa71c0d0f039a3ad3a208b5e92b446f82a6cd5b6a2a3f2a1721b5
 
                         ";
             } else {
-                // line 155
+                // line 157
                 echo "                    <a href=\"";
                 echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("troc_homepage");
                 echo "\">";
                 echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("layout.logged_in_as", array("%username%" => $this->getAttribute($this->getAttribute(($context["app"] ?? $this->getContext($context, "app")), "user", array()), "username", array())), "FOSUserBundle"), "html", null, true);
                 echo " |</a>
                     <a href=\"";
-                // line 156
+                // line 158
                 echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_security_logout");
                 echo "\">
                         ";
-                // line 157
+                // line 159
                 echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\TranslationExtension')->trans("layout.logout", array(), "FOSUserBundle"), "html", null, true);
                 echo "
                         ";
             }
-            // line 159
+            // line 161
             echo "                    ";
         } else {
-            // line 160
+            // line 162
             echo "                        <li class=\"dropdown head-dpdn\">
                             <a href=\"";
-            // line 161
+            // line 163
             echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_security_login");
             echo "\" aria-expanded=\"false\"><i class=\"fa fa-user\" aria-hidden=\"true\"></i> Sign In</a>
                         </li>
 
                     ";
         }
-        // line 165
+        // line 167
         echo "
                     <li class=\"dropdown head-dpdn\">
                         <a href=\"";
-        // line 167
+        // line 169
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("help.html"), "html", null, true);
         echo "\"><i class=\"fa fa-question-circle\" aria-hidden=\"true\"></i> Help</a>
                     </li>
@@ -432,7 +440,7 @@ class __TwigTemplate_00b3eafa71c0d0f039a3ad3a208b5e92b446f82a6cd5b6a2a3f2a1721b5
             <div class=\"agile-its-header\">
                 <div class=\"logo\">
                     <h1><a href=\"";
-        // line 243
+        // line 245
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("troc_homepage");
         echo "\"><span>We</span>Troc</a></h1>
                 </div>
@@ -457,10 +465,10 @@ class __TwigTemplate_00b3eafa71c0d0f039a3ad3a208b5e92b446f82a6cd5b6a2a3f2a1721b5
                             <i class=\"fa fa-search\" aria-hidden=\"true\"> </i>
                         </button>
                     </form>
-                    <a class=\"post-w3layouts-ad\" href=\"";
-        // line 266
+                    <a class=\"post-w3layouts-ad fa fa-plus\" href=\"";
+        // line 268
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("post-ad.html"), "html", null, true);
-        echo "\">Post Free Ad</a>
+        echo "\"> Post Free Ad</a>
                 </div>
                 <div class=\"clearfix\"></div>
             </div>
@@ -475,7 +483,7 @@ class __TwigTemplate_00b3eafa71c0d0f039a3ad3a208b5e92b446f82a6cd5b6a2a3f2a1721b5
 
     }
 
-    // line 276
+    // line 278
     public function block_Main($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
@@ -484,7 +492,7 @@ class __TwigTemplate_00b3eafa71c0d0f039a3ad3a208b5e92b446f82a6cd5b6a2a3f2a1721b5
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "Main"));
 
-        // line 277
+        // line 279
         echo "
 ";
         
@@ -495,7 +503,7 @@ class __TwigTemplate_00b3eafa71c0d0f039a3ad3a208b5e92b446f82a6cd5b6a2a3f2a1721b5
 
     }
 
-    // line 280
+    // line 282
     public function block_footer($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
@@ -504,7 +512,7 @@ class __TwigTemplate_00b3eafa71c0d0f039a3ad3a208b5e92b446f82a6cd5b6a2a3f2a1721b5
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "footer"));
 
-        // line 281
+        // line 283
         echo "    <footer>
         <div class=\"w3-agileits-footer-top\">
             <div class=\"container\">
@@ -521,7 +529,7 @@ class __TwigTemplate_00b3eafa71c0d0f039a3ad3a208b5e92b446f82a6cd5b6a2a3f2a1721b5
                             <li><a href=\"sitemap.html\"><i class=\"fa fa-long-arrow-right\" aria-hidden=\"true\"></i>Sitemap</a></li>
                             <li><a href=\"faq.html\"><i class=\"fa fa-long-arrow-right\" aria-hidden=\"true\"></i>Faq</a></li>
                             <li><a href=\"";
-        // line 296
+        // line 298
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("feedback.html"), "html", null, true);
         echo "\"><i class=\"fa fa-long-arrow-right\" aria-hidden=\"true\"></i>Feedback</a></li>
                             <li><a href=\"contact.html\"><i class=\"fa fa-long-arrow-right\" aria-hidden=\"true\"></i>Contact</a></li>
@@ -592,7 +600,7 @@ class __TwigTemplate_00b3eafa71c0d0f039a3ad3a208b5e92b446f82a6cd5b6a2a3f2a1721b5
 
     }
 
-    // line 358
+    // line 360
     public function block_script($context, array $blocks = array())
     {
         $__internal_085b0142806202599c7fe3b329164a92397d8978207a37e79d70b8c52599e33e = $this->env->getExtension("Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension");
@@ -601,14 +609,14 @@ class __TwigTemplate_00b3eafa71c0d0f039a3ad3a208b5e92b446f82a6cd5b6a2a3f2a1721b5
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new Twig_Profiler_Profile($this->getTemplateName(), "block", "script"));
 
-        // line 359
+        // line 361
         echo "    <!-- Navigation-JavaScript -->
     <script src=\"";
-        // line 360
+        // line 362
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("js/classie.js"), "html", null, true);
         echo "\"></script>
     <script src=\"";
-        // line 361
+        // line 363
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("js/main.js"), "html", null, true);
         echo "\"></script>
     <!-- //Navigation-JavaScript -->
@@ -630,11 +638,11 @@ class __TwigTemplate_00b3eafa71c0d0f039a3ad3a208b5e92b446f82a6cd5b6a2a3f2a1721b5
     </script>
     <!-- start-smoth-scrolling -->
     <script type=\"text/javascript\" src=\"";
-        // line 380
+        // line 382
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("js/move-top.js"), "html", null, true);
         echo "\"></script>
     <script type=\"text/javascript\" src=\"";
-        // line 381
+        // line 383
         echo twig_escape_filter($this->env, $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("js/easing.js"), "html", null, true);
         echo "\"></script>
     <script type=\"text/javascript\">
@@ -666,7 +674,7 @@ class __TwigTemplate_00b3eafa71c0d0f039a3ad3a208b5e92b446f82a6cd5b6a2a3f2a1721b5
 
     public function getDebugInfo()
     {
-        return array (  638 => 381,  634 => 380,  612 => 361,  608 => 360,  605 => 359,  596 => 358,  525 => 296,  508 => 281,  499 => 280,  488 => 277,  479 => 276,  462 => 266,  436 => 243,  357 => 167,  353 => 165,  346 => 161,  343 => 160,  340 => 159,  335 => 157,  331 => 156,  324 => 155,  316 => 150,  312 => 149,  306 => 148,  303 => 147,  300 => 146,  298 => 145,  289 => 138,  280 => 137,  243 => 109,  234 => 108,  223 => 391,  221 => 358,  218 => 357,  216 => 280,  213 => 279,  211 => 276,  206 => 273,  204 => 137,  202 => 108,  171 => 80,  154 => 66,  150 => 65,  146 => 64,  142 => 63,  138 => 62,  134 => 61,  129 => 59,  125 => 58,  121 => 57,  117 => 56,  92 => 34,  88 => 33,  82 => 30,  61 => 12,  57 => 11,  53 => 10,  49 => 9,  45 => 8,  41 => 7,  37 => 6,  30 => 1,);
+        return array (  646 => 383,  642 => 382,  620 => 363,  616 => 362,  613 => 361,  604 => 360,  533 => 298,  516 => 283,  507 => 282,  496 => 279,  487 => 278,  470 => 268,  444 => 245,  365 => 169,  361 => 167,  354 => 163,  351 => 162,  348 => 161,  343 => 159,  339 => 158,  332 => 157,  324 => 152,  320 => 151,  314 => 150,  311 => 149,  308 => 148,  306 => 147,  297 => 140,  288 => 139,  251 => 111,  242 => 110,  231 => 393,  229 => 360,  226 => 359,  224 => 282,  221 => 281,  219 => 278,  214 => 275,  212 => 139,  210 => 110,  179 => 82,  162 => 68,  158 => 67,  154 => 66,  150 => 65,  146 => 64,  142 => 63,  138 => 62,  134 => 61,  129 => 59,  125 => 58,  121 => 57,  117 => 56,  92 => 34,  88 => 33,  82 => 30,  61 => 12,  57 => 11,  53 => 10,  49 => 9,  45 => 8,  41 => 7,  37 => 6,  30 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -740,6 +748,8 @@ class __TwigTemplate_00b3eafa71c0d0f039a3ad3a208b5e92b446f82a6cd5b6a2a3f2a1721b5
         <link href=\"{{asset('css/jquery.uls.lcd.css')}}\" rel=\"stylesheet\"/>
         <!-- Source -->
         <script src=\"{{asset('js/jquery.uls.data.js')}}\"></script>
+        <script src=\"{{asset('js/Chart.min.js')}}\"></script>
+        <script src=\"{{asset('js/pretty-doughtnut.js')}}\"></script>
         <script src=\"{{asset('js/jquery.uls.data.utils.js')}}\"></script>
         <script src=\"{{asset('js/jquery.uls.lcd.js')}}\"></script>
         <script src=\"{{asset('js/jquery.uls.languagefilter.js')}}\"></script>
@@ -944,7 +954,7 @@ class __TwigTemplate_00b3eafa71c0d0f039a3ad3a208b5e92b446f82a6cd5b6a2a3f2a1721b5
                             <i class=\"fa fa-search\" aria-hidden=\"true\"> </i>
                         </button>
                     </form>
-                    <a class=\"post-w3layouts-ad\" href=\"{{asset('post-ad.html')}}\">Post Free Ad</a>
+                    <a class=\"post-w3layouts-ad fa fa-plus\" href=\"{{asset('post-ad.html')}}\"> Post Free Ad</a>
                 </div>
                 <div class=\"clearfix\"></div>
             </div>

@@ -1,18 +1,18 @@
 {% extends "base.html.twig" %}
 
 {% block Main %}
-    <h1>Liste de mes Annonces</h1>
+    <h1>My Products</h1>
     <center>
 
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">Titre Annonce</th>
-                <th scope="col">Prix</th>
-                <th scope="col">Date d'ajout</th>
-                <th scope="col">Adresse</th>
+                <th scope="col">Title</th>
+                <th scope="col">Price</th>
+                <th scope="col">Date</th>
+                <th scope="col">Address</th>
                 <th scope="col">Description</th>
-                <th scope="col">Nom de l'item</th>
+                <th scope="col">Name Of The Item</th>
                 <th scope="col">Actions</th>
             </tr>
             </thead>
@@ -28,7 +28,7 @@
                     <th scope="row">{{ a.iditems.nomitems }}</th>
                     <th scope="row">
                         <a href="{{ path('valider_troc_annonce',{'idA1':a.idAnnonce,'idA2':id}) }}" >
-                            <button type="button" class="btn btn-success">Troquer</button>
+                            <button type="button" class="btn btn-success">Troc</button>
                         </a>
                     </th>
                 {% endif %}

@@ -152,7 +152,7 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             }
 
             // affiche_annonce
-            if (0 === strpos($pathinfo, '/commande/affichanoonce') && preg_match('#^/commande/affichanoonce/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+            if (0 === strpos($pathinfo, '/commande/affichannonce') && preg_match('#^/commande/affichannonce/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'affiche_annonce')), array (  '_controller' => 'CommandeBundle\\Controller\\CommandeController::affichAnnonceAction',));
             }
 
@@ -174,6 +174,11 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
             // valider_troc_annonce
             if ('/commande/validertroc/{idA1,idA2}' === $pathinfo) {
                 return array (  '_controller' => 'CommandeBundle\\Controller\\CommandeController::validerTrocAction',  '_route' => 'valider_troc_annonce',);
+            }
+
+            // imprimer_facture
+            if (0 === strpos($pathinfo, '/commande/print') && preg_match('#^/commande/print/(?P<id>[^/]++)$#sD', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'imprimer_facture')), array (  '_controller' => 'CommandeBundle\\Controller\\CommandeController::printAction',));
             }
 
         }

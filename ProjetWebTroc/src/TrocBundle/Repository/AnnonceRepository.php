@@ -35,4 +35,7 @@ class AnnonceRepository extends \Doctrine\ORM\EntityRepository
         TrocBundle:Items i where i.idUser=$idClient and a.iditems=i.iditems and a. idcommande != 0 ");
         return $query->getResult();
     }
+
+
+
 }

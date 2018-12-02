@@ -13,23 +13,22 @@
                         <th scope="col">Type</th>
                         <th scope="col">Date Commande</th>
                         <th scope="col">Client</th>
-                        <th scope="col">Demande de livraison</th>
-                        <th scope="col">Annonce Proposé</th>
-                        <th scope="col">Annonce Reçue</th>
+                        <th scope="col">Delivery</th>
+                        <th scope="col">Product Given</th>
+                        <th scope="col">Annonce Taken</th>
                         <th scope="col">Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    {% for m in commandes %}
-                    {% if m.idAnnonce1 %}
+                    {% for m in commandesE %}
                     <tr>
-                        <th scope="row">Echange</th>
+                        <th scope="row">Exchange</th>
                         <th scope="row">{{ m.dateCommande | date }}</th>
                         <th scope="row">{{ m.idClient.usernom }} {{ m.idClient.userprenom }}</th>
                         <th scope="row">{% if m.livraison == 1 %}
-                                Demandé
+                                Asked
                             {% else %}
-                                Non Demandé
+                                Not Asked
                             {% endif %}
                         </th>
                         <th>
@@ -39,39 +38,57 @@
                             <a href="{{ path('affiche_annonce',{'id':m.idAnnonce2.idAnnonce}) }}" style="color: grey">{{ m.idAnnonce2.titreAnnonce }}</a>
                         </th>
                         <th scope="row">
-                            <a href="{{ path('update_commande',{'id':m.idCommande}) }}"><button type="button" class="btn btn-success">Details</button></a>
-                            <a href="{{ path('delete_commande',{'id':m.idCommande}) }}"><button type="button" class="btn btn-danger">Supprimer</button></a>
+                            <a href="{{ path('update_commande',{'id':m.idCommande}) }}"><button type="button" class="btn btn-success"> Details</button></a>
+                            <a href="{{ path('delete_commande',{'id':m.idCommande}) }}"><button type="button" class="btn btn-danger"><i class="fa f a-remove"></i>  Delete</button></a>
                         </th>
                     </tr>
-                {% else %}
+                    {% endfor %}
+                    </tbody>
 
-                    <tbody>
+            <thead>
+            <tr>
+                <th scope="col">Type</th>
+                <th scope="col">Date Commande</th>
+                <th scope="col">Client</th>
+                <th scope="col">Price</th>
+                <th scope="col">Delivery</th>
+                <th scope="col">Payed</th>
+                <th scope="col">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for m in commandesS %}
+
                     <tr>
-                        <th scope="row">Vente</th>
+                        <th scope="row">Selling</th>
                         <th scope="row">{{ m.dateCommande | date }}</th>
                         <th scope="row">{{ m.idClient.usernom}} {{ m.idClient.userprenom }}</th>
                         <th scope="row">{{ m.montant }} DT</th>
                         <th scope="row"> {% if m.livraison == 1 %}
-                                Demandé
+                                Asked
                             {% else %}
-                                Non Demandé
+                                Not Asked
                             {% endif %}
                         </th>
                         <th scope="row">{% if m.paye ==1 %}
-                                Payé
+                                Payed
                             {% else %}
-                                Non Payé
+                                Not Payed
                             {% endif %}
                         </th>
                         <th scope="row">
-                            <a href="{{ path('update_commande',{'id':m.idCommande}) }}"><button type="button" class="btn btn-success">Details</button></a>
-                            <a href="{{ path('delete_commande',{'id':m.idCommande}) }}"><button type="button" class="btn btn-danger">Supprimer</button></a>
+                            <a href="{{ path('update_commande',{'id':m.idCommande}) }}"><button type="button" class="btn btn-success  "><i class=""></i> Details</button></a>
+                            <a href="{{ path('imprimer_facture',{'id':m.idCommande}) }}"><button type="button" class="btn btn-success"> Print</button></a>
+                            <a href="{{ path('delete_commande',{'id':m.idCommande}) }}"><button type="button" class="btn btn-danger "><i class="fa fa-remove"></i> Delete</button></a>
                         </th>
                     </tr>
-                    </tbody>
-                {% endif %}
+
+
             {% endfor %}
+            </tbody>
         </table>
 
     </center>
 {% endblock %}
+
+

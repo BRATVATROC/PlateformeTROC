@@ -35,17 +35,26 @@
                         <h4><span class="w3layouts-agileinfo">Summary</span> :<p>{{ annonce.description }}</p><div class="clearfix"></div></h4>
 
                     </div>
+
                     {% if annonce.idcommande %}
-                        <a href="{{ path('supprimer_pannier',{'id':annonce.idAnnonce}) }}" >
-                            <button type="button" class="btn btn-danger fa fa-remove" >Supprimer Du Pannier</button>
-                        </a>
+                        {% if annonce.idcommande.idcommande == commande.idcommande %}
+                            <a href="{{ path('supprimer_pannier',{'id':annonce.idAnnonce}) }}" >
+                                <button type="button" class="btn btn-danger fa fa-remove" >Delete From Cart</button>
+                            </a>
+                        {% else %}
+                        {% endif %}
+
                     {% else %}
                         <a href="{{ path('ajouter_pannier',{'id':annonce.idAnnonce}) }}" >
-                            <button type="button" class="btn btn-primary fa fa-plus">Ajouter Au Pannier</button>
+                            <button type="button" class="btn btn-primary fa fa-plus">Add To Cart</button>
                         </a>
                         <a href="{{ path('troc_annonce',{'id':annonce.idAnnonce}) }}" >
-                            <button type="button" class="btn btn-success fa fa-exchange">Troquer</button>
+                            <button type="button" class="btn btn-success fa fa-exchange">Troc</button>
                         </a>
+
+
+
+
                     {% endif %}
                 </div>
                 <div class="col-md-5 product-details-grid">

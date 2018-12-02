@@ -12,10 +12,19 @@ class CommandeRepository extends \Doctrine\ORM\EntityRepository
 {
     public function findLastCommande()
     {
-        $query=$this->getEntityManager()->createQuery("select c from TrocBundle:Commande c ORDER by ID DESC LIMIT 1");
-
+        $query=$this->getEntityManager()->createQuery("select c from TrocBundle:Commande c where c.idclient = 1 ORDER by c.idcommande DESC ");
         return $query->getResult();
     }
 
+    public function findAllExchange()
+    {
+        $query=$this->getEntityManager()->createQuery("select c from TrocBundle:Commande c where c.idannonce1 != 'NULL'  ");
+        return $query->getResult();
+    }
 
+    public function findAllSell()
+    {
+        $query=$this->getEntityManager()->createQuery("select c from TrocBundle:Commande c where c.montant != 0  ");
+        return $query->getResult();
+    }
 }
