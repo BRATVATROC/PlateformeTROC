@@ -3,6 +3,7 @@
 namespace TrocBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,7 +14,10 @@ class ReclamationType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('description');
+        $builder->add('typeReclamation',ChoiceType::class,array('label'=>'Against Who ?','choices' => array(
+            'User'=>'User',
+            'Ads'=>'Ads')))->add('description');
+
     }/**
  * {@inheritdoc}
  */

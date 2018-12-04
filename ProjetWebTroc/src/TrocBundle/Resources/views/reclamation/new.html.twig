@@ -1,16 +1,34 @@
-{% extends 'base.html.twig' %}
 
-{% block Main %}
-    <h1>Reclamation creation</h1>
+    <style>
+        #trocbundle_reclamation_description{
+            margin: 0px;
+            width: 339px;
+            height: 141px;
+        }
+        #trocbundle_reclamation_typeReclamation
+        {
+            margin: 0px;
+            width: 150px;
+            height: 30px;
+        }
 
-    {{ form_start(form) }}
+
+    </style>
+<fieldset style="border: 2px" style="margin-right:50%">
+
+<div style="background-color: rgba(39,41,41,0.92);width:70% ">
+
+        <center><h3 style="color: rgba(250,109,0,0.91)"> Please tell us ! </h3>
+
+        {{ form_start(form) }}
+            <label style="color: white">Against Who ? </label>
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+            <input type="submit" style="background-color: orange;
+            font-size: 20px;border: hidden" class="post-w3layouts-ad" name="send" value="Send">
+        {{  form_end(form) }}
+        </center>
+</div>
 
-    <ul>
-        <li>
-            <a href="{{ path('reclamation_index') }}">Back to the list</a>
-        </li>
-    </ul>
-{% endblock %}
+
+
+</fieldset>

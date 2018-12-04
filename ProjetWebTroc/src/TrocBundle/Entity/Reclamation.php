@@ -8,7 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
  * Reclamation
  *
  * @ORM\Table(name="reclamation", indexes={@ORM\Index(name="id_Annonce", columns={"id_Annonce"}), @ORM\Index(name="id_user", columns={"id_user"}), @ORM\Index(name="id_Ruser", columns={"id_Ruser"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="TrocBundle\Repository\R
+ * eclamationRepository")
  */
 class Reclamation
 {
@@ -79,9 +80,7 @@ class Reclamation
      */
     private $idRuser;
 
-
-
-    /**
+  /**
      * Get idRec
      *
      * @return integer

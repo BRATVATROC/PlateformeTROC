@@ -14,13 +14,15 @@ class ReclamationAdminType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('description')->add('date')
-            ->add('etatReclamation')->add('idAnnonce',EntityType::class,
+            ->add('etatReclamation')->
+            add('idAnnonce',EntityType::class,
                 array('class'=>'TrocBundle\Entity\Annonce',
                     'choice_label'=>'idAnnonce',
                     'multiple'=>false))
             ->add('idRuser',EntityType::class,array('class'=>'AppBundle\Entity\User',
                 'choice_label'=>'id',
-                'multiple'=>false))->add('typeReclamation')->add('idUser',EntityType::class,array('class'=>'AppBundle\Entity\User',
+                'multiple'=>false))->add('typeReclamation')
+            ->add('idUser',EntityType::class,array('class'=>'AppBundle\Entity\User',
                 'choice_label'=>'id',
                 'multiple'=>false))
         ;

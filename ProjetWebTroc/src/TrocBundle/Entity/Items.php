@@ -46,7 +46,7 @@ class Items
      */
     private $idsouscat;
     /**
-     * @var \User
+     * @var \AppBundle\Entity\User
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
      * @ORM\JoinColumns({
@@ -55,9 +55,7 @@ class Items
      */
     private $idUser;
 
-
-
-    /**
+     /**
      * Get iditems
      *
      * @return integer
@@ -139,6 +137,8 @@ class Items
         return $this->idsouscat;
     }
 
+
+
     /**
      * Set idUser
      *
@@ -149,7 +149,7 @@ class Items
     public function setIdUser(\AppBundle\Entity\User $idUser = null)
     {
         $this->idUser = $idUser;
-
+    
         return $this;
     }
 

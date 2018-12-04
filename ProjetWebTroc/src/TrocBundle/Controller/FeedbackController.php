@@ -64,7 +64,7 @@ class FeedbackController extends Controller
                     $a->setDislike(0);
                     $em->persist($a);
                     $em->flush();
-                } else {
+                } else if(($a->getDislike()==0) && (isset($b)) ){
                     if($a->getDislike()==0)
                     {
                         $a->setDislike(1);
@@ -73,9 +73,7 @@ class FeedbackController extends Controller
                         $em->flush();
                     }
                 }
-
-
-            $status=$this->getDoctrine()
+         $status=$this->getDoctrine()
             ->getRepository(Feedback::class)->LikeDislike($idA);
             $se=new Serializer(array(new ObjectNormalizer()));
             //normalize de la liste

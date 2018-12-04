@@ -15,8 +15,11 @@
 <div class="single-page main-grid-border">
     <div class="container">
         <div class="product-desc">
+            <div style="margin-left: 50%">
+                <button id="reclaim" class="fa fa-exclamation-triangle" style="font-size: 18px;background-color:orange;border:medium">Reclaim!</button></div>
+           <div hidden id="show">{{ render(controller('TrocBundle:Reclamation:new',{'request':app.request})) }}</div>
             <div class="col-md-7 product-view">
-                <h2>{{ annonce.titreAnnonce }}y</h2>
+                <h2>{{ annonce.titreAnnonce }}</h2>
                 <p> <i class="glyphicon glyphicon-map-marker"></i><a href="#">state</a> {{ annonce.adresse }} | Ajoute le {% if annonce.date %}{{ annonce.date|date('Y-m-d') }}{% endif %}</p>
                 <div class="flexslider">
                         <img src="{% if annonce.iditems.imgiems %}{{ asset('upload/' ~ annonce.iditems.imgiems) }}{% endif %}" />
@@ -79,5 +82,9 @@
 
     </div>
 </div>
-
+<script>
+    $('#reclaim').click(function () {
+        $('#show').toggle();
+    })
+</script>
 {% endblock %}

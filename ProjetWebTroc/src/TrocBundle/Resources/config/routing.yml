@@ -18,7 +18,7 @@ troc_signin:
     defaults: { _controller: TrocBundle:Signin:index }
 
 rec_ajout:
-    path:     /new
+    path:     /Recnew
     defaults: { _controller: TrocBundle:Reclamation:new }
 
 feed_ajout:
