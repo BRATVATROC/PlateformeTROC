@@ -3,6 +3,7 @@
 namespace TrocBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use TrocBundle\Entity\Feedback;
 use TrocBundle\Entity\Opinion;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -47,16 +48,12 @@ class OpinionController extends Controller
            $n= $request->get('note');
 
             $opinion->setNote($n);
-            $opinion->setIdUser($this->getUser()->getId());
+            $opinion->setIdUser($this->getUser());
             $em = $this->getDoctrine()->getManager();
-
-            $a= $em->getRepository('TrocBundle:Opinion')->NbrNoteOpinion();
-            var_dump($a);
-            die();
             $em->persist($opinion);
             $em->flush();
 
-            return $this->redirectToRoute('opinion_aff', array('idOp' => $opinion->getIdop()));
+            return $this->redirectToRoute('opinion_success');
         }
 
         return $this->render('@Troc/Opinion/new.html.twig', array(
@@ -145,19 +142,26 @@ class OpinionController extends Controller
         $a= $em->getRepository('TrocBundle:Opinion')->MoynoteOpinion();
 
         //$a array contenant count et sum
-        $n=$a[1]/$a[2];
+        $n=round($a[1]/$a[2],4);
+
         return $this->render('@Troc/Opinion/RatingsValue.html.twig', array(
-            'note' => $n,
+            'note' => round($n,2),
 
         ));
 
     }
+
     public function NbreNoteAction(Request $reques)
     {   $em = $this->getDoctrine()->getManager();
         $a= $em->getRepository('TrocBundle:Opinion')->NbrNoteOpinion();
 
         return $this->render('@Troc/Opinion/RatingsNbre.html.twig', array('notes'=>$a,
         ));
+
+    }
+    public function SuccessAction()
+    {
+        return $this->render('@Troc/Opinion/ok.html.twig');
 
     }
 }

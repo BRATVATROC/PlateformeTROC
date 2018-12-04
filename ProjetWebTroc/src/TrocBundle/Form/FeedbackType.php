@@ -19,7 +19,7 @@ class FeedbackType extends AbstractType
             ->add('dislike')
             ->add('note')
             ->add('date')
-            ->add('idUser',EntityType::class,array('class'=>'TrocBundle\Entity\FosUser',
+            ->add('idUser',EntityType::class,array('class'=>'AppBundle\Entity\User',
                 'choice_label'=>'id',
                 'multiple'=>false))
             ->add('idAnnonce',EntityType::class,array('class'=>'TrocBundle\Entity\Annonce',

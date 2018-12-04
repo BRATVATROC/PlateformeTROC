@@ -22,15 +22,26 @@ rec_ajout:
     defaults: { _controller: TrocBundle:Reclamation:new }
 
 feed_ajout:
-    path:     /ajoutf
+    path:     /feedNew
     defaults: { _controller: TrocBundle:Feedback:new }
-
+feed_aff:
+    path:     /feedShow
+    defaults: { _controller: TrocBundle:Feedback:show }
+feed_like:
+    path:     /feedlike
+    defaults: { _controller: TrocBundle:Feedback:addLike }
 opinon_ajout:
     path:     /ajouto
     defaults: { _controller: TrocBundle:Opinion:new }
 opinion_aff:
-    path:     /ajoutof
+    path:     /opinonShow
     defaults: { _controller: TrocBundle:Opinion:show }
+opinion_success:
+    path:     /success
+    defaults: { _controller: TrocBundle:Opinion:Success }
+feedback_Count:
+    path:     /feedCount/{id}
+    defaults: { _controller: TrocBundle:Feedback:CountLike }
 signin:
     path:     /signin
     defaults: { _controller: TrocBundle:Connexion:signin }

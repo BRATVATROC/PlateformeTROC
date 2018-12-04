@@ -18,8 +18,8 @@ class DefaultController extends Controller
 
         $post = $em->getRepository(Annonce::class)->findAll();
 
-        return $this->render('@App/default/index.html.twig', array(
-            'annonces' => $post
+        return $this->render('@Troc/Default/index.html.twig', array(
+            'annonce' => $post
         ));
     }
 }

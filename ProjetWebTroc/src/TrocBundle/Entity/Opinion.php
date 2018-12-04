@@ -36,9 +36,12 @@ class Opinion
     private $note = '0';
 
     /**
-     * @var integer
+     * @var \AppBundle\Entity\User
      *
-     * @ORM\Column(name="id_user", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="\AppBundle\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
+     * })
      */
     private $idUser;
 
@@ -102,24 +105,26 @@ class Opinion
         return $this->note;
     }
 
+
+
     /**
      * Set idUser
      *
-     * @param integer $idUser
+     * @param \AppBundle\Entity\User $idUser
      *
      * @return Opinion
      */
-    public function setIdUser($idUser)
+    public function setIdUser(\AppBundle\Entity\User $idUser = null)
     {
         $this->idUser = $idUser;
-
+    
         return $this;
     }
 
     /**
      * Get idUser
      *
-     * @return integer
+     * @return \AppBundle\Entity\User
      */
     public function getIdUser()
     {

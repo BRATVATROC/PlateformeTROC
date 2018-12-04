@@ -14,14 +14,13 @@ annonce_new:
     methods:  [GET, POST]
 
 annonce_edit:
-    path:    /edit /{idAnnonce}
+    path:    /edit/{idAnnonce}
     defaults: { _controller: "AnnonceBundle:Annonce:edit" }
     methods:  [GET, POST]
 
 annonce_delete:
     path:     /delete/{idAnnonce}
     defaults: { _controller: "AnnonceBundle:Annonce:delete" }
-    methods:  DELETE
 
 annonce_single:
     path: /single/{idAnnonce}

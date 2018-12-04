@@ -14,6 +14,6 @@ class AnnonceRepository extends \Doctrine\ORM\EntityRepository
     {
         $query=$this->getEntityManager()->createQuery("select a from TrocBundle:Annonce a where a.idAnnonce=$id");
 
-        return $query->getResult();
+        return $query->getSingleResult();
     }
 }

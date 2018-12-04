@@ -1,25 +1,29 @@
 {% extends 'base.html.twig' %}
 
 {% block Main %}
-    <h1>Opinion</h1>
+<center>
+    <h1>What others thinks about US !</h1>
+<br><br>
 
-    <table border="1">
-        <tbody>
-        <th>Idop</th> <th>Contenu</th> <th>Note</th>
+<div>
+    <table>
         {% for o in opinion %}
-            <tr>
-                <td>{{ o.idOp }}</td>
-                <td>{{ o.contenu }}</td>
-                <td>{{ o.note }}</td>
-            </tr>
+          <tr>
+           <td >
+
+               {% if(o.idUser==null) %}
+                   <label > <strong style="color:red">{{ 'Anonymous' }}</strong>
+                       <strong>said:</strong>  {{ o.contenu }}  <strong style="color:orange"> Rating: </strong> {{ o.note }}/5</label>
+            {% else %}
+                <label> <strong style ="color:blue">{{o.idUser }}</strong>
+                       <strong >said:</strong> {{ o.contenu }}   <strong style="color:orange"> Rating: </strong> {{ o.note }}/5</label>
+            {% endif %}
+               <hr width="60%">
+           </td>
+          </tr>
         {% endfor %}
-        </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('opinion_index') }}">Back to the list</a>
-        </li>
-
-    </ul>
+</div>
+</center>
 {% endblock %}

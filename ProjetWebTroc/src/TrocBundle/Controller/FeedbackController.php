@@ -2,10 +2,17 @@
 
 namespace TrocBundle\Controller;
 
+use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+use TrocBundle\Entity\Annonce;
 use TrocBundle\Entity\Feedback;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use TrocBundle\Entity\Opinion;
 
 /**
  * Feedback controller.
@@ -15,128 +22,88 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 class FeedbackController extends Controller
 {
     /**
-     * Lists all feedback entities.
-     *
-     * @Route("/", name="feedback_index")
-     * @Method("GET")
-     */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $feedbacks = $em->getRepository('TrocBundle:Feedback')->findAll();
-
-        return $this->render('feedback/index.html.twig', array(
-            'feedbacks' => $feedbacks,
-        ));
-    }
-
-    /**
      * Creates a new feedback entity.
      *
      * @Route("/new", name="feedback_new")
      * @Method({"GET", "POST"})
      */
-    public function testAction(Request $request)
-    {
 
-        return $this->render('@Troc/Feedback/AjoutFeed.html.twig'
-        );
-    }
-    public function newAction(Request $request)
+    public function addLikeAction(Request $request)
     {
-        $feedback = new Feedback();
-        $form = $this->createForm('TrocBundle\Form\FeedbackType', $feedback);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
+        $user=$this->getUser();
+         //RECUPERATION DE L'id de l'annonce
+            $idA=$request->get('idAnnonce');
+                // REcherche de l'annonce
+            //Recherche Annonce et utilisateur
+            $feed=$this->getDoctrine()->getRepository(Feedback::class)
+                ->findBy(array('idUser'=>$user,'idAnnonce'=>$idA));
             $em = $this->getDoctrine()->getManager();
-            $em->persist($feedback);
-            $em->flush();
+            if($feed==null)
+            {
+                $annonce=$this->getDoctrine()->getRepository(Annonce::class)->myfindall($idA);
 
-            return $this->redirectToRoute('feedback_show', array('idFeed' => $feedback->getIdfeed()));
-        }
 
-        return $this->render('@Troc/Feedback/AjoutFeed.html.twig', array(
-            'feedback' => $feedback,
-            'form' => $form->createView(),
-        ));
+                $feedback = new Feedback();
+                $feedback->setNote(0);
+                $feedback->setIdUser($user);
+                $feedback->setIdAnnonce($annonce);
+                $feedback->setLikeFeed(0);
+                $feedback->setDislike(0);
+                $em->persist($feedback);
+                $em->flush();
+
+            }
+
+                $a=$this->getDoctrine()->getRepository(Feedback::class)->find($feed[0]->getIdFeed());
+                $b=$request->get('dislike');
+
+                if(($a->getLikeFeed()==0) && !(isset($b)))
+                {
+
+                    $a->setLikeFeed(1);
+                    $a->setDislike(0);
+                    $em->persist($a);
+                    $em->flush();
+                } else {
+                    if($a->getDislike()==0)
+                    {
+                        $a->setDislike(1);
+                        $a->setLikeFeed(0);
+                        $em->persist($a);
+                        $em->flush();
+                    }
+                }
+
+
+            $status=$this->getDoctrine()
+            ->getRepository(Feedback::class)->LikeDislike($idA);
+            $se=new Serializer(array(new ObjectNormalizer()));
+            //normalize de la liste
+            $data=$se->normalize($status);
+
+            return new JsonResponse($data);
+
     }
-
-    /**
-     * Finds and displays a feedback entity.
-     *
-     * @Route("/{idFeed}", name="feedback_show")
-     * @Method("GET")
-     */
-    public function showAction(Feedback $feedback)
+    public function addLike($id)
     {
-        $deleteForm = $this->createDeleteForm($feedback);
+        $feed=new Feedback();
 
-        return $this->render('feedback/show.html.twig', array(
-            'feedback' => $feedback,
-            'delete_form' => $deleteForm->createView(),
-        ));
+        $feed=$this->getDoctrine()->getRepository(Feedback::class)->find($id);
+        $feed->setLikeFeed($feed->getLikeFeed()+1);
+        $em->flush();
     }
-
-    /**
-     * Displays a form to edit an existing feedback entity.
-     *
-     * @Route("/{idFeed}/edit", name="feedback_edit")
-     * @Method({"GET", "POST"})
-     */
-    public function editAction(Request $request, Feedback $feedback)
+    public function CountLikeAction(Request $request)
     {
-        $deleteForm = $this->createDeleteForm($feedback);
-        $editForm = $this->createForm('TrocBundle\Form\FeedbackType', $feedback);
-        $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+        $id=$request->get('idAnnonce');
+        $annonce=$this->getDoctrine()->getRepository(Annonce::class)->find($id[0]);
 
-            return $this->redirectToRoute('feedback_edit', array('idFeed' => $feedback->getIdfeed()));
-        }
+        $feed=$this->getDoctrine()->getRepository(Feedback::class)->LikeDislike(1);
+        $a=$feed[0]['nbl'];
 
-        return $this->render('feedback/edit.html.twig', array(
-            'feedback' => $feedback,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+        return $this->render('@Troc/Feedback/likedislike.html.twig',
+            array('nbl'=>$a,'nbd'=>$feed['0']['nbd'],'annonce'=>$annonce,));
     }
 
-    /**
-     * Deletes a feedback entity.
-     *
-     * @Route("/{idFeed}", name="feedback_delete")
-     * @Method("DELETE")
-     */
-    public function deleteAction(Request $request, Feedback $feedback)
-    {
-        $form = $this->createDeleteForm($feedback);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($feedback);
-            $em->flush();
-        }
-
-        return $this->redirectToRoute('feedback_index');
-    }
-
-    /**
-     * Creates a form to delete a feedback entity.
-     *
-     * @param Feedback $feedback The feedback entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(Feedback $feedback)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('feedback_delete', array('idFeed' => $feedback->getIdfeed())))
-            ->setMethod('DELETE')
-            ->getForm()
-            ;
-    }
 }

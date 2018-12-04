@@ -122,6 +122,12 @@ class AnnonceController extends Controller
 
             if ($form->isSubmitted() && $form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
+                //SUPRESSION FEEDBACK
+                $id=$annonce->getIdAnnonce();
+                $f=$em->getRepository('TrocBundle:Feedback')->deleteFeed($id);
+                $em->remove($f);
+                //END SUPRESSION FEEDBACK
+
                 $em->remove($annonce);
                 $em->flush();
             }

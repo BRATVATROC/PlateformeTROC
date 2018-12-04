@@ -1,7 +1,6 @@
 items:
     resource: "@ItemsBundle/Resources/config/routing.yml"
     prefix:   /items
-
 annonce:
     resource: "@AnnonceBundle/Resources/config/routing.yml"
     prefix:   /annonce
