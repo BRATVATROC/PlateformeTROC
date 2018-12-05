@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
 use TrocBundle\Form\ReclamationType;
 use TrocBundle\Repository\AnnonceRepository;
+use Ob\HighchartsBundle\Highcharts\Highchart;
 
 /**
  * Reclamation controller.
@@ -28,10 +29,19 @@ class ReclamationController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $reclamations = $em->getRepository('TrocBundle:Reclamation')->findAll();
+        $reclamations = $em->getRepository('TrocBundle:Reclamation')->countRec();
+        $series = array(
+            array("name" => "Data Serie Name",    "data" => array(1,2,4,5,6,3,8))
+        );
 
-        return $this->render('reclamation/index.html.twig', array(
-            'reclamations' => $reclamations,
+        $ob = new Highchart();
+        $ob->chart->renderTo('linechart');  // The #id of the div where to render the chart
+        $ob->title->text('Chart Title');
+        $ob->xAxis->title(array('text'  => "Horizontal axis title"));
+        $ob->yAxis->title(array('text'  => "Vertical axis title"));
+        $ob->series($series);
+        return $this->render('@Troc/reclamation/reclamation.html.twig', array(
+            'reclamations' => $reclamations,'chart' => $ob,
         ));
     }
 
@@ -97,23 +107,30 @@ class ReclamationController extends Controller
      * @Route("/{idRec}/edit", name="reclamation_edit")
      * @Method({"GET", "POST"})
      */
-    public function editAction(Request $request, Reclamation $reclamation)
+    public function editAction(Request $request)
     {
-        $deleteForm = $this->createDeleteForm($reclamation);
-        $editForm = $this->createForm('TrocBundle\Form\ReclamationType', $reclamation);
-        $editForm->handleRequest($request);
+        $id=$request->get('idRec');
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
+        if (!empty($id))
+        {
+            $rec=$this->getDoctrine()->getRepository(Reclamation::class)->find($id);
+            $rec->setEtatReclamation('resolved');
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('reclamation_edit', array('idRec' => $reclamation->getIdrec()));
+            return $this->redirectToRoute('rec_admin');
         }
+        $series = array(
+            array("name" => "Data Serie Name",    "data" => array(1,2,4,5,6,3,8))
+        );
 
-        return $this->render('reclamation/edit.html.twig', array(
-            'reclamation' => $reclamation,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+        $ob = new Highchart();
+        $ob->chart->renderTo('linechart');  // The #id of the div where to render the chart
+        $ob->title->text('Chart Title');
+        $ob->xAxis->title(array('text'  => "Horizontal axis title"));
+        $ob->yAxis->title(array('text'  => "Vertical axis title"));
+        $ob->series($series);
+
+        return $this->redirectToRoute('rec_admin');
     }
 
     /**
@@ -122,42 +139,48 @@ class ReclamationController extends Controller
      * @Route("/{idRec}", name="reclamation_delete")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Reclamation $reclamation)
+    public function deleteAction(Request $request)
     {
-        $form = $this->createDeleteForm($reclamation);
-        $form->handleRequest($request);
+        $id=$request->get('idRec');
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if (!empty($id)) {
+            $reclamation=$this->getDoctrine()->getRepository(Reclamation::class)->find($id);
             $em = $this->getDoctrine()->getManager();
             $em->remove($reclamation);
             $em->flush();
+            return $this->redirectToRoute('rec_admin');
         }
 
-        return $this->redirectToRoute('reclamation_index');
+        return $this->redirectToRoute('rec_admin');
     }
 
-    /**
-     * Creates a form to delete a reclamation entity.
-     *
-     * @param Reclamation $reclamation The reclamation entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(Reclamation $reclamation)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('reclamation_delete', array('idRec' => $reclamation->getIdrec())))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
-    }
+
+
+
     public function ReclamationAction()
     {
-        $tab1=['Description','Date','EtatReclamation','NumeroAnnonce','Troqueur','TypeReclamation','Reclamateur'];
-        $list=[["Description"=>'Gros Mot',"Date"=>'26/11/2018','EtatReclamation'=>'Non Résolue','NumeroAnnonce'=>'4','Troqueur'=>'8','TypeReclamation'=>'Proprietaire','Reclamateur'=>'1'],
-            ["Description"=>'Mauvais contenu ',"Date"=>'24/11/2018','EtatReclamation'=>'Non Résolue','NumeroAnnonce'=>'5','Troqueur'=>'6','TypeReclamation'=>'Annonce','Reclamateur'=>'2'],
-            ["Description"=>'Contenu Indésirable',"Date"=>'25/11/2018','EtatReclamation'=>' Résolue','NumeroAnnonce'=>'3','Troqueur'=>'11','TypeReclamation'=>'Annonce','Reclamateur'=>'4'],
-            ["Description"=>'Gros Mot',"Date"=>'20/11/2018','EtatReclamation'=>' Résolue','NumeroAnnonce'=>'9','Troqueur'=>'8','TypeReclamation'=>'Proprietaire','Reclamateur'=>'2']];
+
         return $this->render('@Troc/Default/admin.html.twig',['list'=>$list]);
     }
+
+// ...
+    public function chartAction()
+    {
+        // Chart
+        $series = array(
+            array("name" => "Data Serie Name",    "data" => array(1,2,4,5,6,3,8))
+        );
+
+        $ob = new Highchart();
+        $ob->chart->renderTo('linechart');  // The #id of the div where to render the chart
+        $ob->title->text('Chart Title');
+        $ob->xAxis->title(array('text'  => "Horizontal axis title"));
+        $ob->yAxis->title(array('text'  => "Vertical axis title"));
+        $ob->series($series);
+
+        return $this->render('::your_template.html.twig', array(
+            'chart' => $ob
+        ));
+    }
+
 }

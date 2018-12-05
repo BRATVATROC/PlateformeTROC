@@ -10,11 +10,10 @@ namespace TrocBundle\Repository;
  */
 class ReclamationRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function count($id)
+    public function countRec()
     {
-        $query=$this->getEntityManager()->createQuery("select COUNT (r.idRec),r from TrocBundle:Reclamation r JOIN AppBundle:User u
-          GROUP by (r.idRuser)");
-
-        return $query->getSingleResult();
+        $query=$this->getEntityManager()->createQuery("select COUNT(r.idRec) as nbr ,
+          r as obj from TrocBundle:Reclamation as r INNER JOIN AppBundle:User as u where r.idUser=u GROUP BY r.idUser");
+        return $query->getResult();
     }
 }

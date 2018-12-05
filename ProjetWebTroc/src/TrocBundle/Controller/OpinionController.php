@@ -9,6 +9,8 @@ use TrocBundle\Entity\Opinion;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use TrocBundle\Entity\Reclamation;
+use TrocBundle\Repository\ReclamationRepository;
 
 
 class OpinionController extends Controller
@@ -42,7 +44,6 @@ class OpinionController extends Controller
         $opinion = new Opinion();
         $form = $this->createForm('TrocBundle\Form\OpinionType', $opinion);
         $form=$form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
 
            $n= $request->get('note');

@@ -20,7 +20,12 @@ troc_signin:
 rec_ajout:
     path:     /Recnew
     defaults: { _controller: TrocBundle:Reclamation:new }
-
+rec_edit:
+    path:     /edit/{idRec}
+    defaults: { _controller: TrocBundle:Reclamation:edit }
+rec_delete:
+    path:     /delete/{idRec}
+    defaults: { _controller: TrocBundle:Reclamation:delete }
 feed_ajout:
     path:     /feedNew
     defaults: { _controller: TrocBundle:Feedback:new }
@@ -54,4 +59,4 @@ page:
 
 rec_admin:
     path:     /admin
-    defaults: { _controller: TrocBundle:Reclamation:Reclamation }
+    defaults: { _controller: TrocBundle:Reclamation:index }
