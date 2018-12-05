@@ -41,7 +41,12 @@ class Event
      * @ORM\Column(name="max", type="integer", nullable=false)
      */
     private $max;
-
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nbr", type="integer", nullable=true)
+     */
+    private $nbr;
     /**
      * @var string
      *
@@ -248,5 +253,29 @@ class Event
     public function getCreatedby()
     {
         return $this->createdby;
+    }
+
+    /**
+     * Set nbr
+     *
+     * @param integer $nbr
+     *
+     * @return Event
+     */
+    public function setNbr($nbr)
+    {
+        $this->nbr = $nbr;
+    
+        return $this;
+    }
+
+    /**
+     * Get nbr
+     *
+     * @return integer
+     */
+    public function getNbr()
+    {
+        return $this->nbr;
     }
 }

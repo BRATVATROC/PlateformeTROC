@@ -13,6 +13,7 @@
             </div>
             <div class="col-md-10">
                 <h1 class="eventTitle">Events list</h1>
+                <br>
                 <table class="table table-striped">
                     <thead>
                     <tr>
@@ -21,19 +22,19 @@
                         <th scope="col">Description</th>
                         <th scope="col">Max</th>
                         <th scope="col">Location</th>
-                        <th scope="col">Date and Time</th>
                         <th scope="col">Picture</th>
+                        <th scope="col">Date and Time</th>
                         <th scope="col">Joining</th>
                     </tr>
                     </thead>
                     <tbody>
                     {% for event in events %}
+                        {% if event.date > current %}
                         <tr>
-                            <td scope="row"><a
-                                        href="{{ path('event_listEvent', { 'id': event.id }) }}">{{ event.id }}</a></td>
+                            <td scope="row"><a href="{{ path('event_listEvent', { 'id': event.id }) }}">{{ event.id }}</a></td>
                             <td>{{ event.titre }}      </td>
                             <td>{{ event.description }}</td>
-                            <td>{{ event.max }}        </td>
+                            <td>{{ event.nbr }}/{{ event.max}}        </td>
                             <td>{{ event.location }}   </td>
                             <td><img src={{ asset('uploads/'~ event.image) }} alt="bootsnipp placeholder="/images/wetroc.png" class="img-rounded img-responsive" style="width: 40px; height: 40px"/></td>
                             <td>{{ event.date|date }}  </td>
@@ -44,6 +45,7 @@
                                 </form>&emsp;
                             </td>
                         </tr>
+                        {% endif %}
                     {% endfor %}
                     {% if (error == '1') %}
                         <script>

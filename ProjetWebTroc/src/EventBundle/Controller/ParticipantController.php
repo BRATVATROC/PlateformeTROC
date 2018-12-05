@@ -26,14 +26,15 @@ class ParticipantController extends Controller
             array('participants'=>$participants,'events'=>$events, 'users'=>$users));
     }
 
-    public function deleteParticipant($idEvent)
+    public function deleteParticipant($id)
     {
         $em=$this->getDoctrine()->getManager();
-        $disjoin=$em->getRepository(Participant::class)->find($idEvent);
+        $disjoin=$em->getRepository(Participant::class)->find($id);
         $em->remove($disjoin);
         $em->flush();
         $this->redirectToRoute('listParticipant');
     }
+
     public function adminParticipantAction()
     {
         $var= $this->getDoctrine()->getManager();

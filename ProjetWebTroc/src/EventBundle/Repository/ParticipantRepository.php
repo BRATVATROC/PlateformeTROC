@@ -27,13 +27,23 @@ class ParticipantRepository extends \Doctrine\ORM\EntityRepository
 
     public function countParticipants($idevent)
     {
-        $query=$this->getEntityManager()->createQuery("select count(u.id_event) as n from EventBundle:Participant u where u.id_event='$idevent'");
+        $query=$this->getEntityManager()->createQuery("select count(u.idUser) as n from EventBundle:Participant u where u.idEvent='$idevent' group by ");
         return $query->getResult();
     }
 
     public function getMyEvents($id)
     {
         $query=$this->getEntityManager()->createQuery("select u from EventBundle:Participant u where u.idUser='$id'");
+        return $query->getResult();
+    }
+    public function CountEvents()
+    {
+        $query=$this->getEntityManager()->createQuery("select count(u.idUser) as nbr,u as ev from EventBundle:Participant u group by u.idEvent");
+        return $query->getResult();
+    }
+    public function CountByEvent($id)
+    {
+        $query=$this->getEntityManager()->createQuery("select count(u.idUser) as nbr from EventBundle:Participant u where u.idEvent=$id ");
         return $query->getResult();
     }
 

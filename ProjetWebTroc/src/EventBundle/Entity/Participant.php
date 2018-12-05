@@ -29,7 +29,7 @@ class Participant
     private $idUser;
 
     /**
-     * @var \Event
+     * @var \EventBundle\Entity\Event
      *
      * @ORM\ManyToOne(targetEntity="TrocBundle\Entity\Event")
      * @ORM\JoinColumns({
@@ -81,7 +81,7 @@ class Participant
      *
      * @return Participant
      */
-    public function setIdEvent(\EventBundle\Entity\Event $idEvent = null)
+    public function setIdEvent( $idEvent = null)
     {
         $this->idEvent = $idEvent;
     
