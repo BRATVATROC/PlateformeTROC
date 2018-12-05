@@ -9,6 +9,10 @@ livraison:
     resource: "@LivraisonBundle/Resources/config/routing.yml"
     prefix:   /livraison
 
+commande:
+    resource: "@CommandeBundle/Resources/config/routing.yml"
+    prefix:   /commande
+
 troc:
     resource: "@TrocBundle/Resources/config/routing.yml"
     prefix:   /troc
@@ -16,11 +20,14 @@ troc:
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
+
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
 troc_opinion:
     resource: "@TrocBundle/Controller/OpinionController.php"
     type:     annotation
+
 troc_feedback:
     resource: "@TrocBundle/Controller/FeedbackController.php"
     type:     annotation

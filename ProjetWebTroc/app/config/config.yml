@@ -6,6 +6,7 @@ imports:
     - { resource: "@AnnonceBundle/Resources/config/services.yml" }
     - { resource: "@ItemsBundle/Resources/config/services.yml" }
     - { resource: "@LivraisonBundle/Resources/config/services.yml" }
+    - { resource: "@CommandeBundle/Resources/config/services.yml" }
 
 
 # Put parameters here that don't need to change on each machine where the app is deployed
@@ -42,6 +43,8 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    form_themes:
+        - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
 
 # Doctrine Configuration
 doctrine:
@@ -85,3 +88,21 @@ fos_user:
     from_email:
         address: "nadia.boudhief@esprit.tn"
         sender_name: "Nadia"
+
+
+
+
+
+knp_snappy:
+    pdf:
+        enabled:    true
+        binary:     "\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\"" #"\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\"" for Windows users
+        options:    []
+    image:
+        enabled:    false
+        binary:     C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltoimage.exe\ #"\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltoimage.exe\"" for Windows users
+        options:    []
+
+cmen_google_charts:
+    version: "current"
+

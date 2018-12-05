@@ -1,0 +1,59 @@
+{% extends "base.html.twig" %}
+
+{% block Main %}
+
+    <div class="circular-chart">
+        <div class="circular-top">
+            <h4>Efficacité de Troqueur</h4>
+        </div>
+        <div class="circular-btm">
+            <div id="container" class="margin" role="group"></div>
+        </div>
+    </div>
+    <script>
+        $(window).load(function() {
+            doughnutWidget.options = {
+                container: $('#container'),
+                width: 100,
+                height: 100,
+                class: 'myClass',
+                cutout: 90
+            };
+
+            doughnutWidget.render(data());
+
+            setInterval(init, 2000);
+        });
+
+        function init() {
+            doughnutWidget.render(data());
+        }
+
+        function data() {
+            {% for m in var1 %}
+                var x1 = {{ m.1 }}
+            {% for m in var2 %}
+            var x2 = {{ m.1 }}
+            var data = {
+                Efficacité: {
+                    val: (x2/x1)*100,
+                    color: 'rgb(252, 57, 85)',
+                    click: function(e) {
+                        //console.log('hi');
+                    }
+                },
+
+            };
+            {% endfor %}
+            {% endfor %}
+
+
+
+
+
+
+            return data;
+        }
+    </script>
+
+{% endblock %}

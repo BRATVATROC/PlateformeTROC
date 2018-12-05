@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit13d3d8018a040d4aa4f8c0ae42373b57
+class ComposerStaticInite5c976d06ebedc0acd1a30878f0ae48c
 {
     public static $files = array (
         '92c8763cd6170fce6fcfe7e26b4e8c10' => __DIR__ . '/..' . '/symfony/phpunit-bridge/bootstrap.php',
@@ -20,6 +20,10 @@ class ComposerStaticInit13d3d8018a040d4aa4f8c0ae42373b57
     );
 
     public static $prefixLengthsPsr4 = array (
+        'Z' => 
+        array (
+            'Zend\\Json\\' => 10,
+        ),
         'T' => 
         array (
             'Twig\\' => 5,
@@ -55,9 +59,18 @@ class ComposerStaticInit13d3d8018a040d4aa4f8c0ae42373b57
             'Psr\\Container\\' => 14,
             'Psr\\Cache\\' => 10,
         ),
+        'O' => 
+        array (
+            'Ob\\HighchartsBundle\\' => 20,
+        ),
         'M' => 
         array (
             'Monolog\\' => 8,
+        ),
+        'K' => 
+        array (
+            'Knp\\Snappy\\' => 11,
+            'Knp\\Bundle\\SnappyBundle\\' => 24,
         ),
         'I' => 
         array (
@@ -67,6 +80,11 @@ class ComposerStaticInit13d3d8018a040d4aa4f8c0ae42373b57
         array (
             'Fig\\Link\\' => 9,
             'FOS\\UserBundle\\' => 15,
+            'FOS\\CKEditorBundle\\' => 19,
+        ),
+        'E' => 
+        array (
+            'EzSystems\\ShareButtonsBundle\\' => 29,
         ),
         'D' => 
         array (
@@ -80,10 +98,15 @@ class ComposerStaticInit13d3d8018a040d4aa4f8c0ae42373b57
         'C' => 
         array (
             'Composer\\CaBundle\\' => 18,
+            'CMEN\\GoogleChartsBundle\\' => 24,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'Zend\\Json\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/zendframework/zend-json/src',
+        ),
         'Twig\\' => 
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
@@ -188,9 +211,21 @@ class ComposerStaticInit13d3d8018a040d4aa4f8c0ae42373b57
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
         ),
+        'Ob\\HighchartsBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ob/highcharts-bundle',
+        ),
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
+        ),
+        'Knp\\Snappy\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/knplabs/knp-snappy/src/Knp/Snappy',
+        ),
+        'Knp\\Bundle\\SnappyBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/knplabs/knp-snappy-bundle',
         ),
         'Incenteev\\ParameterHandler\\' => 
         array (
@@ -203,6 +238,14 @@ class ComposerStaticInit13d3d8018a040d4aa4f8c0ae42373b57
         'FOS\\UserBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/friendsofsymfony/user-bundle',
+        ),
+        'FOS\\CKEditorBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/friendsofsymfony/ckeditor-bundle/src',
+        ),
+        'EzSystems\\ShareButtonsBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ezsystems/share-buttons-bundle',
         ),
         'Doctrine\\Instantiator\\' => 
         array (
@@ -231,6 +274,10 @@ class ComposerStaticInit13d3d8018a040d4aa4f8c0ae42373b57
         'Composer\\CaBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/composer/ca-bundle/src',
+        ),
+        'CMEN\\GoogleChartsBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cmen/google-charts-bundle',
         ),
     );
 
@@ -291,11 +338,11 @@ class ComposerStaticInit13d3d8018a040d4aa4f8c0ae42373b57
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit13d3d8018a040d4aa4f8c0ae42373b57::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit13d3d8018a040d4aa4f8c0ae42373b57::$prefixDirsPsr4;
-            $loader->fallbackDirsPsr4 = ComposerStaticInit13d3d8018a040d4aa4f8c0ae42373b57::$fallbackDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit13d3d8018a040d4aa4f8c0ae42373b57::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit13d3d8018a040d4aa4f8c0ae42373b57::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInite5c976d06ebedc0acd1a30878f0ae48c::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInite5c976d06ebedc0acd1a30878f0ae48c::$prefixDirsPsr4;
+            $loader->fallbackDirsPsr4 = ComposerStaticInite5c976d06ebedc0acd1a30878f0ae48c::$fallbackDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInite5c976d06ebedc0acd1a30878f0ae48c::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInite5c976d06ebedc0acd1a30878f0ae48c::$classMap;
 
         }, null, ClassLoader::class);
     }

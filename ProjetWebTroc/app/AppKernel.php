@@ -23,6 +23,10 @@ class AppKernel extends Kernel
             new ItemsBundle\ItemsBundle(),
             new Ob\HighchartsBundle\ObHighchartsBundle(),
             new LivraisonBundle\LivraisonBundle(),
+            new CommandeBundle\CommandeBundle(),
+            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+            new CMEN\GoogleChartsBundle\CMENGoogleChartsBundle(),
+            new FOS\CKEditorBundle\FOSCKEditorBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

@@ -1,20 +1,5 @@
-{% extends "base.html.twig" %}
+{% extends "@FOSUser/layout.html.twig" %}
 
-{% block Main %}
-    <section>
-        <div id="agileits-sign-in-page" class="sign-in-wrapper">
-            <div class="agileinfo_signin">
-                <h3>Sign Up</h3>
-                <form action="#" method="post">
-                    {% block fos_user_content %}
-                        {% include "@FOSUser/Registration/register_content.html.twig" %}
-                    {% endblock fos_user_content %}
-
-                </form>
-            </div>
-        </div>
-    </section>
-{% endblock %}
-
-
-
+{% block fos_user_content %}
+{% include "@FOSUser/Registration/register_content.html.twig" %}
+{% endblock fos_user_content %}

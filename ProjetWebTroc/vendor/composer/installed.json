@@ -1,5 +1,55 @@
 [
     {
+        "name": "cmen/google-charts-bundle",
+        "version": "3.0.2",
+        "version_normalized": "3.0.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/cmen/CMENGoogleChartsBundle.git",
+            "reference": "76c51125fab5eb29e65fbefebe8c82e38eaeffe7"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/cmen/CMENGoogleChartsBundle/zipball/76c51125fab5eb29e65fbefebe8c82e38eaeffe7",
+            "reference": "76c51125fab5eb29e65fbefebe8c82e38eaeffe7",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^5.6 || ^7.0",
+            "symfony/framework-bundle": "^2.7 || ^3.0 || ^4.0"
+        },
+        "require-dev": {
+            "friendsofphp/php-cs-fixer": "^2.9",
+            "phpunit/phpunit": "^5.7"
+        },
+        "time": "2018-10-27T12:02:20+00:00",
+        "type": "symfony-bundle",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "CMEN\\GoogleChartsBundle\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Christophe Meneses"
+            }
+        ],
+        "description": "This Bundle provides a Twig extension and PHP objects to display Google charts in your Symfony application.",
+        "keywords": [
+            "chart",
+            "charts",
+            "google",
+            "graph",
+            "graphs",
+            "map"
+        ]
+    },
+    {
         "name": "composer/ca-bundle",
         "version": "1.1.3",
         "version_normalized": "1.1.3.0",
@@ -853,6 +903,61 @@
         ]
     },
     {
+        "name": "ezsystems/share-buttons-bundle",
+        "version": "v1.2.0",
+        "version_normalized": "1.2.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/ezsystems/EzSystemsShareButtonsBundle.git",
+            "reference": "1e5cc5de1fecc0075d69915216795b7aafe9dec1"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/ezsystems/EzSystemsShareButtonsBundle/zipball/1e5cc5de1fecc0075d69915216795b7aafe9dec1",
+            "reference": "1e5cc5de1fecc0075d69915216795b7aafe9dec1",
+            "shasum": ""
+        },
+        "require": {
+            "symfony/symfony": "~2.6 || ^3.3"
+        },
+        "require-dev": {
+            "friendsofphp/php-cs-fixer": "~2.7.1"
+        },
+        "time": "2018-06-28T06:41:32+00:00",
+        "type": "symfony-bundle",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.2.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "EzSystems\\ShareButtonsBundle\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0"
+        ],
+        "authors": [
+            {
+                "name": "eZ Platform dev-team & eZ Community",
+                "homepage": "https://github.com/ezsystems/EzSystemsShareButtonsBundle/contributors"
+            }
+        ],
+        "description": "Social share buttons integration bundle into eZ Publish/eZ Platform",
+        "keywords": [
+            "buttons",
+            "facebook",
+            "google plus",
+            "linkedin",
+            "share",
+            "social",
+            "twitter"
+        ]
+    },
+    {
         "name": "fig/link-util",
         "version": "1.0.0",
         "version_normalized": "1.0.0.0",
@@ -906,6 +1011,88 @@
             "psr",
             "psr-13",
             "rest"
+        ]
+    },
+    {
+        "name": "friendsofsymfony/ckeditor-bundle",
+        "version": "1.2.0",
+        "version_normalized": "1.2.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/FriendsOfSymfony/FOSCKEditorBundle.git",
+            "reference": "7d428b16154a7136e1dd4c11062573afa1bfb3df"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/FriendsOfSymfony/FOSCKEditorBundle/zipball/7d428b16154a7136e1dd4c11062573afa1bfb3df",
+            "reference": "7d428b16154a7136e1dd4c11062573afa1bfb3df",
+            "shasum": ""
+        },
+        "require": {
+            "ext-zip": "*",
+            "php": "^5.6 || ^7.0",
+            "symfony/asset": "^2.7 || ^3.0 || ^4.0",
+            "symfony/config": "^2.7 || ^3.0 || ^4.0",
+            "symfony/dependency-injection": "^2.7 || ^3.0 || ^4.0",
+            "symfony/expression-language": "^2.7 || ^3.0 || ^4.0",
+            "symfony/form": "^2.7 || ^3.0 || ^4.0",
+            "symfony/framework-bundle": "^2.7 || ^3.0 || ^4.0",
+            "symfony/http-foundation": "^2.7 || ^3.0 || ^4.0",
+            "symfony/http-kernel": "^2.7 || ^3.0 || ^4.0",
+            "symfony/options-resolver": "^2.7 || ^3.0 || ^4.0",
+            "symfony/property-access": "^2.7 || ^3.0 || ^4.0",
+            "symfony/routing": "^2.7 || ^3.0 || ^4.0"
+        },
+        "conflict": {
+            "sebastian/environment": "<1.3.4",
+            "sebastian/exporter": "<2.0.0"
+        },
+        "require-dev": {
+            "composer/composer": "^1.0",
+            "friendsofphp/php-cs-fixer": "^2.0",
+            "matthiasnoback/symfony-dependency-injection-test": "^1.0 || ^2.0",
+            "phpunit/phpunit": "^5.0 || ^6.0",
+            "sensio/distribution-bundle": "^3.0.12 || ^4.0 || ^5.0",
+            "symfony/console": "^2.7 || ^3.0 || ^4.0",
+            "symfony/phpunit-bridge": "^4.0",
+            "symfony/templating": "^2.7 || ^3.0 || ^4.0",
+            "symfony/twig-bridge": "^2.7 || ^3.0 || ^4.0",
+            "symfony/yaml": "^2.7 || ^3.0 || ^4.0",
+            "twig/twig": "^1.34 || ^2.0"
+        },
+        "suggest": {
+            "egeloen/form-extra-bundle": "Allows to load CKEditor asynchronously"
+        },
+        "time": "2018-10-03T20:51:58+00:00",
+        "type": "symfony-bundle",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "FOS\\CKEditorBundle\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Eric GELOEN",
+                "email": "geloen.eric@gmail.com"
+            },
+            {
+                "name": "FriendsOfSymfony Community",
+                "homepage": "https://github.com/FriendsOfSymfony/FOSCKEditorBundle/graphs/contributors"
+            }
+        ],
+        "description": "Provides a CKEditor integration for your Symfony project.",
+        "keywords": [
+            "CKEditor"
         ]
     },
     {
@@ -1092,6 +1279,140 @@
         ]
     },
     {
+        "name": "knplabs/knp-snappy",
+        "version": "v1.0.4",
+        "version_normalized": "1.0.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/KnpLabs/snappy.git",
+            "reference": "144c4ecd1ccaeda936bf832b93079efc490e6850"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/KnpLabs/snappy/zipball/144c4ecd1ccaeda936bf832b93079efc490e6850",
+            "reference": "144c4ecd1ccaeda936bf832b93079efc490e6850",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.6",
+            "psr/log": "^1.0",
+            "symfony/process": "~2.3 || ~3.0 || ~4.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.8.36"
+        },
+        "suggest": {
+            "h4cc/wkhtmltoimage-amd64": "Provides wkhtmltoimage-amd64 binary for Linux-compatible machines, use version `~0.12` as dependency",
+            "h4cc/wkhtmltoimage-i386": "Provides wkhtmltoimage-i386 binary for Linux-compatible machines, use version `~0.12` as dependency",
+            "h4cc/wkhtmltopdf-amd64": "Provides wkhtmltopdf-amd64 binary for Linux-compatible machines, use version `~0.12` as dependency",
+            "h4cc/wkhtmltopdf-i386": "Provides wkhtmltopdf-i386 binary for Linux-compatible machines, use version `~0.12` as dependency",
+            "wemersonjanuario/wkhtmltopdf-windows": "Provides wkhtmltopdf executable for Windows, use version `~0.12` as dependency"
+        },
+        "time": "2018-01-22T19:40:51+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Knp\\Snappy\\": "src/Knp/Snappy"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "KnpLabs Team",
+                "homepage": "http://knplabs.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "http://github.com/KnpLabs/snappy/contributors"
+            }
+        ],
+        "description": "PHP5 library allowing thumbnail, snapshot or PDF generation from a url or a html page. Wrapper for wkhtmltopdf/wkhtmltoimage.",
+        "homepage": "http://github.com/KnpLabs/snappy",
+        "keywords": [
+            "knp",
+            "knplabs",
+            "pdf",
+            "snapshot",
+            "thumbnail",
+            "wkhtmltopdf"
+        ]
+    },
+    {
+        "name": "knplabs/knp-snappy-bundle",
+        "version": "v1.5.2",
+        "version_normalized": "1.5.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/KnpLabs/KnpSnappyBundle.git",
+            "reference": "f7c2541008525bb621a0bd492e1d83a6d2b48adf"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/KnpLabs/KnpSnappyBundle/zipball/f7c2541008525bb621a0bd492e1d83a6d2b48adf",
+            "reference": "f7c2541008525bb621a0bd492e1d83a6d2b48adf",
+            "shasum": ""
+        },
+        "require": {
+            "knplabs/knp-snappy": "~1.0,>=1.0.1",
+            "php": ">=5.6",
+            "symfony/framework-bundle": "~2.7|~3.0|^4.0"
+        },
+        "require-dev": {
+            "doctrine/annotations": "~1.0",
+            "phpunit/phpunit": "~4.8.35",
+            "symfony/asset": "~2.7|~3.0|^4.0",
+            "symfony/finder": "~2.7|~3.0|^4.0",
+            "symfony/security-csrf": "~2.7|~3.0|^4.0",
+            "symfony/templating": "~2.7|~3.0|^4.0",
+            "symfony/validator": "~2.7|~3.0|^4.0"
+        },
+        "time": "2017-12-06T16:31:47+00:00",
+        "type": "symfony-bundle",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Knp\\Bundle\\SnappyBundle\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "KnpLabs Team",
+                "homepage": "http://knplabs.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "http://github.com/KnpLabs/KnpSnappyBundle/contributors"
+            }
+        ],
+        "description": "Easily create PDF and images in Symfony2 by converting Twig/HTML templates.",
+        "homepage": "http://github.com/KnpLabs/KnpSnappyBundle",
+        "keywords": [
+            "bundle",
+            "knp",
+            "knplabs",
+            "pdf",
+            "snappy"
+        ]
+    },
+    {
         "name": "monolog/monolog",
         "version": "1.23.0",
         "version_normalized": "1.23.0.0",
@@ -1169,6 +1490,71 @@
             "log",
             "logging",
             "psr-3"
+        ]
+    },
+    {
+        "name": "ob/highcharts-bundle",
+        "version": "1.6",
+        "version_normalized": "1.6.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/marcaube/ObHighchartsBundle.git",
+            "reference": "22753f7b4036a31a46b7f720e03893bfc6150307"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/marcaube/ObHighchartsBundle/zipball/22753f7b4036a31a46b7f720e03893bfc6150307",
+            "reference": "22753f7b4036a31a46b7f720e03893bfc6150307",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^5.5 || ^7.0",
+            "symfony/config": "^2.8 || ^3.4 || ^4.0",
+            "symfony/dependency-injection": "^2.8 || ^3.4 || ^4.0",
+            "symfony/http-kernel": "^2.8 || ^3.4 || ^4.0",
+            "symfony/yaml": "^2.8 || ^3.4 || ^4.0",
+            "twig/twig": "^1.35 || ^2.4",
+            "zendframework/zend-json": "^2.3 || ^3.0"
+        },
+        "require-dev": {
+            "nyholm/symfony-bundle-test": "^1.2.3",
+            "symfony/framework-bundle": "^2.8 || ^3.4 || ^4.0",
+            "symfony/phpunit-bridge": "^3.3 || ^4.0"
+        },
+        "time": "2017-12-27T14:37:46+00:00",
+        "type": "symfony-bundle",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.7.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Ob\\HighchartsBundle\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Marc Aubé"
+            }
+        ],
+        "description": "Symfony2 Bundle that ease the use of highcharts to display rich graph and charts in your app",
+        "homepage": "https://github.com/marcaube/ObHighchartsBundle",
+        "keywords": [
+            "Symfony2",
+            "chart",
+            "charting",
+            "charts",
+            "graph",
+            "graphs",
+            "highcharts",
+            "marcaube",
+            "ob"
         ]
     },
     {
@@ -2587,6 +2973,58 @@
         "homepage": "https://twig.symfony.com",
         "keywords": [
             "templating"
+        ]
+    },
+    {
+        "name": "zendframework/zend-json",
+        "version": "3.1.0",
+        "version_normalized": "3.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/zendframework/zend-json.git",
+            "reference": "4dd940e8e6f32f1d36ea6b0677ea57c540c7c19c"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/zendframework/zend-json/zipball/4dd940e8e6f32f1d36ea6b0677ea57c540c7c19c",
+            "reference": "4dd940e8e6f32f1d36ea6b0677ea57c540c7c19c",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^5.6 || ^7.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^5.7.23 || ^6.4.3",
+            "zendframework/zend-coding-standard": "~1.0.0",
+            "zendframework/zend-stdlib": "^2.7.7 || ^3.1"
+        },
+        "suggest": {
+            "zendframework/zend-json-server": "For implementing JSON-RPC servers",
+            "zendframework/zend-xml2json": "For converting XML documents to JSON"
+        },
+        "time": "2018-01-04T17:51:34+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "3.1.x-dev",
+                "dev-develop": "3.2.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Zend\\Json\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "description": "provides convenience methods for serializing native PHP to JSON and decoding JSON to native PHP",
+        "keywords": [
+            "ZendFramework",
+            "json",
+            "zf"
         ]
     }
 ]
