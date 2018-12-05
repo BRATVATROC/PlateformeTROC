@@ -126,13 +126,3 @@ comment:
 rec_admin:
     path:     /admin
     defaults: { _controller: TrocBundle:Reclamation:Reclamation }
-profile:
-    path:     /profile
-    defaults: { _controller: TrocBundle:Default:profile }
-    defaults: { _controller: TrocBundle:Reclamation:index }
-
-    path:     /rec
-    defaults: { _controller: TrocBundle:Default:admin }
-LivraisonReadCoursier:
-    path:     /coursierAffichage
-    defaults: { _controller: TrocBundle:Livraison:LivraisonReadCoursier }

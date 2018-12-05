@@ -25,6 +25,9 @@
                                         </div>
                                     </div>
                                     <div class="clearfix"></div>
+
+                                    <a href="{{  path('top_commentaire') }} " style="color:orangered"><strong>See Most Commented Ad !!!</strong></a><br>
+
                                     <ul class="list">
                                         {% for annonce in annonces %}
                                         <a href="{{ path('annonce_single', {'idAnnonce':annonce.idAnnonce}) }}">

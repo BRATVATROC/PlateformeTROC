@@ -6,6 +6,7 @@ use AnnonceBundle\Form\AnnonceType;
 use TrocBundle\Entity\Annonce;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use TrocBundle\Entity\Signaler;
 
 /**
  * Annonce controller.
@@ -155,9 +156,11 @@ class AnnonceController extends Controller
     function singleAction(Annonce $annonce)
     {
         $user = $this->getUser();
+
         return $this->render('@Annonce/annonce/single.html.twig', array(
             'annonce' => $annonce,
             'user' => $user,
+
         ));
     }
 }

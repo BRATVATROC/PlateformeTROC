@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "84d8d3c11a3eb8b144c70ef6f5395845",
+    "content-hash": "a384bca10a0f6372b70970882c086c48",
     "packages": [
         {
             "name": "cmen/google-charts-bundle",
