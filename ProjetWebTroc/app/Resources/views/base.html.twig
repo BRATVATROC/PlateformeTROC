@@ -10,8 +10,6 @@
         <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}" /><!-- fontawesome-CSS -->
         <link rel="stylesheet" href="{{asset('css/menu_sideslide.css')}}" type="text/css" media="all"><!-- Navigation-CSS -->
         <link rel="stylesheet" href="{{asset('css/font-awesome1.min.css')}}" type="text/css" media="all">
-
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <!-- meta tags -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -19,8 +17,6 @@
         Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
         <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
         <!-- //meta tags -->
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
 
         <!--fonts-->
         <link href='//fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
@@ -154,7 +150,7 @@
 
 
                     {% else%}
-                    <a href="{{ path('troc_homepage') }}">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |</a>
+                    <a href="{{ path('Profil_troc') }}">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |</a>
                     <a href="{{ path('fos_user_security_logout') }}">
                         {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
                         {% endif %}
@@ -646,8 +642,10 @@
         </div>
         <div class="container">
             <div class="agile-its-header">
+                <div style="margin-left: 80%">{{render(controller('TrocBundle:Opinion:moyNote')) }}</div>
                 <div class="logo">
                     <h1><a href="{{ path('troc_homepage') }}"><span>We</span>Troc</a></h1>
+
                 </div>
                 <div class="agileits_search">
                     <form action="#" method="post">

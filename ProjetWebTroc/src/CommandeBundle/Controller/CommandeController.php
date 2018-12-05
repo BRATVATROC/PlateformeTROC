@@ -97,7 +97,7 @@ class CommandeController extends Controller
         return $this->render('@Commande/Commande/affichannonce.html.twig', array(
             // ...
             "annonce"=>$annonce,
-            "commande"=>$commande[0]
+            "commande"=>$commande
         ));
     }
 

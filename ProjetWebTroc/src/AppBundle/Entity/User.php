@@ -197,8 +197,8 @@ class User extends BaseUser
      * @return User
      */
     public function setUserimage($userimage)
-    {
-        $this->userimage = $userimage;
+    {if($userimage==null){$this->userimage="http://localhost/Bratva/Profile-icon-9.png";}
+        else $this->userimage = $userimage;
     
         return $this;
     }
