@@ -37,9 +37,7 @@ class EventController extends Controller
                 $idEvent = $_GET['id'];
                 $reserve = new Participant();
 
-                $verify = $this->getDoctrine()
-                    ->getManager()
-                    ->getRepository(Participant::class)
+                $verify = $this->getDoctrine()->getManager()->getRepository(Participant::class)
                     ->verifyJoin($this->getUser()->getId(), $idEvent);
                 if ($verify == null)
                 {
@@ -97,6 +95,7 @@ class EventController extends Controller
                 $event->setNbr($event->getMax());
                 $em->persist($event);
                 $em->flush();
+
             }
             return $this->render('@Event/Event/CreateEvent.html.twig', array('form' => $form->createView()));
         } else {
@@ -177,10 +176,20 @@ class EventController extends Controller
         {
             $user = $this->getUser()->getId();
             $events = $this->getDoctrine()->getRepository(Event::class)->getMyListEvents($user);
-            return $this->render('@Event/Event/goingTo.html.twig', array('events' => $events));
+            $part = $this->getDoctrine()->getRepository(Participant::class)->findAll();
+            return $this->render('@Event/Event/goingTo.html.twig', array('events' => $events, 'part'=>$part));
         } else {
             return $this->redirectToRoute('fos_user_security_login');
         }
+    }
+
+    public function deleteParticipant($id)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $disjoin=$em->getRepository(Participant::class)->find($id);
+        $em->remove($disjoin);
+        $em->flush();
+        return $this->redirectToRoute('event_goingTo');
     }
 
     public function updateEventAction($id, Request $request)

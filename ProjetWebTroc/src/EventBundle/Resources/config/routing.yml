@@ -27,7 +27,7 @@ participant_adminParticipant:
     defaults: { _controller: EventBundle:Participant:adminParticipant }
 
 participant_deleteParticipant:
-    path:     /deleteParticipant/{id_Event}
+    path:     /deleteParticipant/{id}
     defaults: { _controller: EventBundle:Participant:deleteParticipant }
 
 event_choiceHome:

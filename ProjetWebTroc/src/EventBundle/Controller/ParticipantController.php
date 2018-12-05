@@ -32,7 +32,7 @@ class ParticipantController extends Controller
         $disjoin=$em->getRepository(Participant::class)->find($id);
         $em->remove($disjoin);
         $em->flush();
-        $this->redirectToRoute('listParticipant');
+        return $this->redirectToRoute('event_goingTo');
     }
 
     public function adminParticipantAction()

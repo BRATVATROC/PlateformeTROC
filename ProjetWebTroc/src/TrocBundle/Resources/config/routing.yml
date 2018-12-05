@@ -13,9 +13,14 @@ read:
 index:
     path:     /index
     defaults: { _controller: TrocBundle:Commentaire:index }
+
 troc_signin:
     path:     /signin
     defaults: { _controller: TrocBundle:Signin:index }
+
+troc_profile:
+    path:     /profile
+    defaults: { _controller: TrocBundle:Profile:index }
 
 rec_ajout:
     path:     /new

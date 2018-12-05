@@ -34,7 +34,7 @@
                             <td scope="row"><a href="{{ path('event_listEvent', { 'id': event.id }) }}">{{ event.id }}</a></td>
                             <td>{{ event.titre }}      </td>
                             <td>{{ event.description }}</td>
-                            <td>{{ event.nbr }}/{{ event.max}}        </td>
+                            <td>{{ event.nbr }}/{{ event.max}}</td>
                             <td>{{ event.location }}   </td>
                             <td><img src={{ asset('uploads/'~ event.image) }} alt="bootsnipp placeholder="/images/wetroc.png" class="img-rounded img-responsive" style="width: 40px; height: 40px"/></td>
                             <td>{{ event.date|date }}  </td>
