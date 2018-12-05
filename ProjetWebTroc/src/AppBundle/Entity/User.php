@@ -73,4 +73,148 @@ class User extends BaseUser
         return $this->id;
     }
 
+
+    /**
+     * Set usernom
+     *
+     * @param string $usernom
+     *
+     * @return User
+     */
+    public function setUsernom($usernom)
+    {
+        $this->usernom = $usernom;
+    
+        return $this;
+    }
+
+    /**
+     * Get usernom
+     *
+     * @return string
+     */
+    public function getUsernom()
+    {
+        return $this->usernom;
+    }
+
+    /**
+     * Set userprenom
+     *
+     * @param string $userprenom
+     *
+     * @return User
+     */
+    public function setUserprenom($userprenom)
+    {
+        $this->userprenom = $userprenom;
+    
+        return $this;
+    }
+
+    /**
+     * Get userprenom
+     *
+     * @return string
+     */
+    public function getUserprenom()
+    {
+        return $this->userprenom;
+    }
+
+    /**
+     * Set usercin
+     *
+     * @param integer $usercin
+     *
+     * @return User
+     */
+    public function setUsercin($usercin)
+    {
+        $this->usercin = $usercin;
+    
+        return $this;
+    }
+
+    /**
+     * Get usercin
+     *
+     * @return integer
+     */
+    public function getUsercin()
+    {
+        return $this->usercin;
+    }
+
+    /**
+     * Set useradresse
+     *
+     * @param string $useradresse
+     *
+     * @return User
+     */
+    public function setUseradresse($useradresse)
+    {
+        $this->useradresse = $useradresse;
+    
+        return $this;
+    }
+
+    /**
+     * Get useradresse
+     *
+     * @return string
+     */
+    public function getUseradresse()
+    {
+        return $this->useradresse;
+    }
+
+    /**
+     * Set userphone
+     *
+     * @param integer $userphone
+     *
+     * @return User
+     */
+    public function setUserphone($userphone)
+    {
+        $this->userphone = $userphone;
+    
+        return $this;
+    }
+
+    /**
+     * Get userphone
+     *
+     * @return integer
+     */
+    public function getUserphone()
+    {
+        return $this->userphone;
+    }
+
+    /**
+     * Set userimage
+     *
+     * @param string $userimage
+     *
+     * @return User
+     */
+    public function setUserimage($userimage)
+    {
+        $this->userimage = $userimage;
+    
+        return $this;
+    }
+
+    /**
+     * Get userimage
+     *
+     * @return string
+     */
+    public function getUserimage()
+    {
+        return $this->userimage;
+    }
 }

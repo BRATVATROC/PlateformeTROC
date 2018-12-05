@@ -16,6 +16,24 @@ class CommentaireRepository extends \Doctrine\ORM\EntityRepository
 
         return $query->getResult();
     }
+ public function countSignaler($id)
+    {
+        $query = $this->getEntityManager()->createQuery("select c from TrocBundle:Commentaire c where c.idAnnonce=$id");
+
+        return $query->getResult();
+    }
+
+    public function  TopCommented()
+    {
+        $query = $this->getEntityManager()
+            ->createQuery("select  COUNT(c.idCommentaire) AS nbre_commentaire ,IDENTITY(c.idAnnonce)
+          from TrocBundle:Commentaire as c GROUP BY c.idAnnonce  ORDER BY nbre_commentaire DESC ");
+
+
+
+        return $query->getResult();
+    }
+
 
 
 }

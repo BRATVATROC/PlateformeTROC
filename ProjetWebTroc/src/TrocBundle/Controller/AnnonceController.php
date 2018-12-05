@@ -9,9 +9,10 @@ use TrocBundle\Entity\Annonce;
 class AnnonceController extends Controller
 {
     public function readAction(Request $request)
-    { $id=$request->get('id');
+    {   $user=$this->getUser();
+        $id=$request->get('id');
         $annonce=$this->getDoctrine()->getRepository(Annonce::class)->myfindAll($id);
-        return $this->render('@Troc/Default/index.html.twig', array('annonce'=>$annonce,
+        return $this->render('@Annonce/annonce/single.html.twig', array('annonce'=>$annonce,'user' => $user,
             'id'=>$id
         ));
     }

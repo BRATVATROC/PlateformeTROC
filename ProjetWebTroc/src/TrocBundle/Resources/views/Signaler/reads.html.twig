@@ -40,7 +40,7 @@
                         <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
-                        <p style="color: white">Anis Saidani</p>
+                        <p style="color: white">Nadia Boudhief</p>
 
                         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                     </div>
@@ -59,30 +59,29 @@
 
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">HEADER</li>
-                    <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Livraisons</span></a></li>
+                    <li ><a href="#"><i class="fa fa-link"></i> <span>Livraisons</span></a></li>
 
-                    <li><a href="#"><i class="fa fa-link"></i> <span>Commandes</span></a></li>
-                    <li><a href="#"><i class="fa fa-link"></i> <span>Réclamations</span></a></li>
-                    <li><a href="#"><i class="fa fa-link"></i> <span>Événements</span></a></li>
-                    <li><a href="#"><i class="fa fa-link"></i> <span>Bannissement</span></a></li>
-                    <li><a href="#"><i class="fa fa-link"></i> <span>BlackList</span></a></li>
+                    <li><a href="#"><i class="fa fa-link"></i> <span>Commands</span></a></li>
+                    <li><a href="#"><i class="fa fa-link"></i> <span>Reclamations</span></a></li>
+                    <li><a href="#"><i class="fa fa-link"></i> <span>Events</span></a></li>
+                    <li class="active"><a href="#"><i class="fa fa-link"></i> <span>BlackList</span></a></li>
                     <li class="treeview"><a href="#"><i class="fa fa-link"></i> <span>Feedbacks</span> <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span></a>
                         <ul class="treeview-menu">
-                            <li><a href="#">Likes et Dislikes</a></li>
-                            <li><a href="#">Avis et Commentaires</a></li>
+                            <li><a href="#">Likes and Dislikes</a></li>
+                            <li><a href="#">Opinions and Comments</a></li>
                         </ul></li>
                     <li class="treeview">
-                        <a href="#"><i class="fa fa-link"></i> <span>TrocLand Annonces</span>
+                        <a href="#"><i class="fa fa-link"></i> <span>TrocLand Ads</span>
                             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="#">Annonces</a></li>
+                            <li><a href="#">Ads</a></li>
                             <li><a href="#">Services</a></li>
-                            <li><a href="#">Catégories</a></li>
+                            <li><a href="#">Categories</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -98,7 +97,7 @@
                 <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
                 <li class="active">Here</li>
             </ol>
-            <h1><span class="yellow">Liste</span> Réclamation</h1>
+            <h1><span class="yellow">ListOf</span>Reported</h1>
             <style type="text/css" media="screen">
                 body {
                     font-family: 'Open Sans', sans-serif;
@@ -213,26 +212,38 @@
 
             <table class="container">
                 <tr>
-                    <th><h1>Description</h1></th>
-                    <th><h1>Date</h1></th>
-                    <th><h1>EtatReclamation</h1></th>
-                    <th><h1>Numéro Annonce</h1></th>
-                    <th><h1>Troqueur</h1></th>
-                    <th><h1>Type Reclamation</h1></th>
-                    <th><h1>Réclamateur</h1></th>
+                    <th><h1>Number of Reports</h1></th>
+                    <th><h1>Content</h1></th>
+                    <th><h1>Author</h1></th>
+                    <th><h1>ReporterName</h1></th>
+                    <th><h1>DateReport</h1></th>
+                    <th><h1>ACTION</h1></th>
+
 
                     </center>
                 </tr>
-                {% for m in list %}
-                    <tr>
-                        <td>{{ m.Description }}</td>
-                        <td>{{ m.Date }}</td>
-                        <td>{{ m.EtatReclamation }}</td>
-                        <td>{{ m.NumeroAnnonce }}</td>
-                        <td>{{ m.Troqueur }}</td>
-                        <td>{{ m.TypeReclamation }}</td>
-                        <td>{{ m.Reclamateur }}</td>
+                {% for s in signales %}
+                  {%  if s.nbr>2 %}
+                    <tr style="Background-color: orange">
+                        <td>{{ s.nbr}}</td>
+                        <td>{{ s.obj.idCommentaire.commentaire}}</td>
+                        <td>{{ s.obj.idCommentaire.idUser.username }}</td>
+                        <td>{{ s.obj.idUser.username }}</td>
+                        <td>{{ s.obj.dateSignale|date("d-m-Y") }}</td>
+                        <td><a href="{{ path ('delete_signaler',{'idSignale':s.obj.idSignale}) }}" style="color:red"> Delete </a></td>
+
                     </tr>
+
+                  {% elseif s.nbr==1 %}
+                        <tr  style="Background-color: green">
+                            <td>{{ s.nbr}}</td>
+                            <td>{{ s.obj.idCommentaire.commentaire}}</td>
+                            <td>{{ s.obj.idCommentaire.idUser.username }}</td>
+                            <td>{{ s.obj.idUser.username }}</td>
+                            <td>{{ s.obj.dateSignale|date("d-m-Y") }}</td>
+                            <td><a href="{{ path ('delete_signaler',{'idSignale':s.obj.idSignale}) }}" style="color:red"> Delete </a></td>
+
+                  {%  endif %}
                 {% endfor %}
 
             </table>

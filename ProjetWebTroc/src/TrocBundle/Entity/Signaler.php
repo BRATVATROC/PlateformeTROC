@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Signaler
  *
  * @ORM\Table(name="signaler", indexes={@ORM\Index(name="id_user", columns={"id_user"}), @ORM\Index(name="id_commentaire", columns={"id_commentaire"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="TrocBundle\Repository\SignalerRepository")
  */
 class Signaler
 {
@@ -29,9 +29,9 @@ class Signaler
     private $dateSignale;
 
     /**
-     * @var \User
+     * @var \AppBundle\Entity\User
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="\AppBundle\Entity\User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
      * })
@@ -84,29 +84,7 @@ class Signaler
         return $this->dateSignale;
     }
 
-    /**
-     * Set idUser
-     *
-     * @param \AppBundle\Entity\User $idUser
-     *
-     * @return Signaler
-     */
-    public function setIdUser(\AppBundle\Entity\User $idUser = null)
-    {
-        $this->idUser = $idUser;
 
-        return $this;
-    }
-
-    /**
-     * Get idUser
-     *
-     * @return \AppBundle\Entity\User
-     */
-    public function getIdUser()
-    {
-        return $this->idUser;
-    }
 
     /**
      * Set idCommentaire
@@ -130,5 +108,29 @@ class Signaler
     public function getIdCommentaire()
     {
         return $this->idCommentaire;
+    }
+
+    /**
+     * Set idUser
+     *
+     * @param \AppBundle\Entity\User $idUser
+     *
+     * @return Signaler
+     */
+    public function setIdUser(\AppBundle\Entity\User $idUser = null)
+    {
+        $this->idUser = $idUser;
+    
+        return $this;
+    }
+
+    /**
+     * Get idUser
+     *
+     * @return \AppBundle\Entity\User
+     */
+    public function getIdUser()
+    {
+        return $this->idUser;
     }
 }

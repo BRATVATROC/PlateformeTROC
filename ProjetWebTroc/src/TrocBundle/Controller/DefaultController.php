@@ -10,4 +10,9 @@ class DefaultController extends Controller
     {
         return $this->render('@Troc/Default/index.html.twig');
     }
+    public function profileAction()
+    {
+        return $this->render('@Troc/Default/profile.html.twig');
+    }
+
 }
