@@ -10,3 +10,8 @@
 app_dev.php/troc howa naffsou app_dev.php/ ===> fichier index.html.twig fel appBundle 
 
 
+a:1:{i:0;s:9:"ROLE_USER";}
+
+a:1:{i:0;s:10:"ROLE_ADMIN";}
+
+

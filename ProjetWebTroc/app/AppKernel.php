@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new AnnonceBundle\AnnonceBundle(),
             new ItemsBundle\ItemsBundle(),
             new Ob\HighchartsBundle\ObHighchartsBundle(),
+            new LivraisonBundle\LivraisonBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

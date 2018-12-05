@@ -5,6 +5,10 @@ annonce:
     resource: "@AnnonceBundle/Resources/config/routing.yml"
     prefix:   /annonce
 
+livraison:
+    resource: "@LivraisonBundle/Resources/config/routing.yml"
+    prefix:   /livraison
+
 troc:
     resource: "@TrocBundle/Resources/config/routing.yml"
     prefix:   /troc

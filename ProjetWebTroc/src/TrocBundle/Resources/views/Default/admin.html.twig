@@ -3,7 +3,7 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Starter</title>
+    <title>Admin WeTroc</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href=" {{ asset('bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
@@ -40,7 +40,7 @@
                         <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
-                        <p style="color: white">{{ app.user.username }}</p>
+                        <p style="color: white">mayamen halaoua</p>
 
                         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                     </div>
@@ -51,7 +51,7 @@
                     <div class="input-group">
                         <input type="text" name="q" class="form-control" placeholder="Search...">
                         <span class="input-group-btn">
-              <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa<center>-search"></i>
+              <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
               </button>
             </span>
                     </div>
@@ -60,9 +60,6 @@
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">HEADER</li>
                     <li class="treeview" >
-
-
-                    </li>
                     <li class="active treeview">
                         <a href="#">
                             <i class="fa fa-link"></i> <span>Shipping</span>
@@ -72,16 +69,15 @@
                         </a>
                         <ul class="treeview-menu">
 
-                            <li class="active">&nbsp &nbsp&nbsp<i class="fa fa-circle-o">&nbsp &nbsp</i>
-                                <span><a href="#"> Lists</a></span></li>
-                            <li class="active">&nbsp &nbsp&nbsp<i class="fa fa-circle-o">&nbsp &nbsp</i>
-                                <span><a  href="#">Delivery-Man List</a></span></li>
-                            <li class="active">&nbsp &nbsp&nbsp<i class="fa fa-circle-o">&nbsp &nbsp</i>
-                                <span><a  href="#">Calender of shipping</a></span></li>
+                            <li class="active">&nbsp &nbsp&nbsp<i class="fa fa-circle-o">&nbsp &nbsp</i> <span><a href="{{ path('LivraisonRead') }}"> Lists</a></span></li>
+                            <li class="active">&nbsp &nbsp&nbsp<i class="fa fa-circle-o">&nbsp &nbsp</i> <span><a  href="{{ path('showcoursier') }}">Delivery-Man List</a></span></li>
+                            <li class="active">&nbsp &nbsp&nbsp<i class="fa fa-circle-o">&nbsp &nbsp</i> <span><a  href="{{ path('livraisondate') }}">Calender of shipping</a></span></li>
                         </ul>
                     </li>
-                    <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Reclamations</span></a></li>
-                    <li><a href="#"><i class="fa fa-link"></i> <span>Opinions</span></a></li>
+
+                    </li>
+                    <li><a href="#"><i class="fa fa-link"></i> <span>Orders</span></a></li>
+                    <li><a href="{{ path('rec_admin') }}" class="active"><i class="fa fa-link"></i> <span>Reclamations</span></a></li>
                     <li><a href="#"><i class="fa fa-link"></i> <span>Events</span></a></li>
                     <li><a href="#"><i class="fa fa-link"></i> <span>Accounts</span></a></li>
                     <li class="treeview"><a href="#"><i class="fa fa-link"></i> <span>Feedbacks</span> <span class="pull-right-container">
@@ -110,14 +106,15 @@
         </aside> {% endblock %}
     {% block Content_Wrapper %}
 
+
     {% endblock %}
-            {% block jquery %}<script src="../bower_components/jquery/dist/jquery.min.js"></script>
-                <!-- Bootstrap 3.3.7 -->
-                <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-                <!-- AdminLTE App -->
-                <script src="../dist/js/adminlte.min.js"></script>
-            {% endblock %}</section>
-    </div></div>
+    {% block jquery %}<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../dist/js/adminlte.min.js"></script>
+    {% endblock %}</section>
+</div></div>
 
 </div>
 </body>

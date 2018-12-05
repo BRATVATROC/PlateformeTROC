@@ -1,0 +1,36 @@
+{% extends '@Troc/Default/admin.html.twig' %}
+
+
+{% block Content_Wrapper %}
+<h1><span class="yellow">AlloCoursier</span> à livrer</h1>
+
+<table class="container">
+    <tr>
+        <th><h1>ID</h1></th>
+        <th><h1>Client</h1></th>
+        <th><h1>Coursier</h1></th>
+        <th><h1>Adresse Client</h1></th>
+        <th><h1>Adresse Livraison</h1></th>
+        <th><h1><center>Description</center></h1></th>
+        <th><h1>Date d'enregistrement</h1></th>
+        <th><h1> <input type="submit" value="Annuler"></h1></th>
+
+        </center>
+    </tr>
+
+    {% for m in liste %}
+    <tr>  <br>
+        <td>{{ m.idalloservice }}</td>
+        <td>nom utilisateur</td>
+        <td>nom coursier</td>
+        <td>{{ m.adresseClient }}</td>
+        <td>{{ m.adresselivraison }}</td>
+        <td> {{ m.description }}</td>
+        <td>  {{ m.dateenregistrementservice|date("d/m/Y") }}</td>
+        <br>
+        {% endfor %}
+
+    </tr>
+
+</table>
+{% endblock %}

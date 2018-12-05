@@ -1,0 +1,58 @@
+
+{% extends '@Troc/Default/admin.html.twig' %}
+{% block Content_Wrapper %}
+
+            {{ form_start(form) }}
+                      <h1>Thank you for your trust  ! </h1>
+
+                        <br><br><br>
+    <table>
+        <center>
+
+
+            <tr>
+                <td>
+                    <label style="margin-bottom: 10px;">Client Address :</label>
+                </td>
+                <td>
+                    &nbsp &nbsp &nbsp &nbsp
+                </td>
+                <td>
+                    {{ form_widget(form.adresselivraison, { 'attr': {'style': 'width: 400px ;  color: black'} }) }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label style="margin-bottom: 10px;">Description :</label>
+                </td>
+                <td>
+                    &nbsp &nbsp &nbsp &nbsp
+                </td>
+                <td>
+                    {{ form_widget(form.description, { 'attr': {'style': 'width: 400px ;  color: black'} }) }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label style="margin-bottom: 10px;">Save :</label>
+                </td>
+                <td>
+                    &nbsp &nbsp &nbsp &nbsp
+                </td>
+                <td>
+                    {{ form_widget(form.save, { 'attr': {'style': 'width: 400px ;  color: black'} }) }}
+                </td>
+            </tr>
+        </center>
+    </table>
+            {{ form_end(form) }}
+
+ {% endblock %}
+
+
+
+
+
+
+
+

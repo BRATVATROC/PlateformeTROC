@@ -21,5 +21,6 @@ class DefaultController extends Controller
         return $this->render('@App/Default/index.html.twig', array(
             'annonces' => $post
         ));
+
     }
 }
