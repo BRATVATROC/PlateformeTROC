@@ -1,0 +1,29 @@
+annonce_index:
+    path:     /
+    defaults: { _controller: "AnnonceBundle:Annonce:index" }
+    methods:  GET
+
+annonce_show:
+    path:     /show/{idAnnonce}
+    defaults: { _controller: "AnnonceBundle:Annonce:show" }
+    methods:  GET
+
+annonce_new:
+    path:     /new
+    defaults: { _controller: "AnnonceBundle:Annonce:new" }
+    methods:  [GET, POST]
+
+annonce_edit:
+    path:    /edit /{idAnnonce}
+    defaults: { _controller: "AnnonceBundle:Annonce:edit" }
+    methods:  [GET, POST]
+
+annonce_delete:
+    path:     /delete/{idAnnonce}
+    defaults: { _controller: "AnnonceBundle:Annonce:delete" }
+    methods:  DELETE
+
+annonce_single:
+    path: /single/{idAnnonce}
+    defaults: { _controller: "AnnonceBundle:Annonce:single" }
+    methods:  [GET, POST]
