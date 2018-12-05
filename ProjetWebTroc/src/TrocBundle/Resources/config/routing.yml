@@ -7,6 +7,27 @@ read_commentaire:
 create_commentaire:
     path:     /createc
     defaults: { _controller: TrocBundle:Commentaire:createc }
+delete_commentaire:
+    path:     /delete/{idCommentaire}
+    defaults: { _controller: TrocBundle:Commentaire:delete }
+update_commentaire:
+    path:     /update/{idCommentaire}
+    defaults: { _controller: TrocBundle:Commentaire:update }
+top_commentaire:
+    path:     /topCommentaire
+    defaults: { _controller: TrocBundle:Commentaire:topCommentaire }
+read_signaler:
+    path:     /reads
+    defaults: { _controller: TrocBundle:Signaler:reads }
+signaler_commentaire:
+    path:     /creates/{idCommentaire}
+    defaults: { _controller: TrocBundle:Signaler:creates }
+delete_signaler:
+    path:     /deletes/{idSignale}
+    defaults: { _controller: TrocBundle:Signaler:deletes }
+
+
+
 read:
     path:     /read/{id}
     defaults: { _controller: TrocBundle:Annonce:read }
@@ -104,6 +125,10 @@ comment:
     defaults: { _controller: TrocBundle:Livraison:idComment }
 rec_admin:
     path:     /admin
+    defaults: { _controller: TrocBundle:Reclamation:Reclamation }
+profile:
+    path:     /profile
+    defaults: { _controller: TrocBundle:Default:profile }
     defaults: { _controller: TrocBundle:Reclamation:index }
 
     path:     /rec
