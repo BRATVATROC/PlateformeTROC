@@ -1,0 +1,143 @@
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+
+
+
+    .social-like, .social-dislike {
+        border: none;
+        outline: none;
+        font-size: 16px;
+        /*width: 48%;*/
+        background-color: #03A9F4;
+        color: #fff;
+        cursor: pointer;
+        display:inline-block;
+
+    }
+    .social-like:hover, .social-dislike:hover {
+        text-decoration:none;
+        color:white;
+    }
+    .social-like:active, .social-dislike:active {
+        background-color: #3299CD;
+    }
+    .social-like:active .count, .social-dislike:active .dislike {
+        background-color: #3299CD;
+    }
+
+    .social-like {
+        border-top-left-radius: 5px;
+    }
+    .social-dislike {
+        margin-left: 20px;
+        border-top-right-radius: 5px;
+    }
+    .count{
+        padding:10px;
+    }
+     .like {
+          padding:10px;
+
+      }
+     .dislike {
+          padding:10px;
+      }
+    .count, .dislike {
+        display:inline;
+        background-color: #03A9F4;
+        border-radius: 50%;
+        font-size:12px;
+    }
+    .dislike {
+        margin-left: -10px;
+    }
+    .count {
+        margin-right: -10px;
+    }
+
+</style>
+
+</head>
+
+
+
+  <div class="">
+    <label id="like">
+      <a class="social-dislike"  >
+          <span class="dislike" ><label id="nbl">{{ nbl }}</label></span>
+          <span class="like" ><i class="fa fa-thumbs-o-up"></i></span>
+      </a>
+    </label>
+
+      &nbsp;
+<label id="dislike">
+      <a class="social-like" >
+          <span class="like"><i class="fa fa-thumbs-o-down"></i></span>
+          <span class="count" id="nbd">{{ nbd }}</span>
+      </a>
+
+</label>
+
+
+  </div>
+
+<script src="{{ asset('js/js/jquery.js') }}"></script>
+<script  >
+    $('#like').click(function()
+    {
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        $.ajax(
+
+            {
+                url:"{{ path('feed_like') }}",
+                type:"POST",
+                data:{'idAnnonce':{{ annonce.idAnnonce }},'Add':{{ annonce.idAnnonce}}},
+                success:function (data) {
+                    console.log(data);
+                    $('#nbl').html(data[0].nbl);
+                    $('#nbd').html(data[0].nbd);
+
+
+                },
+                error:function (data) {
+
+                }
+
+
+            });
+        {% else %}
+        window.open('{{ path('fos_user_security_login') }}');
+        {% endif %}
+
+    });
+    $('#dislike').click(function()
+    {
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        $.ajax(
+
+            {
+                url:"{{ path('feed_like') }}",
+                type:"POST",
+                data:{'idAnnonce':{{ annonce.idAnnonce }},'Add':{{ annonce.idAnnonce}},'dislike':1},
+                success:function (data) {
+                    console.log();
+                    $('#nbl').html(data[0].nbl);
+                    $('#nbd').html(data[0].nbd);
+
+
+                },
+                error:function (data) {
+
+                }
+
+
+            });
+        {% else %}
+                 window.open('{{ path('fos_user_security_login') }}');
+        {%endif%}
+    });
+
+</script>
+

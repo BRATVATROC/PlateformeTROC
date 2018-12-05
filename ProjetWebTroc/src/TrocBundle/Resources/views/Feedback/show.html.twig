@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Feedback</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idfeed</th>
+                <td>{{ feedback.idFeed }}</td>
+            </tr>
+            <tr>
+                <th>Likefeed</th>
+                <td>{{ feedback.likeFeed }}</td>
+            </tr>
+            <tr>
+                <th>Dislike</th>
+                <td>{{ feedback.dislike }}</td>
+            </tr>
+            <tr>
+                <th>Note</th>
+                <td>{{ feedback.note }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if feedback.date %}{{ feedback.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('feedback_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('feedback_edit', { 'idFeed': feedback.idFeed }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

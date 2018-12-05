@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+
+{% block Main %}
+    <section>
+        <div id="agileits-sign-in-page" class="sign-in-wrapper">
+            <div class="agileinfo_signin">
+
+                {% block fos_user_content %}
+
+                {% endblock fos_user_content %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
