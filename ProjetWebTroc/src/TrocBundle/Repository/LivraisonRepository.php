@@ -98,18 +98,52 @@ class LivraisonRepository extends \Doctrine\ORM\EntityRepository
         $query = $this->getEntityManager()->createQuery(" select  COUNT(l.idlivraison) as x ,u.id as id from  AppBundle:User u ,TrocBundle:Livraison l where l.idcoursier=u.id and l.etatlivraison=0  GROUP BY l.idcoursier ORDER by x ASC  ") ;
         return $query->getResult();
     }
-     // Partie Coursier :
+     // Partie Coursier Livraison :
+
+
     public function AfficherClientLivraisonCoursier( $id)
     {
-        $query = $this->getEntityManager()->createQuery(" select u.usernom,u.userprenom,u.useradresse,u.userphone from AppBundle:User u ,TrocBundle:Livraison c where c.idclient=u.id and c.idcoursier=$id and c.numcommande IS NOT NULL ");
+        $query = $this->getEntityManager()->createQuery(" select u.usernom,u.userprenom,u.useradresse,u.userphone from AppBundle:User u ,TrocBundle:Livraison c where c.idclient=u.id and c.idcoursier=$id and c.etatlivraison=0 and c.numcommande IS NOT NULL ");
         return $query->getResult();
     }
 
         public function AfficherLivraisonCoursier($id)
     {
-        $query = $this->getEntityManager()->createQuery("select c from AppBundle:User u ,TrocBundle:Livraison c where c.idclient=u.id and c.idcoursier=$id and c.numcommande IS NOT NULL  ") ;
+        $query = $this->getEntityManager()->createQuery("select c from AppBundle:User u ,TrocBundle:Livraison c where c.idclient=u.id and c.idcoursier=$id and c.etatlivraison=0 and c.numcommande IS NOT NULL  ") ;
 
         return $query->getResult();
+    }
+    public function countLivraisonCoursier($id)
+    {
+        $query = $this->getEntityManager()->createQuery(" select  COUNT(l.idlivraison) as nb from TrocBundle:Livraison l where  l.idcoursier=$id and l.etatlivraison=0 and l.numcommande IS NOT NULL  ") ;
+        return $query->getSingleResult();
+    }
+    public function AfficherClientAllocoursierCoursier($id)
+    {
+        $query = $this->getEntityManager()->createQuery(" select u.usernom,u.userprenom,u.useradresse,u.userphone from AppBundle:User u ,TrocBundle:Livraison c where c.idclient=u.id and c.idcoursier=$id and c.etatlivraison=0 and c.numcommande IS NULL  ");
+        return $query->getResult();
+    }
+    public function AfficherAlloCoursierCoursier($id)
+    {
+        $query = $this->getEntityManager()->createQuery("select a from AppBundle:User u ,TrocBundle:Livraison l,TrocBundle:Allocoursier a where l.idclient=u.id and l.idcoursier=$id and l.etatlivraison=0 and l.numal=a.idalloservice ") ;
+
+        return $query->getResult();
+    }
+    public function AfficherLivraisonAlloCoursier($id)
+    {
+        $query = $this->getEntityManager()->createQuery("select l from AppBundle:User u ,TrocBundle:Livraison l,TrocBundle:Allocoursier a where l.idclient=u.id and l.idcoursier=$id and l.etatlivraison=0 and l.numal=a.idalloservice ") ;
+
+        return $query->getResult();
+    }
+    public function countOrders($id)
+    {
+        $query = $this->getEntityManager()->createQuery(" select  COUNT(l.idlivraison) as nbr from TrocBundle:Livraison l where  l.etatlivraison=0  and l.livraisonrecue=0 and l.idcoursier=$id  ") ;
+        return $query->getSingleResult();
+    }
+    public function countOrdersAllo($id)
+    {
+        $query = $this->getEntityManager()->createQuery(" select  COUNT(l.idlivraison) as num from TrocBundle:Livraison l where l.idcoursier=$id and  l.etatlivraison=0 and l.numcommande IS NULL ") ;
+        return $query->getSingleResult();
     }
 
 }

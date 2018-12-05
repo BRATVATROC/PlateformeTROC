@@ -92,3 +92,6 @@ rec_admin:
 LivraisonReadCoursier:
     path:     /coursierAffichage
     defaults: { _controller: TrocBundle:Livraison:LivraisonReadCoursier }
+LivraisonValideCoursier:
+    path:     /LivraisonValideCoursier/{idLivraison}
+    defaults: { _controller: TrocBundle:Livraison:LivraisonValideCoursier}

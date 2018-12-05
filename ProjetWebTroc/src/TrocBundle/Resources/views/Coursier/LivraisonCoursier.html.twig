@@ -1,5 +1,68 @@
-{% extends '@Troc/Default/admin.html.twig' %}
+<html style="height: auto; min-height: 100%;">
+<head>
 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>AdminLTE 2 | Starter</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href=" {{ asset('bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href=" {{ asset('bower_components/font-awesome/css/font-awesome.min.css') }}">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href=" {{ asset('bower_components/Ionicons/css/ionicons.min.css') }}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('dist/css/AdminLTE.min.css') }}">
+    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+          page. However, you can choose any other skin. Make sure you
+          apply the skin class to the body tag so the changes take effect. -->
+    <link rel="stylesheet" href="{{ asset('dist/css/skins/skin-blue.min.css') }}">
+
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Google Font -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body class="hold-transition skin-blue sidebar-mini" style="height: auto; min-height: 100%;" >
+
+<div class="wrapper"  style=" min-height: 1000px;
+  min-width: 10%;max-width: 100%">
+    {% block left_side_columns %}
+        <aside class="main-sidebar">
+
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                    </div>
+                    <div class="pull-left info">
+                        <p style="color: white">Boudhief Nadia</p>
+
+                        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                    </div>
+                    <br><br>
+                </div>
+                <br>
+                <form action="#" method="get" class="sidebar-form">
+                    <div class="input-group">
+                        <input type="text" name="q" class="form-control" placeholder="Search...">
+                        <span class="input-group-btn">
+              <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+              </button>
+            </span>
+                    </div>
+                </form>
+
+                <ul class="sidebar-menu" data-widget="tree">
+                    <li class="header">HEADER</li>
+
+                    <li><a href="{{ path('LivraisonReadCoursier') }}"><i class="fa fa-link"></i> <span>Orders To Deliver</span></a></li>
+
+                </ul></section></aside> {% endblock %}
     {% block Content_Wrapper %}
     <div class="content-wrapper" style=" min-height: 1500px;min-width:10%; max-width:80% ;max-height: 2000px ;margin-top:2%;margin-bottom: 3%  ; background-color:  #1F2739">
 
@@ -119,122 +182,151 @@
 
 
             </style>
+        <h1><span class="yellow">Welcome  </span></h1>
+        <br><br>
+        <h1><span class="yellow">Order List to deliver   </span></h1>
+        <br><br>
+        {% if(tot<0) %}
+            <h1>you have no orders to deliver</h1>
+        {% endif %}
+        {% if(tot>0) %}
+            <h1>you have to deliver : {{ tot }} (total) </h1>
+        {% endif %}
+        <br><br>
 
-            <h1><span class="yellow">Order List</span></h1>
-            <br><br>
-                <table class="container"  >
+        <table class="container"  >
+            <tr>
+                <td><h5>Client First Name</h5></td>
+                <td><h5>Client Name</h5></td>
+                <td><h5>Client Address</h5></td>
+                <td><h5>Client Phone N°</h5></td>
+                <td><h5>Registration Date</h5></td>
+                <td><h5>Delivery Status</h5></td>
+                <td><h5>Shipping Cost</h5></td>
+                <td><h5>Register Delivery</h5></td>
+            </tr>
+
+            {% if(nb<0) %}
+                <h1>You have no orders to deliver !</h1>
+            {% endif %}
+            {% if(nb>0) %}
+                {% for i in 0..nb %}
                     <tr>
-                        <td><h5>Client First Name</h5></td>
-                        <td><h5>Client Name</h5></td>
-                        <td><h5>Client Address</h5></td>
-                        <td><h5>Client Phone N°</h5></td>
-                        <td><h5>Registration Date</h5></td>
-                        <td><h5>Delivery Status</h5></td>
-                        <td><h5>Shipping Cost</h5></td>
-                        <td><h5>Cancel Delivery</h5></td>
-                        <td><h5>Update Delivery</h5></td>
-                        <td><h5>Delete Delivery</h5></td>
-                        <td><h5>Register Delivery</h5></td>
+
+                    {% if(liste2[i].etatlivraison==1) %}
+                        <tr style="background-color: #4d9200">
+                        <td> {{ liste1[i].userprenom }}</td>
+                        <td>{{liste1[i].usernom }}</td>
+                        <td>  {{ liste2[i].adresselivraison}}</td>
+                        <td>  {{ liste1[i].userphone}}</td>
+                        <td>  {{ liste2[i].dateenregistrement |date("d/m/Y")}}</td>
+                        <td style="color: black" >Order Canceled !!</td>
+                        <td> {{ liste3[i].fraislivraison }}</td>
+                        <td style="color: black" >Order Canceled !!</td>
+                    {% endif %}
+                    {% if(liste2[i].etatlivraison==0) %}
+                        <tr style="background-color: #2B81AF">
+                        <td> {{ liste1[i].userprenom }}</td>
+                        <td>{{liste1[i].usernom }}</td>
+                        <td>  {{ liste2[i].adresselivraison}}</td>
+                        <td>  {{ liste1[i].userphone}}</td>
+                        <td>  {{ liste2[i].dateenregistrement |date("d/m/Y")}}</td>
+                        {% if(liste2[i].livraisonrecue==0) %}
+                            <td style="color: black">Not delivered yet !</td>
+                            <td> {{ liste2[i].fraislivraison }}</td>
+
+                            <td><a href="{{ path('LivraisonValideCoursier',{'idLivraison':liste2[i].idlivraison}) }}">Save</a></td>
+                        {% endif %}
+                        {% if(liste2[i].livraisonrecue!=0) %}
+                            <td style="color: black">Order Delivered !</td>
+                            <td> {{ liste2[i].fraislivraison }}</td>
+                            <td style="color: black">Order Delivered !</td>
+                        {% endif %}
+                    {% endif %}
                     </tr>
-                    {% for i in 0..nbr %}
+
+                {% endfor %}
+            {% endif %}
+        </table>
+        <br><br><br>
+        <h1><span class="yellow">AlloCoursier List</span></h1>
+        <br><br>
+        <table class="container"  >
+            <tr>
+                <td><h5>Client First Name</h5></td>
+                <td><h5>Client Name</h5></td>
+                <td><h5>Client Address</h5></td>
+                <td><h5>Client Phone N°</h5></td>
+                <td><h5>Registration Date</h5></td>
+                <td><h5>Delivery Status</h5></td>
+                <td><h5>Address to Deliver</h5></td>
+                <td><h5>Description</h5></td>
+                <td><h5>Shipping Cost</h5></td>
+                <td><h5>Register Delivery</h5></td>
+            </tr>
+            {% if(nbr<0 ) %}
+                <h1>You have no orders for AlloCoursier Service</h1>
+            {% endif %}
+            {% if(nbr>0 ) %}
+                {% for i in 0..nbr %}
                     <tr>
 
-                        {% if(liste3[i].etatlivraison==1) %}
-                            <tr style="background-color: #4d9200">
-                            <td> {{ liste1[i].userprenom }}</td>
-                            <td>{{liste1[i].usernom }}</td>
-                            <td>  {{ liste3[i].adresselivraison}}</td>
-                            <td>  {{ liste1[i].userphone}}</td>
-                            <td>  {{ liste3[i].dateenregistrement |date("d/m/Y")}}</td>
-                            <td style="color: black" >Order Canceled !!</td>
-                            <td> {{ liste3[i].fraislivraison }}</td>
-                            <td style="color: black" >Order Canceled !!</td>
-                        {% endif %}
-                        {% if(liste3[i].etatlivraison==0) %}
-                            <tr style="background-color: #2B81AF">
-                            <td> {{ liste1[i].userprenom }}</td>
-                            <td>{{liste1[i].usernom }}</td>
-                            <td>  {{ liste3[i].adresselivraison}}</td>
-                            <td>  {{ liste1[i].userphone}}</td>
-                            <td>  {{ liste3[i].dateenregistrement |date("d/m/Y")}}</td>
-                                {% if(liste3[i].livraisonrecue==0) %}
-                                    <td style="color: black">Not delivered yet !</td>
-                                    <td> {{ liste3[i].fraislivraison }}</td>
+                    {% if(liste8[i].etatlivraison==1) %}
+                        <tr style="background-color: #dd0908">
+                        <td> {{ liste4[i].userprenom }}</td>
+                        <td>{{liste4[i].usernom }}</td>
+                        <td>  {{ liste4[i].useradresse}}</td>
+                        <td>  {{ liste4[i].userphone}}</td>
+                        <td>  {{ liste8[i].dateenregistrement |date("d/m/Y")}}</td>
+                        <td style="color: black"> Order Canceled !!</td>
+                        <td> {{ liste5[i].description }}</td>
+                        <td> {{ liste8[i].fraislivraison }}</td>
+                        <td style="color: black" >Order Canceled !!</td>
+                    {% endif %}
+                    {% if(liste8[i].etatlivraison==0) %}
+                        <tr style="background-color: #2B81AF">
+                        <td> {{ liste4[i].userprenom }}</td>
+                        <td>{{liste4[i].usernom }}</td>
+                        <td>  {{ liste4[i].useradresse}}</td>
+                        <td>  {{ liste4[i].userphone}}</td>
 
-                                    <td><a href="{{ path('LivraisonValide',{'idLivraison':liste3[i].idlivraison}) }}">Save</a></td>
-                                {% endif %}
-                                {% if(liste3[i].livraisonrecue!=0) %}
-                                    <td style="color: black">Order Delivered !</td>
-                                    <td> {{ liste3[i].fraislivraison }}</td>
-                                    <td style="color: black">Order Delivered !</td>
-                                {% endif %}
+                        <td>  {{ liste8[i].dateenregistrement |date("d/m/Y")}}</td>
+                        {% if(liste8[i].livraisonrecue==0) %}
+                            <td style="color: black">Not delivered yet !</td>
+                            <td> {{ liste5[i].adresselivraison }}</td>
+                            <td> {{ liste5[i].description }}</td>
+                            <td> {{ liste8[i].fraislivraison }}</td>
+                            <td><a href="{{ path('LivraisonValideCoursier',{'idLivraison':liste8[i].idlivraison}) }}">Save</a></td>
                         {% endif %}
-                      </tr>
-                    {% endfor %}
-                    </table>
-                         <br><br><br>
-            <h1><span class="yellow">AlloCoursier List</span></h1>
-            <br><br>
-                <table class="container"  >
-                    <tr>
-                        <td><h5>Client First Name</h5></td>
-                        <td><h5>Client Name</h5></td>
-                        <td><h5>Client Address</h5></td>
-                        <td><h5>Client Phone N°</h5></td>
-                        <td><h5>Registration Date</h5></td>
-                        <td><h5>Delivery Status</h5></td>
-                        <td><h5>Address to Deliver</h5></td>
-                        <td><h5>Description</h5></td>
-                        <td><h5>Shipping Cost</h5></td>
-                        <td><h5>Register Delivery</h5></td>
+                        {% if(liste8[i].livraisonrecue!=0) %}
+                            <td style="color: black"> Order Delivered !</td>
+                            <td> {{ liste5[i].adresselivraison }}</td>
+                            <td> {{ liste5[i].description }}</td>
+                            <td> {{ liste8[i].fraislivraison }}</td>
+                            <td style="color: black"> Order Delivered !</td>
+                        {% endif %}
+
+                    {% endif %}
                     </tr>
-                    {% for i in 0..nb %}
-                    <tr>
 
-                        {% if(liste7[i].etatlivraison==1) %}
-                            <tr style="background-color: #dd0908">
-                            <td> {{ liste5[i].userprenom }}</td>
-                            <td>{{liste5[i].usernom }}</td>
-                            <td>  {{ liste7[i].adresselivraison}}</td>
-                            <td>  {{ liste5[i].userphone}}</td>
-                            <td>  {{ liste7[i].dateenregistrement |date("d/m/Y")}}</td>
-                            <td style="color: black"> Order Canceled !!</td>
-                            <td> {{ liste8[i].adresselivraison }}</td>
-                            <td> {{ liste8[i].description }}</td>
-                            <td> {{ liste7[i].fraislivraison }}</td>
-                            <td style="color: black" >Order Canceled !!</td>
-                        {% endif %}
-                        {% if(liste7[i].etatlivraison==0) %}
-                            <tr style="background-color: #2B81AF">
-                            <td> {{ liste5[i].userprenom }}</td>
-                            <td>{{liste5[i].usernom }}</td>
-                            <td>  {{ liste7[i].adresselivraison}}</td>
-                            <td>  {{ liste5[i].userphone}}</td>
+                {% endfor %}
+            {% endif %}
+        </table>
+        <br><br><br>
+        </center>
 
-                            <td>  {{ liste7[i].dateenregistrement |date("d/m/Y")}}</td>
-                                {% if(liste7[i].livraisonrecue==0) %}
-                                    <td style="color: black">Not delivered yet !</td>
-                                    <td> {{ liste8[i].adresselivraison }}</td>
-                                    <td> {{ liste8[i].description }}</td>
-                                    <td> {{ liste7[i].fraislivraison }}</td>
-                                    <td><a href="{{ path('LivraisonValide',{'idLivraison':liste7[i].idlivraison}) }}">Save</a></td>
-                                {% endif %}
-                                {% if(liste7[i].livraisonrecue!=0) %}
-                                    <td style="color: black"> Order Delivered !</td>
-                                    <td> {{ liste8[i].adresselivraison }}</td>
-                                    <td> {{ liste8[i].description }}</td>
-                                    <td> {{ liste7[i].fraislivraison }}</td>
-                                    <td style="color: black"> Order Delivered !</td>
-                                {% endif %}
+    {% endblock %}
+    {% block jquery %}<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../dist/js/adminlte.min.js"></script>
+    {% endblock %}</section>
+</div></div>
 
-                        {% endif %}
-                      </tr>
-                    {% endfor %}
-                    </table>
-            <br><br><br>
-        </section></div>
-      {% endblock %}
-
+</div>
+</body>
+</html>
 
 
 

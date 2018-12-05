@@ -120,24 +120,28 @@ class LivraisonController extends Controller
     {
         $id=$this->getUser()->getId();
 
-            $l1=$this->getDoctrine()->getRepository(User::class)->AfficherClientLivraisonCoursier( $id);
-            $l2=$this->getDoctrine()->getRepository(Livraison::class)->AfficherLivraisonCoursier($id);
-           // $l4=$this->getDoctrine()->getRepository(User::class)->countLivraisonCoursier($id);
 
+            $l1=$this->getDoctrine()->getRepository(User::class)->AfficherClientLivraisonCoursier( $id);// true
+            $l2=$this->getDoctrine()->getRepository(Livraison::class)->AfficherLivraisonCoursier($id);// true
 
-           // $l5=$this->getDoctrine()->getRepository(User::class)->AfficherClientAllocoursierCoursier($id);
-            //$l7=$this->getDoctrine()->getRepository(Livraison::class)->AfficherAlloCoursier($id);
-            //$l8=$this->getDoctrine()->getRepository(Livraison::class)->AfficherAlloCoursierCoursier($id);
-            //$l9=$this->getDoctrine()->getRepository(User::class)->countAllocoursierCoursier($id);
-            //$l10=$this->getDoctrine()->getRepository(User::class)->countCoursierCoursier($id);
+            $l4=$this->getDoctrine()->getRepository(User::class)->AfficherClientAllocoursierCoursier($id);
+            $l5=$this->getDoctrine()->getRepository(Livraison::class)->AfficherAlloCoursierCoursier($id);
+            $l8=$this->getDoctrine()->getRepository(Livraison::class)-> AfficherLivraisonAlloCoursier($id);
 
-
-            //$nb=$l4['nb']-1;
-            //$nbr=$l9['nb']-1;
-
-            return $this->render('@Troc/Coursier/test.html.twig', array('liste1'=>$l1,'liste2'=>$l2));
+            $l3=$this->getDoctrine()->getRepository(User::class)->countLivraisonCoursier($id);// true
+            $l6=$this->getDoctrine()->getRepository(User::class)->countOrders($id);
+            $l7=$this->getDoctrine()->getRepository(User::class)->countOrdersAllo($id);
+            $tot=$l6['nbr'];
+            $nbr=$l7['num']-1;
+            $nb=$l3['nb']-1;
+        return $this->render('@Troc/Coursier/LivraisonCoursier.html.twig', array('liste1'=>$l1,'liste2'=>$l2,'nb'=>$nb,'liste4'=>$l4,'liste5'=>$l5,'nbr'=>$nbr,'tot'=>$tot,'liste8'=>$l8));
 
     }
+    public function LivraisonValideCoursierAction(Request $request,$idLivraison)
+    {   $al=$this->getDoctrine()->getManager();
+        $allo=$this->getDoctrine()->getRepository(Livraison::class)->ValiderLivraison($idLivraison);
+        $al->flush($allo);
+        return $this->redirectToRoute('LivraisonReadCoursier');}
 
 }
 

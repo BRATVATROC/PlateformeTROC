@@ -23,3 +23,16 @@
 </tr>
     </table>
 {% endfor %}
+{% for m in liste3%}
+    <table>
+        <tr>
+    <td>  {{ m.dateenregistrement |date("d/m/Y")}}</td>
+            <td>  {{ m.adresselivraison}}</td>
+            <td>  {{ m.dateenregistrement |date("d/m/Y")}}</td>
+                <td> {{m.fraislivraison }}</td>
+
+                <td><a href="{{ path('LivraisonValide',{'idLivraison':m.idlivraison}) }}">Save</a></td>
+
+</tr>
+    </table>
+{% endfor %}
