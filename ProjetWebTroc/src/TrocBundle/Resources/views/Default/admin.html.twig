@@ -40,7 +40,7 @@
                         <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
-                        <p style="color: white">Anis Saidani</p>
+                        <p style="color: white">mayamen halaoua</p>
 
                         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                     </div>
@@ -59,12 +59,27 @@
 
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="header">HEADER</li>
-                    <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Livraisons</span></a></li>
+                    <li class="treeview" >
+                    <li class="active treeview">
+                        <a href="#">
+                            <i class="fa fa-link"></i> <span>Shipping</span>
+                            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                        </a>
+                        <ul class="treeview-menu">
 
-                    <li><a href="#"><i class="fa fa-link"></i> <span>Commandes</span></a></li>
-                    <li><a href="#"><i class="fa fa-link"></i> <span>Réclamations</span></a></li>
-                    <li><a href="#"><i class="fa fa-link"></i> <span>Événements</span></a></li>
-                    <li><a href="#"><i class="fa fa-link"></i> <span>Bannissement</span></a></li>
+                            <li class="active">&nbsp &nbsp&nbsp<i class="fa fa-circle-o">&nbsp &nbsp</i> <span><a href="{{ path('LivraisonRead') }}"> Lists</a></span></li>
+                            <li class="active">&nbsp &nbsp&nbsp<i class="fa fa-circle-o">&nbsp &nbsp</i> <span><a  href="{{ path('showcoursier') }}">Delivery-Man List</a></span></li>
+                            <li class="active">&nbsp &nbsp&nbsp<i class="fa fa-circle-o">&nbsp &nbsp</i> <span><a  href="{{ path('livraisondate') }}">Calender of shipping</a></span></li>
+                        </ul>
+                    </li>
+
+                    </li>
+                    <li><a href="#"><i class="fa fa-link"></i> <span>Orders</span></a></li>
+                    <li><a href="#"><i class="fa fa-link"></i> <span>Reclamations</span></a></li>
+                    <li><a href="#"><i class="fa fa-link"></i> <span>Events</span></a></li>
+                    <li><a href="#"><i class="fa fa-link"></i> <span>Accounts</span></a></li>
                     <li class="treeview"><a href="#"><i class="fa fa-link"></i> <span>Feedbacks</span> <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span></a>
@@ -90,158 +105,16 @@
 
         </aside> {% endblock %}
     {% block Content_Wrapper %}
-    <div class="content-wrapper" style=" min-height: 1500px;min-width:10%; max-width:80% ;max-height: 2000px ;margin-top:2%;margin-bottom: 3%  ; background-color:  #1F2739">
-
-        <section class="content-header">
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-                <li class="active">Here</li>
-            </ol>
-            <h1><span class="yellow">Liste</span> Réclamation</h1>
-            <style type="text/css" media="screen">
-                body {
-                    font-family: 'Open Sans', sans-serif;
-                    font-weight: 300;
-                    line-height: 1.42em;
-                    color:#A7A1AE;
-                    background-color:#1F2739;
-                }
-
-                h1 {
-                    font-size:3em;
-                    font-weight: 300;
-                    line-height:1em;
-                    text-align: center;
-                    color: #4DC3FA;
-                }
-
-                h2 {
-                    font-size:1em;
-                    font-weight: 300;
-                    text-align: center;
-                    display: block;
-                    line-height:1em;
-                    padding-bottom: 2em;
-                    color: #FB667A;
-                }
-
-                h2 a {
-                    font-weight: 700;
-                    text-transform: uppercase;
-                    color: #FB667A;
-                    text-decoration: none;
-                }
-
-                .blue { color: #185875; }
-                .yellow { color: #FFF842; }
-
-                .container th h1 {
-                    font-weight: bold;
-                    font-size: 1em;
-                    text-align: left;
-                    color: #185875;
-                }
-
-                .container td {
-                    font-weight: normal;
-                    font-size: 1em;
-                    -webkit-box-shadow: 0 2px 2px -2px #0E1119;
-                    -moz-box-shadow: 0 2px 2px -2px #0E1119;
-                    box-shadow: 0 2px 2px -2px #0E1119;
-                }
-
-                .container {
-                    text-align: left;
-                    overflow: hidden;
-                    width: 80%;
-                    margin: 0 auto;
-                    display: table;
-                    padding: 0 0 8em 0;
-                }
-
-                .container td, .container th {
-                    padding-bottom: 2%;
-                    padding-top: 2%;
-                    padding-left:2%;
-                }
-
-                /* Background-color of the odd rows */
-                .container tr:nth-child(odd) {
-                    background-color: #323C50;
-                }
-
-                /* Background-color of the even rows */
-                .container tr:nth-child(even) {
-                    background-color: #2C3446;
-                }
-
-                .container th {
-                    background-color: #1F2739;
-                }
-
-                .container td:first-child { color: #FB667A; }
-
-                .container tr:hover {
-                    background-color: #464A52;
-                    -webkit-box-shadow: 0 6px 6px -6px #0E1119;
-                    -moz-box-shadow: 0 6px 6px -6px #0E1119;
-                    box-shadow: 0 6px 6px -6px #0E1119;
-                }
-
-                .container td:hover {
-                    background-color: #FFF842;
-                    color: #403E10;
-                    font-weight: bold;
-
-                    box-shadow: #7F7C21 -1px 1px, #7F7C21 2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
-                    transform: translate3d(6px, -6px, 0);
-
-                    transition-delay: 0s;
-                    transition-duration: 0.4s;
-                    transition-property: all;
-
-                }
-
-                @media (max-width: 800px) {
-                    .container td:nth-child(4),
-                    .container th:nth-child(4) { display: none; }
-                }
 
 
-            </style>
-
-            <table class="container">
-                <tr>
-                    <th><h1>Description</h1></th>
-                    <th><h1>Date</h1></th>
-                    <th><h1>EtatReclamation</h1></th>
-                    <th><h1>Numéro Annonce</h1></th>
-                    <th><h1>Troqueur</h1></th>
-                    <th><h1>Type Reclamation</h1></th>
-                    <th><h1>Réclamateur</h1></th>
-
-                    </center>
-                </tr>
-                {% for m in list %}
-                    <tr>
-                        <td>{{ m.Description }}</td>
-                        <td>{{ m.Date }}</td>
-                        <td>{{ m.EtatReclamation }}</td>
-                        <td>{{ m.NumeroAnnonce }}</td>
-                        <td>{{ m.Troqueur }}</td>
-                        <td>{{ m.TypeReclamation }}</td>
-                        <td>{{ m.Reclamateur }}</td>
-                    </tr>
-                {% endfor %}
-
-            </table>
-        </section> {% endblock %}
-        {% block jquery %}<script src="../bower_components/jquery/dist/jquery.min.js"></script>
-            <!-- Bootstrap 3.3.7 -->
-            <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-            <!-- AdminLTE App -->
-            <script src="../dist/js/adminlte.min.js"></script>{% endblock %}
-    </div>
+    {% endblock %}
+    {% block jquery %}<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap 3.3.7 -->
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../dist/js/adminlte.min.js"></script>
+    {% endblock %}</section>
+</div></div>
 
 </div>
 </body>

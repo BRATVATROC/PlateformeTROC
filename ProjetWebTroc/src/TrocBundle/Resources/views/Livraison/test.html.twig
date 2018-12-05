@@ -1,0 +1,7 @@
+<td>id</td><td>nom</td><td>prenom</td><td>adress</td><td>phone</td></tr>
+{% for m in coursiers %}
+    <tr><td>{{ m.id }}</td><td>{{ m.lib }}</td><td>{{ m.pays }}</td>
+        <td> <a href="{{ path ('update_modele',{'id':m.id}) }}" > Modifier </a> </td>
+        <td> <a href="{{ path ('delete_modele',{'id':m.id}) }}" > Delete </a> </td>
+    </tr>
+{% endfor %}

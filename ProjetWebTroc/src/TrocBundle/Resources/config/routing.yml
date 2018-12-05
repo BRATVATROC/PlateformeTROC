@@ -41,6 +41,51 @@ page:
     path:     /single
     defaults: { _controller: TrocBundle:Default:page }
 
+AlloCoursierCancel:
+    path:     /AlloCoursierCancel/{idalloservice}
+    defaults: { _controller: TrocBundle:Allocoursier:AlloCoursierCancel }
+AlloCoursierCreate:
+    path:     /ajoutAlloCoursier
+    defaults: { _controller: TrocBundle:Allocoursier:AlloCoursierCreate }
+AlloCoursierRead:
+    path:     /listAlloCoursier
+    defaults: { _controller: TrocBundle:Allocoursier:AlloCoursierRead }
+AlloCoursierDelete:
+    path:     /AlloCoursierDelete/{idalloservice}
+    defaults: { _controller: TrocBundle:Allocoursier:AlloCoursierDelete }
+AlloCoursierUpdate:
+    path:     /AlloCoursierUpdate/{idalloservice}
+    defaults: { _controller: TrocBundle:Allocoursier:AlloCoursierUpdate}
+LivraisonCreate:
+    path:     /LivraisonCreate
+    defaults: { _controller: TrocBundle:Livraison:LivraisonCreate }
+LivraisonRead:
+    path:     /listLivraison
+    defaults: { _controller: TrocBundle:Livraison:LivraisonRead }
+LivraisonDelete:
+    path:     /LivraisonDelete/{idLivraison}
+    defaults: { _controller: TrocBundle:Livraison:LivraisonDelete }
+LivraisonUpdate:
+    path:     /LivraisonUpdate/{idLivraison}
+    defaults: { _controller: TrocBundle:Livraison:LivraisonUpdate}
+LivraisonValide:
+    path:     /ValiderLivraison/{idLivraison}
+    defaults: { _controller: TrocBundle:Livraison:ValiderLivraison}
+LivraisonCancel:
+    path:     /LivraisonCancel/{idLivraison}
+    defaults: { _controller: TrocBundle:Livraison:CancelLivraison }
+LivraisonParDate:
+    path:     /LivraisonParDate/{dateEnregistrement}
+    defaults: { _controller: TrocBundle:Livraison:LivraisonParDate }
+showcoursier:
+    path:     /listCoursier
+    defaults: { _controller: TrocBundle:Livraison:showcoursier }
+livraisondate:
+    path:     /livraisondate
+    defaults: { _controller: TrocBundle:Livraison:livraisondate }
+comment:
+    path:     /test
+    defaults: { _controller: TrocBundle:Livraison:idComment }
 rec_admin:
-    path:     /admin
-    defaults: { _controller: TrocBundle:Reclamation:Reclamation }
+    path:     /rec
+    defaults: { _controller: TrocBundle:Default:admin }

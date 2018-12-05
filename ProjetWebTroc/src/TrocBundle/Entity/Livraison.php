@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Livraison
  *
  * @ORM\Table(name="livraison", indexes={@ORM\Index(name="idClient", columns={"idClient"}), @ORM\Index(name="idCoursier", columns={"idCoursier"}), @ORM\Index(name="numCommande", columns={"numCommande"}), @ORM\Index(name="numAL", columns={"numAL"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="TrocBundle\Repository\LivraisonRepository")
  */
 class Livraison
 {
