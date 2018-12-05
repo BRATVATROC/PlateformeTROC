@@ -1,0 +1,25 @@
+{% for m in liste1 %}
+    <table>
+        <tr>
+
+            <tr style="background-color: #4d9200">
+            <td> {{ m.userprenom }}</td>
+            <td>{{m.usernom }}</td>
+            <td>  {{ m.useradresse}}</td>
+            <td>  {{ m.userphone}}</td>
+</tr>
+    </table>
+{% endfor %}
+{% for m in liste2 %}
+    <table>
+        <tr>
+    <td>  {{ m.dateenregistrement |date("d/m/Y")}}</td>
+            <td>  {{ m.adresselivraison}}</td>
+            <td>  {{ m.dateenregistrement |date("d/m/Y")}}</td>
+                <td> {{m.fraislivraison }}</td>
+
+                <td><a href="{{ path('LivraisonValide',{'idLivraison':m.idlivraison}) }}">Save</a></td>
+
+</tr>
+    </table>
+{% endfor %}

@@ -98,6 +98,18 @@ class LivraisonRepository extends \Doctrine\ORM\EntityRepository
         $query = $this->getEntityManager()->createQuery(" select  COUNT(l.idlivraison) as x ,u.id as id from  AppBundle:User u ,TrocBundle:Livraison l where l.idcoursier=u.id and l.etatlivraison=0  GROUP BY l.idcoursier ORDER by x ASC  ") ;
         return $query->getResult();
     }
+     // Partie Coursier :
+    public function AfficherClientLivraisonCoursier( $id)
+    {
+        $query = $this->getEntityManager()->createQuery(" select u.usernom,u.userprenom,u.useradresse,u.userphone from AppBundle:User u ,TrocBundle:Livraison c where c.idclient=u.id and c.idcoursier=$id and c.numcommande IS NOT NULL ");
+        return $query->getResult();
+    }
 
+        public function AfficherLivraisonCoursier($id)
+    {
+        $query = $this->getEntityManager()->createQuery("select c from AppBundle:User u ,TrocBundle:Livraison c where c.idclient=u.id and c.idcoursier=$id and c.numcommande IS NOT NULL  ") ;
+
+        return $query->getResult();
+    }
 
 }

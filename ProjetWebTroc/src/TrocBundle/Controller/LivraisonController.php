@@ -116,7 +116,28 @@ class LivraisonController extends Controller
 
         return $this->render('@Troc/Livraison/livraisondate.html.twig', array('liste'=>$liste,'liste1'=>$liste1));
     }
+    public function LivraisonReadCoursierAction()
+    {
+        $id=$this->getUser()->getId();
 
+            $l1=$this->getDoctrine()->getRepository(User::class)->AfficherClientLivraisonCoursier( $id);
+            $l2=$this->getDoctrine()->getRepository(Livraison::class)->AfficherLivraisonCoursier($id);
+           // $l4=$this->getDoctrine()->getRepository(User::class)->countLivraisonCoursier($id);
+
+
+           // $l5=$this->getDoctrine()->getRepository(User::class)->AfficherClientAllocoursierCoursier($id);
+            //$l7=$this->getDoctrine()->getRepository(Livraison::class)->AfficherAlloCoursier($id);
+            //$l8=$this->getDoctrine()->getRepository(Livraison::class)->AfficherAlloCoursierCoursier($id);
+            //$l9=$this->getDoctrine()->getRepository(User::class)->countAllocoursierCoursier($id);
+            //$l10=$this->getDoctrine()->getRepository(User::class)->countCoursierCoursier($id);
+
+
+            //$nb=$l4['nb']-1;
+            //$nbr=$l9['nb']-1;
+
+            return $this->render('@Troc/Coursier/test.html.twig', array('liste1'=>$l1,'liste2'=>$l2));
+
+    }
 
 }
 

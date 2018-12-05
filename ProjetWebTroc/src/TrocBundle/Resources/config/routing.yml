@@ -89,3 +89,6 @@ comment:
 rec_admin:
     path:     /rec
     defaults: { _controller: TrocBundle:Default:admin }
+LivraisonReadCoursier:
+    path:     /coursierAffichage
+    defaults: { _controller: TrocBundle:Livraison:LivraisonReadCoursier }
