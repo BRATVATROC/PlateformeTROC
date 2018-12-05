@@ -5,7 +5,7 @@
         <div id="agileits-sign-in-page" class="sign-in-wrapper">
             <div class="agileinfo_signin">
                 <h3>Sign In</h3>
-            <form action="{{ path("fos_user_security_check") }}" method="post">
+                <form action="{{ path("fos_user_security_check") }}" method="post">
                     {{ render(controller('FOSUserBundle:Security:login')) }}
                     <div class="forgot-grid">
                         <label class="checkbox"><input type="checkbox" name="checkbox">Remember me</label>
@@ -33,7 +33,9 @@
                         </div>
 
                         <div class="clearfix"> </div>
-                    </form>
+                    </div>
+                </form>
+            </div>
                     </div>
 
                 <h6> Not a Member Yet? <a href="{{ path('fos_user_registration_register') }}">Sign Up Now</a> </h6>

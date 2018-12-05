@@ -1,0 +1,119 @@
+{% extends 'base.html.twig' %}
+{% block titre %} Annonce details {% endblock %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ asset('css/annonce.css') }}">
+
+{% endblock %}
+{% block Main %}
+
+
+    <div class="container">
+        <div class="card">
+            <div class="container-fliud">
+                <div class="wrapper row">
+                    <div class="preview col-md-6">
+
+                        <a style="width: 120px; border-radius: 5px; margin-bottom: 20px" class="btn btn-success" href="{{ path('annonce_index') }}"><i class="fa fa-caret-left">&emsp;Retour liste</i></a>
+                        <div class="preview-pic tab-content">
+                            <div style="margin-bottom: 30px" class="tab-pane active" id="pic-1"><img style="width: 600px" src="{% if annonce.iditems.imgiems %}{{ asset('upload/' ~ annonce.iditems.imgiems) }}{% endif %}"></div>
+                        </div>
+                        <a class="btn" style="background-color: #4C4C4C; color: #fff; width: 120px; border-radius: 5px; margin-bottom: 20px" href="{{ path('annonce_edit', { 'idAnnonce': annonce.idAnnonce }) }}">update</a>
+
+                        {{ form_start(delete_form) }}
+                        <input style="width: 120px; border-radius: 5px; margin-bottom: 20px; background-color: #ff4c4c; color: white;" class="btn" type="submit" value="Supprimer">
+                        {{ form_end(delete_form) }}
+
+                    </div>
+                    <div class="details col-md-6">
+                        <div class="panel panel-default text-center">
+                            <h3><div class="panel-title"><span style="vertical-align: middle;" class="glyphicon glyphicon-list-alt"></span>   Name</div></h3>
+                            <hr>
+                            <h4>{{ annonce.titreAnnonce }}</h4>
+                        </div>
+                        <div class="panel panel-default text-center">
+                            <div class="rating">
+                                <h3>
+                                    <div class="panel-title">
+                                        <span style="vertical-align: middle;" class="glyphicon glyphicon-info-sign"></span>  Category
+                                    </div>
+                                </h3>
+                                <hr>
+                                <h4>Basic</h4>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default text-center">
+                            <h3>
+                                <div class="panel-title">
+                                    <span style="vertical-align: middle;" class="glyphicon glyphicon-comment"></span>   Description
+                                </div>
+                            </h3>
+                            <hr>
+                            <p>{{ annonce.description }}</p>
+                        </div>
+
+                        <div class="panel panel-default text-center">
+                            <h3>
+                                <div class="panel-title">
+                                    <span style="vertical-align: middle;" class="glyphicon glyphicon-credit-card"></span>  Price
+                                </div>
+                            </h3>
+                            <hr>
+                            <h2>
+                                <font color="purple">
+                                    {{ annonce.prix }} TND
+                                </font>
+                            </h2>
+                        </div>
+
+                        <div class="panel panel-default text-center">
+                            <h3>
+                                <div class="panel-title">
+                                    <span style="vertical-align: middle;" class="fa fa-road"></span>  Adress
+                                </div>
+                            </h3>
+                            <hr>
+                            <h2>
+                                <font color="purple">
+                                    {{ annonce.adresse }}
+                                </font>
+                            </h2>
+                        </div>
+
+                        <div class="panel panel-default text-center">
+                            <h3>
+                                <div class="panel-title">
+                                    <span style="vertical-align: middle;" class="fa fa-calendar"></span>  Date
+                                </div>
+                            </h3>
+                            <hr>
+                            <h2><font color="purple"><td>{% if annonce.date %}{{ annonce.date|date('Y-m-d') }}{% endif %}</td></font></h2>   </font>
+                        </div>
+
+                        <div class="panel panel-default text-center">
+                            <h3>
+                                <div class="panel-title">
+                                    <span style="vertical-align: middle;" class="fa fa-info"></span>  Type
+                                </div>
+                            </h3>
+                            <hr>
+                            <h2><font color="purple"><td>{{ annonce.typeAnnonce }}</font></h2> </td>
+                        </div>
+
+                        <div class="panel panel-default text-center">
+                            <h3>
+                                <div class="panel-title">
+                                    <span style="vertical-align: middle;" class="fa fa-info"></span>  state
+                                </div>
+                            </h3>
+                            <hr>
+                            <h2><font color="purple"><td>{{ annonce.etatAnnonce }}</font></h2>  </td>
+                        </div>
+                        </tr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

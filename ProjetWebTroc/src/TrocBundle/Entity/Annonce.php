@@ -80,6 +80,14 @@ class Annonce
      */
     private $iditems;
 
+
+    /**
+    * @var integer
+    *
+    * @ORM\Column(name="view", type="integer", nullable=true)
+    */
+    private $view;
+
     /**
      * @var \Commande
      *
@@ -314,5 +322,29 @@ class Annonce
     public function getIdcommande()
     {
         return $this->idcommande;
+    }
+
+    /**
+     * Set view
+     *
+     * @param integer $view
+     *
+     * @return Annonce
+     */
+    public function setView($view)
+    {
+        $this->view = $view;
+    
+        return $this;
+    }
+
+    /**
+     * Get view
+     *
+     * @return integer
+     */
+    public function getView()
+    {
+        return $this->view;
     }
 }

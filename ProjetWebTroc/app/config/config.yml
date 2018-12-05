@@ -3,12 +3,15 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: "@TrocBundle/Resources/config/services.yml" }
+    - { resource: "@AnnonceBundle/Resources/config/services.yml" }
+    - { resource: "@ItemsBundle/Resources/config/services.yml" }
 
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
+    image_dir: '%kernel.project_dir%/web/upload'
 
 framework:
     translator: ~
@@ -81,3 +84,14 @@ fos_user:
     from_email:
         address: "nadia.boudhief@esprit.tn"
         sender_name: "Nadia"
+
+knp_paginator:
+    page_range: 5
+    default_options:
+        page_name: page
+        sort_field_name: sort
+        sort_direction_name: direction
+        distinct: true
+    template:
+        pagination: '@KnpPaginator/Pagination/twitter_bootstrap_v3_pagination.html.twig'
+        sortable: '@KnpPaginator/Pagination/sortable_link.html.twig'

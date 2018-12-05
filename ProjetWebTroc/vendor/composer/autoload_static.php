@@ -58,6 +58,11 @@ class ComposerStaticInit13d3d8018a040d4aa4f8c0ae42373b57
         'M' => 
         array (
             'Monolog\\' => 8,
+            'Mgilet\\NotificationBundle\\' => 26,
+        ),
+        'K' => 
+        array (
+            'Knp\\Bundle\\PaginatorBundle\\' => 27,
         ),
         'I' => 
         array (
@@ -67,6 +72,10 @@ class ComposerStaticInit13d3d8018a040d4aa4f8c0ae42373b57
         array (
             'Fig\\Link\\' => 9,
             'FOS\\UserBundle\\' => 15,
+        ),
+        'E' => 
+        array (
+            'EzSystems\\ShareButtonsBundle\\' => 29,
         ),
         'D' => 
         array (
@@ -192,6 +201,14 @@ class ComposerStaticInit13d3d8018a040d4aa4f8c0ae42373b57
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
+        'Mgilet\\NotificationBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mgilet/notification-bundle',
+        ),
+        'Knp\\Bundle\\PaginatorBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/knplabs/knp-paginator-bundle',
+        ),
         'Incenteev\\ParameterHandler\\' => 
         array (
             0 => __DIR__ . '/..' . '/incenteev/composer-parameter-handler',
@@ -203,6 +220,10 @@ class ComposerStaticInit13d3d8018a040d4aa4f8c0ae42373b57
         'FOS\\UserBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/friendsofsymfony/user-bundle',
+        ),
+        'EzSystems\\ShareButtonsBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ezsystems/share-buttons-bundle',
         ),
         'Doctrine\\Instantiator\\' => 
         array (
@@ -244,6 +265,13 @@ class ComposerStaticInit13d3d8018a040d4aa4f8c0ae42373b57
             'Twig_' => 
             array (
                 0 => __DIR__ . '/..' . '/twig/twig/lib',
+            ),
+        ),
+        'K' => 
+        array (
+            'Knp\\Component' => 
+            array (
+                0 => __DIR__ . '/..' . '/knplabs/knp-components/src',
             ),
         ),
         'D' => 

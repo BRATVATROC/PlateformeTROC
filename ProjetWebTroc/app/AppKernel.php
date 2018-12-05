@@ -19,6 +19,10 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new TrocBundle\TrocBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new AnnonceBundle\AnnonceBundle(),
+            new ItemsBundle\ItemsBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new Mgilet\NotificationBundle\MgiletNotificationBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

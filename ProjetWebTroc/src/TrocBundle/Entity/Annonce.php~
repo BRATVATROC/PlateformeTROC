@@ -80,6 +80,14 @@ class Annonce
      */
     private $iditems;
 
+
+    /**
+    * @var integer
+    *
+    * @ORM\Column(name="view", type="integer", nullable=true)
+    */
+    private $view;
+
     /**
      * @var \Commande
      *
