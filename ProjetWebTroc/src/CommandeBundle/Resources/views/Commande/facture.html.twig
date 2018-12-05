@@ -1,8 +1,79 @@
 
+  <meta charset="utf-8">
+  <title>Print</title>
 
-{{ commande.idcommande }}
-{{ commande.dateCommande | date }}
-{{ commande.idClient.usernom }} {{ commande.idClient.userprenom }}
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<body style="overflow-x: hidden">
+<div>
+  <div class="position-static">
+    <img src="C:\xampp\htdocs\PlateformeTROC\ProjetWebTroc\web\images\Capture.JPG" alt="logo" style="width: 150px ; height: 100px; transform: translate(20%,20%)">
+    <h5 class="text-right" style="color: red; transform: translate(-5%,-200%)">We TROC</h5>
+    <p class="text-right" style=" transform: translate(-5%,-200%)">Esprit Ghazela Tunis</p>
+    <p class="text-right" style=" transform: translate(-5%,-280%)">(+216) 77 777 777</p>
+  </div>
+  <hr style=" transform: translate(0%,-50px);width: 95%">
+  <div>
+    <ul class="collection">
+      <li class="collection-item" style="width: 20%">Facture N° #{{ commande.idcommande }}</li>
+    </ul>
+    <p style="transform: translate(40px,0%)">To Mr(s) {{ commande.idClient.usernom }} {{ commande.idClient.userprenom }}</p>
+    <p style="transform: translate(40px,0%)">{{ commande.idClient.useradresse }}</p>
+    <p style="transform: translate(40px,0%)">{{ commande.idClient.userphone }}</p>
+    <p style="transform: translate(40px,0%)">{{ commande.idClient.email }}</p>
+  </div>
+  <div>
+    <table class="striped   " >
+      <thead style="color: lightcoral">
+      <tr>
+        <th>Item</th>
+        <th>Owner</th>
+        <th>Price</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      {% for a in annonces %}
+      <tr>
+        <td>{{ a.iditems.nomitems }}</td>
+        <td>{{ a.iditems.idUser.usernom}} {{ a.iditems.idUser.userprenom}}</td>
+        <td>{{ a.prix }}</td>
+      </tr>
+      {% endfor %}
+      </tbody>
+    </table>
 
 
-test facture
+    <table style="width: 20%;transform: translate(340%,10%)" class="text-right">
+      <thead></thead>
+      <tr>
+        <td>Subtotal</td>
+        <td>{{ commande.montant }}</td>
+      </tr>
+      <tr>
+        <td>Livraison</td>
+        <td>0</td>
+      </tr>
+      <tr>
+        <td>Ammount Due:</td>
+        <td>{{ commande.montant }}</td>
+      </tr>
+    </table>
+
+  </div>
+  <br>
+  <div>
+    <p style="transform: translate(40px,0%)">Passed on {{ commande.dateCommande |date }}</p>
+    <p style="transform: translate(40px,0%)">Issued on 02/11/2018</p>
+    <p style="transform: translate(40px,0%)">Currency DNT</p>
+    <p class="text-right" style="transform: translate(-100px,0%)">Thank you for shopping at our Website!</p>
+  </div>
+</div>
+
+</body>

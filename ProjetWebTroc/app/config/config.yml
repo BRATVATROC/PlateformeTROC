@@ -83,6 +83,10 @@ fos_user:
         address: "nadia.boudhief@esprit.tn"
         sender_name: "Nadia"
 
+
+
+
+
 knp_snappy:
     pdf:
         enabled:    true
@@ -92,3 +96,7 @@ knp_snappy:
         enabled:    false
         binary:     C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltoimage.exe\ #"\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltoimage.exe\"" for Windows users
         options:    []
+
+cmen_google_charts:
+    version: "current"
+

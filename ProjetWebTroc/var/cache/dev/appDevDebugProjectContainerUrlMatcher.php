@@ -181,6 +181,11 @@ class appDevDebugProjectContainerUrlMatcher extends Symfony\Bundle\FrameworkBund
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'imprimer_facture')), array (  '_controller' => 'CommandeBundle\\Controller\\CommandeController::printAction',));
             }
 
+            // stats
+            if ('/commande/stats' === $pathinfo) {
+                return array (  '_controller' => 'CommandeBundle\\Controller\\CommandeController::statsAction',  '_route' => 'stats',);
+            }
+
         }
 
         elseif (0 === strpos($pathinfo, '/troc')) {

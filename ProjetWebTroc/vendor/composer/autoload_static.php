@@ -20,6 +20,10 @@ class ComposerStaticInit13d3d8018a040d4aa4f8c0ae42373b57
     );
 
     public static $prefixLengthsPsr4 = array (
+        'Z' => 
+        array (
+            'Zend\\Json\\' => 10,
+        ),
         'T' => 
         array (
             'Twig\\' => 5,
@@ -55,6 +59,10 @@ class ComposerStaticInit13d3d8018a040d4aa4f8c0ae42373b57
             'Psr\\Container\\' => 14,
             'Psr\\Cache\\' => 10,
         ),
+        'O' => 
+        array (
+            'Ob\\HighchartsBundle\\' => 20,
+        ),
         'M' => 
         array (
             'Monolog\\' => 8,
@@ -73,6 +81,10 @@ class ComposerStaticInit13d3d8018a040d4aa4f8c0ae42373b57
             'Fig\\Link\\' => 9,
             'FOS\\UserBundle\\' => 15,
         ),
+        'E' => 
+        array (
+            'EzSystems\\ShareButtonsBundle\\' => 29,
+        ),
         'D' => 
         array (
             'Doctrine\\Instantiator\\' => 22,
@@ -85,10 +97,15 @@ class ComposerStaticInit13d3d8018a040d4aa4f8c0ae42373b57
         'C' => 
         array (
             'Composer\\CaBundle\\' => 18,
+            'CMEN\\GoogleChartsBundle\\' => 24,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'Zend\\Json\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/zendframework/zend-json/src',
+        ),
         'Twig\\' => 
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
@@ -193,6 +210,10 @@ class ComposerStaticInit13d3d8018a040d4aa4f8c0ae42373b57
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
         ),
+        'Ob\\HighchartsBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ob/highcharts-bundle',
+        ),
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
@@ -216,6 +237,10 @@ class ComposerStaticInit13d3d8018a040d4aa4f8c0ae42373b57
         'FOS\\UserBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/friendsofsymfony/user-bundle',
+        ),
+        'EzSystems\\ShareButtonsBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ezsystems/share-buttons-bundle',
         ),
         'Doctrine\\Instantiator\\' => 
         array (
@@ -244,6 +269,10 @@ class ComposerStaticInit13d3d8018a040d4aa4f8c0ae42373b57
         'Composer\\CaBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/composer/ca-bundle/src',
+        ),
+        'CMEN\\GoogleChartsBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cmen/google-charts-bundle',
         ),
     );
 

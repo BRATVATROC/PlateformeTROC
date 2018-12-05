@@ -36,6 +36,11 @@ class AnnonceRepository extends \Doctrine\ORM\EntityRepository
         return $query->getResult();
     }
 
+    public function findMyAnnonces($id)
+    {
+        $query=$this->getEntityManager()->createQuery("select a from TrocBundle:Annonce a where a.idcommande IS NULL ");
 
+        return $query->getResult();
+    }
 
 }

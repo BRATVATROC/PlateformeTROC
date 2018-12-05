@@ -15,20 +15,36 @@
                         <input type="radio" name="livraison2" id="livraison2" autocomplete="off"> No
                     </label>
                 </div>
+                {% if commande.idannonce1 %}
+                    <p>Livraison price 8 Dt</p>
+                    <p>Price of the Command with Livraison : {{ commande.montant+8 }}</p>
 
-                <p>Price of the Command : {{ commande.montant }}</p>
-                <p>Livraison price 8 Dt</p>
-                <p>Price of the Command with Livraison : {{ commande.montant+8 }}</p>
+
+                    <div class="btn-group-toggle" data-toggle="buttons">Payment :
+                        <label class="btn btn-info">
+                            <input type="radio" name="payment1" id="payment1" autocomplete="off"> Payment when Liraison
+                        </label>
+                        <label class="btn btn-info">
+                            <input type="radio" name="payment2" id="payment2" autocomplete="off"> Payment with Credit Card
+                        </label>
+                    </div>
+                {% else %}
+                    <p>Price of the Command : {{ commande.montant }}</p>
+                    <p>Livraison price 8 Dt</p>
+                    <p>Price of the Command with Livraison : {{ commande.montant+8 }}</p>
 
 
-                <div class="btn-group-toggle" data-toggle="buttons">Payment :
-                    <label class="btn btn-info">
-                        <input type="radio" name="payment1" id="payment1" autocomplete="off"> Payment when Liraison
-                    </label>
-                    <label class="btn btn-info">
-                        <input type="radio" name="payment2" id="payment2" autocomplete="off"> Payment with Credit Card
-                    </label>
-                </div>
+                    <div class="btn-group-toggle" data-toggle="buttons">Payment :
+                        <label class="btn btn-info">
+                            <input type="radio" name="payment1" id="payment1" autocomplete="off"> Payment when Liraison
+                        </label>
+                        <label class="btn btn-info">
+                            <input type="radio" name="payment2" id="payment2" autocomplete="off"> Payment with Credit Card
+                        </label>
+                    </div>
+                {% endif %}
+
+
 
                 <a href="{{ path('read_commande') }}"><button type="submit" class="btn btn-outline-success">Update</button></a>
 

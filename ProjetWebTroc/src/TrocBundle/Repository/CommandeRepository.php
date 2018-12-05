@@ -27,4 +27,10 @@ class CommandeRepository extends \Doctrine\ORM\EntityRepository
         $query=$this->getEntityManager()->createQuery("select c from TrocBundle:Commande c where c.montant != 0  ");
         return $query->getResult();
     }
+
+    public function affectercoursier()
+    {
+        $query = $this->getEntityManager()->createQuery(" select  COUNT(l.idlivraison) as x ,u.id as id from  AppBundle:User u ,TrocBundle:Livraison l where l.idcoursier=u.id and l.etatlivraison=0  GROUP BY l.idcoursier ORDER by x ASC  ") ;
+        return $query->getResult();
+    }
 }

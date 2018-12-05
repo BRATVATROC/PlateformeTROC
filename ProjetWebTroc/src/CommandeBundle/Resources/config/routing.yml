@@ -46,3 +46,7 @@ imprimer_facture:
     path:     /print/{id}
     defaults: { _controller: CommandeBundle:Commande:print }
 
+
+stats:
+    path:     /stats
+    defaults: { _controller: CommandeBundle:Commande:stats }
