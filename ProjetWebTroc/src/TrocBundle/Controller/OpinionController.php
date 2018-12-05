@@ -44,6 +44,7 @@ class OpinionController extends Controller
         $opinion = new Opinion();
         $form = $this->createForm('TrocBundle\Form\OpinionType', $opinion);
         $form=$form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
 
            $n= $request->get('note');
@@ -51,10 +52,14 @@ class OpinionController extends Controller
             $opinion->setNote($n);
             $opinion->setIdUser($this->getUser());
             $em = $this->getDoctrine()->getManager();
+
+            $a= $em->getRepository('TrocBundle:Opinion')->NbrNoteOpinion();
+            var_dump($a);
+            die();
             $em->persist($opinion);
             $em->flush();
 
-            return $this->redirectToRoute('opinion_success');
+            return $this->redirectToRoute('opinion_aff', array('idOp' => $opinion->getIdop()));
         }
 
         return $this->render('@Troc/Opinion/new.html.twig', array(

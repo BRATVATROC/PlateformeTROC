@@ -2,6 +2,7 @@
 
 {% block Main %}
 
+    <h1>Opinion creation</h1>
 
     <div class="feedback main-grid-border">
         <div class="container">
@@ -16,7 +17,7 @@
                     <h3 >Donner nous votre avis et n'oublier pas de nous noter ! </h3>
                         {{ form_start(form) }}
                         {{ form_widget(form) }}
-                        <input id ="rating" type="number" name="note"  required hidden>
+                        <input id ="rating" type="number" name="note"  required>
                         <input class="col-md-3"type="submit" value="Confirmer" id="send">
                         <div class="col-md-6">
                             <label id ="err"  style="color: red;size: 10px" hidden>Don't forget to rate us ! </label>
@@ -33,27 +34,21 @@
                         </script>
                             {{ form_end(form) }}
                     </div>
-                    <div>
-                        <a href="{{ path('opinion_aff') }}">
-                            <h2 style="color:cornflowerblue;text-decoration: underline" >See What others thinks of us !</h2>
-                        </a></div>
 
-                             </div>
-                <br><hr><br><br>
-                            <div class="col-md-5">
+                        <div class="col-md-5">
                             {{ render(controller('TrocBundle:Opinion:NbreNote')) }}
                         </div>
-
+                        <div></div>
 
                     {% endblock %}
                 </div>
                 </div>
-                        </div>
-                </div>
 
                 </div>
 
-                </div>
+            </div>
+
+    </div>
 
 
 {% endblock %}

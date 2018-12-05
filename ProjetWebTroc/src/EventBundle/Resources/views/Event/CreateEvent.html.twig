@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block title %} Creating an Events {% endblock %}
+{% block Main %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3" style="margin-top: 50px; margin-left: -200px;">
+                <a type="button" class="btn btn-danger" style="width: 200px" href="{{ path('event_listEvent') }}"><i class="fa fa-backward"></i> &emsp;Back to the list</a>
+            </div>
+            <div class="col-md-6">
+                <h1 class="eventTitle" >Create an Event</h1>
+
+                {{ form_start(form) }}
+                {#{{ form_widget(form) }}#}
+                <label>Title</label>
+                {{ form_widget(form.titre, {'type' : 'text', 'attr': {'class' : 'form-control' }} ) }}
+                <label>Description</label>
+                {{ form_widget(form.description, {'type' : 'text', 'attr': {'class' : 'form-control' }} ) }}
+                <label>Max Capacity</label>
+                {{ form_widget(form.max, {'type' : 'number', 'attr': {'class' : 'form-control' }} ) }}
+                <label>Location</label>
+                {{ form_widget(form.location, {'type' : 'text', 'attr': {'class' : 'form-control' }} ) }}
+                <label>Title</label>
+                {{ form_widget(form.date, {'type' : 'datetime', 'attr': {'class' : 'form-control' }} ) }}
+                <label><Image></Image></label>
+                {{ form_widget(form.image, {'type' : 'file', 'attr': {'class' : 'form-control' }} ) }} <br>
+                    <input class="btn btn-info" style="width: 200px; display: block; margin: auto" type="submit" value="Create" />
+                {{ form_end(form) }}
+
+            </div>
+            <div class="col-md-3">
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

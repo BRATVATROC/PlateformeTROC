@@ -62,7 +62,12 @@ class User extends BaseUser
      * @ORM\Column(name="userImage", type="string", length=255, nullable=true)
      */
     private $userimage;
-
+    public function __construct()
+    {
+        parent::__construct();
+        // your own logic
+        $this->roles = array('ROLE_USER');
+    }
     public function getId()
     {
         return $this->id;
@@ -79,7 +84,7 @@ class User extends BaseUser
     public function setUsernom($usernom)
     {
         $this->usernom = $usernom;
-    
+
         return $this;
     }
 
@@ -103,7 +108,7 @@ class User extends BaseUser
     public function setUserprenom($userprenom)
     {
         $this->userprenom = $userprenom;
-    
+
         return $this;
     }
 
@@ -127,7 +132,7 @@ class User extends BaseUser
     public function setUsercin($usercin)
     {
         $this->usercin = $usercin;
-    
+
         return $this;
     }
 
@@ -151,7 +156,7 @@ class User extends BaseUser
     public function setUseradresse($useradresse)
     {
         $this->useradresse = $useradresse;
-    
+
         return $this;
     }
 
@@ -175,7 +180,7 @@ class User extends BaseUser
     public function setUserphone($userphone)
     {
         $this->userphone = $userphone;
-    
+
         return $this;
     }
 
@@ -199,7 +204,7 @@ class User extends BaseUser
     public function setUserimage($userimage)
     {if($userimage==null){$this->userimage="http://localhost/Bratva/Profile-icon-9.png";}
         else $this->userimage = $userimage;
-    
+
         return $this;
     }
 
@@ -212,4 +217,15 @@ class User extends BaseUser
     {
         return $this->userimage;
     }
+    public function getIdUser()
+    {
+        return $this->id;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
+
 }

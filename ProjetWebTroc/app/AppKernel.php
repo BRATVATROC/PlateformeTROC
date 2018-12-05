@@ -17,17 +17,16 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
+            new EventBundle\EventBundle(),
             new TrocBundle\TrocBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-            new AnnonceBundle\AnnonceBundle(),
-            new ItemsBundle\ItemsBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new Ob\HighchartsBundle\ObHighchartsBundle(),
             new LivraisonBundle\LivraisonBundle(),
             new CommandeBundle\CommandeBundle(),
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
             new CMEN\GoogleChartsBundle\CMENGoogleChartsBundle(),
             new FOS\CKEditorBundle\FOSCKEditorBundle(),
-
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
@@ -69,5 +68,4 @@ class AppKernel extends Kernel
         });
         $loader->load($this->getRootDir().'/config/config_'.$this->getEnvironment().'.yml');
     }
-
 }

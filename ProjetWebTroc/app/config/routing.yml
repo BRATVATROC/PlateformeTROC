@@ -39,3 +39,8 @@ troc_feedback:
 rec:
     resource: '@TrocBundle/Controller/'
     type: annotation
+
+event:
+    resource: "@EventBundle/Resources/config/routing.yml"
+    prefix:   /event
+
