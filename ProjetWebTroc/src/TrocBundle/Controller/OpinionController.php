@@ -43,16 +43,9 @@ class OpinionController extends Controller
         $form=$form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
-           $n= $request->get('note');
-
-            $opinion->setNote($n);
+            $opinion->setNote(2);
             $opinion->setIdUser($this->getUser()->getId());
             $em = $this->getDoctrine()->getManager();
-
-            $a= $em->getRepository('TrocBundle:Opinion')->NbrNoteOpinion();
-            var_dump($a);
-            die();
             $em->persist($opinion);
             $em->flush();
 
@@ -132,32 +125,12 @@ class OpinionController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    public function createDeleteForm(Opinion $opinion)
+    private function createDeleteForm(Opinion $opinion)
     {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('opinion_delete', array('idOp' => $opinion->getIdop())))
             ->setMethod('DELETE')
             ->getForm()
             ;
-    }
-    public function moyNoteAction(Request $reques)
-    {   $em = $this->getDoctrine()->getManager();
-        $a= $em->getRepository('TrocBundle:Opinion')->MoynoteOpinion();
-
-        //$a array contenant count et sum
-        $n=$a[1]/$a[2];
-        return $this->render('@Troc/Opinion/RatingsValue.html.twig', array(
-            'note' => $n,
-
-        ));
-
-    }
-    public function NbreNoteAction(Request $reques)
-    {   $em = $this->getDoctrine()->getManager();
-        $a= $em->getRepository('TrocBundle:Opinion')->NbrNoteOpinion();
-
-        return $this->render('@Troc/Opinion/RatingsNbre.html.twig', array('notes'=>$a,
-        ));
-
     }
 }

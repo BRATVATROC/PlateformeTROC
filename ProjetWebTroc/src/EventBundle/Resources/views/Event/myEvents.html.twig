@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+{% block title %} My Events {% endblock %}
+{% block Main %}
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="js/jquery-ui"></script>
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1" style="margin-top: 50px; margin-left: -200px;">
+            </div>
+            <div class="col-md-10">
+                <h1 class="eventTitle">My Events list</h1>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Id         </th>
+                        <th scope="col">Titre      </th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Max       </th>
+                        <th scope="col">Location  </th>
+                        <th scope="col">Picture  </th>
+                        <th scope="col">    {{ knp_pagination_sortable(events, 'Date', 'events.date ') }}   </th>
+                        <th scope="col" style="width: 250px">Actions    </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for event in events %}
+                        <tr>
+                            <td scope="row"><a href="{{ path('event_listEvent', { 'id': event.id }) }}">{{ event.id }}</a>
+                            </td>
+                            <td>{{ event.titre }}      </td>
+                            <td>{{ event.description }}</td>
+                            <td>{{ event.max }}        </td>
+                            <td>{{ event.location }}   </td>
+                            <td><img src={{ asset('uploads/'~ event.image) }} alt="bootsnipp placeholder="/images/wetroc.png" class="img-rounded img-responsive" style="width: 40px; height: 40px"/></td>
+                            <td>{{ event.date|date }}  </td>
+
+                            <td>
+                                <form action="" method="get">
+                                    <input  type="number" name="id" value="{{ event.id }}" style="display: none" data-toggle="modal" data-target="#exampleModal">
+                                    <a type="button" class="btn btn-info" style="width: 100px"  href="{{ path('event_deleteEvent',{'id':event.id}) }}">Delete</a>&emsp;
+                                    <input type="number" name="id" value="{{ event.id }}" style="display: none" data-toggle="modal" data-target="#exampleModal">
+                                    <a type="button" class="btn btn-info" style="width: 100px"  href="{{ path('event_updateEvent',{'id':event.id}) }}">Modify</a>
+                                </form>&emsp;
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-1" class="position-static" style="margin-top: 150px; margin-left: 50px; ">
+                <a type="button" class="btn btn-danger"  style="width: 200px; margin-bottom: 20px" href="{{ path('event_myEvent') }}"> check my Created event <i class="fa fa-forward"></i></a>
+                <a type="button" class="btn btn-danger"  style="width: 200px; margin-bottom: 20px" href="{{ path('event_goingTo') }}">'Going-to' Events  <i class="fa fa-forward"></i> </a>
+                &emsp;&emsp;
+                <a type="button" class="btn btn-danger"  style="width: 200px; margin-bottom: 20px" href="{{ path('event_createEvent') }}">Create a new event</a>
+            </div>
+        </div>
+        <div class="pagination">
+            {{ knp_pagination_render(events) }}
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Notification</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

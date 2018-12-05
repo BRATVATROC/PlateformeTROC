@@ -3,7 +3,6 @@
 namespace TrocBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Items
@@ -31,7 +30,7 @@ class Items
 
     /**
      * @var string
-     * @Assert\Image()
+     *
      * @ORM\Column(name="imgIems", type="string", length=255, nullable=false)
      */
     private $imgiems;

@@ -73,4 +73,15 @@ class User extends BaseUser
         return $this->id;
     }
 
+    public function getIdUser()
+    {
+        return $this->id;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
+        return $this;
+    }
+
 }

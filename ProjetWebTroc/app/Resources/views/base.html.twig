@@ -2,14 +2,16 @@
 <html>
 <head>
     <head>
-        <title>WeTROC</title>
+        <title>{% block title %}Resale_v2 a Classified ads Category Flat Bootstrap Responsive Website Template | All Classifieds :: w3layouts{% endblock %}</title>
         <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}"><!-- bootstrap-CSS -->
+        <link rel="stylesheet" href="{{asset('css/popUPBootsnipt.css')}}">
         <link rel="stylesheet" href="{{asset('css/bootstrap-select.css')}}"><!-- bootstrap-select-CSS -->
         <link href="{{asset('css/style.css')}}" rel="stylesheet" type="text/css" media="all" /><!-- style.css -->
         <link rel="stylesheet" type="text/css" href="{{asset('css/jquery-ui1.css')}}">
         <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}" /><!-- fontawesome-CSS -->
         <link rel="stylesheet" href="{{asset('css/menu_sideslide.css')}}" type="text/css" media="all"><!-- Navigation-CSS -->
         <link rel="stylesheet" href="{{asset('css/font-awesome1.min.css')}}" type="text/css" media="all">
+
         <!-- meta tags -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -99,6 +101,7 @@
                 });
             });
         </script>
+
     </head>
 <body>
 {% block menu %}
@@ -133,9 +136,7 @@
 {% block header %}
     <header>
         <div class="w3ls-header"><!--header-one-->
-
             <div class="w3ls-header-left">
-
             </div>
             <div class="w3ls-header-right">
                 <ul>
@@ -573,13 +574,9 @@
         </div>
         <div class="container">
             <div class="agile-its-header">
-                <div style="margin-left: 80%">{{render(controller('TrocBundle:Opinion:moyNote')) }}</div>
                 <div class="logo">
                     <h1><a href="{{ path('troc_homepage') }}"><span>We</span>Troc</a></h1>
-
-
                 </div>
-
                 <div class="agileits_search">
                     <form action="#" method="post">
                         <input name="Search" type="text" placeholder="How can we help you today?" required=" ">
@@ -600,12 +597,10 @@
                         <button type="submit" class="btn btn-default" aria-label="Left Align">
                             <i class="fa fa-search" aria-hidden="true"> </i>
                         </button>
-
                     </form>
-                    <a class="post-w3layouts-ad" href="{{ path('annonce_new') }}">Post Free Ad</a>
+                    <a class="post-w3layouts-ad" href="{{asset('post-ad.html')}}">Post Free Ad</a>
                 </div>
                 <div class="clearfix"></div>
-
             </div>
         </div>
     </header>
@@ -678,7 +673,6 @@
                     <h1><a href="troc_homepage"><span>We</span>Troc</a></h1>
                 </div>
                 <div class="w3-footer-social-icons">
-
                     <ul>
                         <li><a class="facebook" href="#"><i class="fa fa-facebook" aria-hidden="true"></i><span>Facebook</span></a></li>
                         <li><a class="twitter" href="#"><i class="fa fa-twitter" aria-hidden="true"></i><span>Twitter</span></a></li>
