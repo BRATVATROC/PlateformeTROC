@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Participant
  *
- * @ORM\Table(name="participant", indexes={@ORM\Index(name="id_user", columns={"id_user"}), @ORM\Index(name="id_event", columns={"id_event"})})
+ * @ORM\Table(name="participant")
  * @ORM\Entity
  */
 class Participant
@@ -22,82 +22,19 @@ class Participant
     private $id;
 
     /**
-     * @var \User
+     * @var integer
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_user", referencedColumnName="id")
-     * })
-     */
-    private $idUser;
-
-    /**
-     * @var \Event
-     *
-     * @ORM\ManyToOne(targetEntity="Event")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_event", referencedColumnName="id")
-     * })
+     * @ORM\Column(name="id_event", type="integer", nullable=false)
      */
     private $idEvent;
 
-
-
     /**
-     * Get id
+     * @var integer
      *
-     * @return integer
+     * @ORM\Column(name="id_user", type="integer", nullable=false)
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $idUser;
 
-    /**
-     * Set idUser
-     *
-     * @param \AppBundle\Entity\User $idUser
-     *
-     * @return Participant
-     */
-    public function setIdUser(\AppBundle\Entity\User $idUser = null)
-    {
-        $this->idUser = $idUser;
 
-        return $this;
-    }
-
-    /**
-     * Get idUser
-     *
-     * @return \AppBundle\Entity\User
-     */
-    public function getIdUser()
-    {
-        return $this->idUser;
-    }
-
-    /**
-     * Set idEvent
-     *
-     * @param \TrocBundle\Entity\Event $idEvent
-     *
-     * @return Participant
-     */
-    public function setIdEvent(\TrocBundle\Entity\Event $idEvent = null)
-    {
-        $this->idEvent = $idEvent;
-
-        return $this;
-    }
-
-    /**
-     * Get idEvent
-     *
-     * @return \TrocBundle\Entity\Event
-     */
-    public function getIdEvent()
-    {
-        return $this->idEvent;
-    }
 }
+

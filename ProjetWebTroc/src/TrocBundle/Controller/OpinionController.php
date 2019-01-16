@@ -52,10 +52,6 @@ class OpinionController extends Controller
             $opinion->setNote($n);
             $opinion->setIdUser($this->getUser());
             $em = $this->getDoctrine()->getManager();
-
-            $a= $em->getRepository('TrocBundle:Opinion')->NbrNoteOpinion();
-            var_dump($a);
-            die();
             $em->persist($opinion);
             $em->flush();
 

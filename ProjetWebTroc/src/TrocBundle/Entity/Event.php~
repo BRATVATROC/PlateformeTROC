@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Event
  *
  * @ORM\Table(name="event")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="TrocBundle\Repository\EventRepository")
  */
 class Event
 {
@@ -36,6 +36,18 @@ class Event
     private $description;
 
     /**
+     * @var integer
+     *
+     * @ORM\Column(name="max", type="integer", nullable=false)
+     */
+    private $max;
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nbr", type="integer", nullable=true)
+     */
+    private $nbr;
+    /**
      * @var string
      *
      * @ORM\Column(name="location", type="string", length=255, nullable=false)
@@ -43,11 +55,25 @@ class Event
     private $location;
 
     /**
-     * @var string
+     * @var \DateTime
      *
-     * @ORM\Column(name="date", type="string", length=255, nullable=false)
+     * @ORM\Column(name="date", type="datetime", nullable=false)
      */
     private $date;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="string", length=255, nullable=false)
+     */
+    private $image;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="createdBy", type="integer", nullable=false)
+     */
+    private $createdby;
 
 
 
@@ -71,7 +97,7 @@ class Event
     public function setTitre($titre)
     {
         $this->titre = $titre;
-
+    
         return $this;
     }
 
@@ -95,7 +121,7 @@ class Event
     public function setDescription($description)
     {
         $this->description = $description;
-
+    
         return $this;
     }
 
@@ -110,6 +136,30 @@ class Event
     }
 
     /**
+     * Set max
+     *
+     * @param integer $max
+     *
+     * @return Event
+     */
+    public function setMax($max)
+    {
+        $this->max = $max;
+    
+        return $this;
+    }
+
+    /**
+     * Get max
+     *
+     * @return integer
+     */
+    public function getMax()
+    {
+        return $this->max;
+    }
+
+    /**
      * Set location
      *
      * @param string $location
@@ -119,7 +169,7 @@ class Event
     public function setLocation($location)
     {
         $this->location = $location;
-
+    
         return $this;
     }
 
@@ -136,24 +186,72 @@ class Event
     /**
      * Set date
      *
-     * @param string $date
+     * @param \DateTime $date
      *
      * @return Event
      */
     public function setDate($date)
     {
         $this->date = $date;
-
+    
         return $this;
     }
 
     /**
      * Get date
      *
-     * @return string
+     * @return \DateTime
      */
     public function getDate()
     {
         return $this->date;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Event
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set createdby
+     *
+     * @param integer $createdby
+     *
+     * @return Event
+     */
+    public function setCreatedby($createdby)
+    {
+        $this->createdby = $createdby;
+    
+        return $this;
+    }
+
+    /**
+     * Get createdby
+     *
+     * @return integer
+     */
+    public function getCreatedby()
+    {
+        return $this->createdby;
     }
 }

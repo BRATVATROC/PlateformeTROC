@@ -14,15 +14,53 @@ annonce_new:
     methods:  [GET, POST]
 
 annonce_edit:
-    path:    /edit/{idAnnonce}
+    path:    /edit /{idAnnonce}
     defaults: { _controller: "AnnonceBundle:Annonce:edit" }
     methods:  [GET, POST]
 
 annonce_delete:
     path:     /delete/{idAnnonce}
     defaults: { _controller: "AnnonceBundle:Annonce:delete" }
+    methods:  DELETE
 
 annonce_single:
     path: /single/{idAnnonce}
     defaults: { _controller: "AnnonceBundle:Annonce:single" }
-    methods:  [GET, POST]
+    methods:  GET
+
+annonce_search:
+    path: /search
+    defaults: { _controller: "AnnonceBundle:Annonce:search" }
+
+annonce_new_mobile:
+    path: /add
+    defaults: { _controller: "AnnonceBundle:Annonce:add" }
+
+item_get:
+    path: /get
+    defaults: { _controller: "AnnonceBundle:Annonce:get" }
+
+annonce_affiche:
+    path: /affiche
+    defaults: { _controller: "AnnonceBundle:Annonce:affiche" }
+    methods: GET
+
+annonce_affiche_tout:
+    path: /affichetout
+    defaults: { _controller: "AnnonceBundle:Annonce:affichetout" }
+    methods: GET
+
+
+annonce_show_user:
+    path: /my
+    defaults: { _controller: "AnnonceBundle:Annonce:myAnnonce" }
+    methods: GET
+
+annonce_delete_user:
+    path: /deletem
+    defaults: { _controller: "AnnonceBundle:Annonce:myDelete" }
+    methods:  [DELETE, GET]
+
+annonce_update_user:
+    path: /updatem
+    defaults: { _controller: "AnnonceBundle:Annonce:myUpdate" }

@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+{% block titre %} Add an ad {% endblock %}
+{% block Main %}
+    <div class="container">
+        <div class="row" style="margin-top: 40px; margin-bottom: 50px;">
+            <div class="col-md-4">
+                <a style="border-radius: 5px; width: 160px; margin-bottom: 1px" class="btn btn-danger" href="{{ path('annonce_index') }}"><i class="fa fa-caret-left"></i>&emsp;
+                    Back to list</a> <br/>
+                <a style="border-radius: 5px; width: 160px; margin-top: 2px" class="btn btn-success" href="{{ path('items_new') }}"><i class="fa fa-plus-square"></i>&emsp;New article</a>
+            </div>
+            <div class="col-md-4">
+                <h1 style="text-align: center; margin-bottom: 20px">Create an ad</h1>
+
+                {{ form_start(form) }}
+                <label>title</label>
+                {{ form_widget(form.titreAnnonce, {'type' : 'text' , 'attr' : {'class': 'form-control'}}) }}
+
+                <label>Price</label>
+                {{ form_widget(form.prix, {'type' : 'number' , 'attr' : {'class': 'form-control'}}) }}
+
+                <label>Type</label>
+                {{ form_widget(form.typeAnnonce, {'type' : 'text' , 'attr' : {'class': 'form-control'}}) }}
+
+                <label>state</label>
+                {{ form_widget(form.etatAnnonce, {'type' : 'text' , 'attr' : {'class': 'form-control'}}) }}
+
+                <label>adress</label>
+                {{ form_widget(form.adresse, {'type' : 'textarea' , 'attr' : {'class': 'form-control'}}) }}
+
+                <label>Description</label>
+                {{ form_widget(form.description, {'type' : 'textarea' , 'attr' : {'class': 'form-control'}}) }}
+
+                <label>Item</label>
+                {{ form_widget(form.iditems, {'type' : 'text' , 'attr' : {'class': 'form-control'}}) }}
+
+                <div style="margin-top: 20px"></div>
+                <input style="display: block; margin: auto; width: 100px;" id="btn-a" class="btn btn-warning" type="submit" value="Creer" />
+                {{ form_end(form) }}
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script>
+        $('#btn-a').click(function (e) {
+            var exist = $('#annoncebundle_annonce_iditems').val();
+            var path = '{{ path('items_new') }}';
+            if(exist == null)
+            {
+                alert('vide');
+
+                swal({
+                    title: 'Erreur fatale',
+                    text: 'You have no article, please create it first',
+                    type: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Ok',
+                });
+                window.location.replace(path);
+                console.log('error');
+            }
+
+            //e.preventDefault();
+        });
+    </script>
+
+{% endblock %}

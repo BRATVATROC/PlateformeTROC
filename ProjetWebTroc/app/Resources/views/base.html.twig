@@ -138,7 +138,9 @@
 {% block header %}
     <header>
         <div class="w3ls-header"><!--header-one-->
+
             <div class="w3ls-header-left">
+
             </div>
             <div class="w3ls-header-right">
                 <ul>
@@ -569,7 +571,7 @@
                             </div>
                         </div>
                     </li>
-                    </a></ul>
+                </ul>
             </div>
 
             <div class="clearfix"> </div>
@@ -582,6 +584,7 @@
 
 
                 </div>
+
                 <div class="agileits_search">
                     <form action="#" method="post">
                         <input name="Search" type="text" placeholder="How can we help you today?" required=" ">
@@ -604,7 +607,7 @@
                         </button>
 
                     </form>
-                    <a class="post-w3layouts-ad fa fa-plus" href="{{asset('post-ad.html')}}"> Post Free Ad</a>
+                    <a class="post-w3layouts-ad" href="{{ path('annonce_new') }}">Post Free Ad</a>
                 </div>
                 <div class="clearfix"></div>
 

@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+{% block titre %} Liste annonces {% endblock %}
+{% block Main %}
+<div class="container">
+    <div class="row" style="margin-top: 40px; margin-bottom: 50px;">
+        <div class="col-md-2">
+            <a style="border-radius: 5px;  width: 182px;" class="btn btn-success" href="{{ path('annonce_new') }}"><i class="fa fa-plus-square"></i>&emsp;Add a new</a><br/>
+            <a style="border-radius: 5px; margin-top: 5px; margin-left: 8px" class="btn btn-success" href="{{ path('items_new') }}"><i class="fa fa-plus-square"></i>&emsp;Add an article</a>
+        </div>
+        <div class="col-md-8">
+            <h1 style="text-align: center; margin-bottom: 20px">List of ads</h1>
+
+    <table class="table table-hover">
+        <thead >
+            <tr>
+
+                <th scope="col">Title</th>
+                <th scope="col">Price</th>
+                <th scope="col">Date</th>
+                <th scope="col">Type</th>
+                <th scope="col">State</th>
+                <th scope="col">Adress</th>
+                <th scope="col">Description</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for annonce in annonces %}
+            <tr>
+                 <td>{{ annonce.titreAnnonce }}</td>
+                <td>{{ annonce.prix }}</td>
+                <td>{% if annonce.date %}{{ annonce.date|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ annonce.typeAnnonce }}</td>
+                <td>{{ annonce.etatAnnonce }}</td>
+                <td>{{ annonce.adresse }}</td>
+                <td>{{ annonce.description }}</td>
+                <td>
+                    <a style="margin-bottom: -4px; " class="btn btn-warning btn-block" href="{{ path('annonce_show', { 'idAnnonce': annonce.idAnnonce }) }}">View</a>
+                    <a class="btn btn-danger btn-block" href="{{ path('annonce_edit', { 'idAnnonce': annonce.idAnnonce }) }}">update</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        </div>
+        <style>
+            .pagination > li > a{
+                border-radius: 50%;
+            }
+            .pagination > li > a:hover,
+            .pagination > li > span:hover,
+            .pagination > li > a:focus,
+            .pagination > li > span:focus{
+                background-color: #98fb98;
+                color:#BF3E26;
+            }
+            .pagination > .active > a,
+            .pagination > .active > span,
+            .pagination > .active > a:hover,
+            .pagination > .active > span:hover,
+            .pagination > .active > a:focus,
+            .pagination > .active > span:focus{
+                background-color: #1C8C42;
+                color: #ffffff;
+                border: 1px solid #dddddd;
+            }
+        </style>
+        <div class="text-center">{{ knp_pagination_render(annonces) }}</div>
+
+    <div class="col-md-2"></div>
+    </div>
+</div>
+{% endblock %}

@@ -32,9 +32,9 @@ troc_feedback:
     resource: "@TrocBundle/Controller/FeedbackController.php"
     type:     annotation
 
-troc_feedback:
-    resource: "@TrocBundle/Controller/FeedbackController.php"
-    type:     annotation
+#troc_feedback:
+#    resource: "@TrocBundle/Controller/FeedbackController.php"
+#    type:     annotation
 
 rec:
     resource: '@TrocBundle/Controller/'

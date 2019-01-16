@@ -1562,6 +1562,49 @@
             "time": "2017-12-07T15:56:41+00:00"
         },
         {
+            "name": "mwsimple/scdatetimepicker-bundle",
+            "version": "v2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MWSimple/SCDatetimepickerBundle.git",
+                "reference": "ad9d188e541c135eacccfb2f83967bc15fbf793e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MWSimple/SCDatetimepickerBundle/zipball/ad9d188e541c135eacccfb2f83967bc15fbf793e",
+                "reference": "ad9d188e541c135eacccfb2f83967bc15fbf793e",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/framework-bundle": "~2.8 || ~3.0"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "SC\\DatetimepickerBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stephane Collot"
+                }
+            ],
+            "description": "Symfony bundle for Bootstrap DateTime picker",
+            "keywords": [
+                "bootstrap",
+                "bundle",
+                "datepicker",
+                "picker",
+                "symfony",
+                "timepicker"
+            ],
+            "time": "2017-12-07T15:56:41+00:00"
+        },
+        {
             "name": "paragonie/random_compat",
             "version": "v2.0.17",
             "source": {
