@@ -36,7 +36,7 @@ class AnnonceController extends Controller
             $request->query->get('page', 1)/*le numéro de la page à afficher*/,
             5/*nbre d'éléments par page*/
         );
-        return $this->render('@Annonce/annonce/index.html.twig', array(
+        return $this->render('@App/default/index.html.twig', array(
             'annonces' => $pagination
         ));
     }

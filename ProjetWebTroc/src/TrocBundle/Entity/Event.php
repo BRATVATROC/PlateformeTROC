@@ -41,12 +41,7 @@ class Event
      * @ORM\Column(name="max", type="integer", nullable=false)
      */
     private $max;
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="nbr", type="integer", nullable=true)
-     */
-    private $nbr;
+
     /**
      * @var string
      *
@@ -55,9 +50,9 @@ class Event
     private $location;
 
     /**
-     * @var \DateTime
+     * @var string
      *
-     * @ORM\Column(name="date", type="datetime", nullable=false)
+     * @ORM\Column(name="date", type="string", length=255, nullable=false)
      */
     private $date;
 
@@ -74,6 +69,13 @@ class Event
      * @ORM\Column(name="createdBy", type="integer", nullable=false)
      */
     private $createdby;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nbr", type="integer", nullable=true)
+     */
+    private $nbr;
 
 
 
@@ -97,7 +99,7 @@ class Event
     public function setTitre($titre)
     {
         $this->titre = $titre;
-    
+
         return $this;
     }
 
@@ -121,7 +123,7 @@ class Event
     public function setDescription($description)
     {
         $this->description = $description;
-    
+
         return $this;
     }
 
@@ -145,7 +147,7 @@ class Event
     public function setMax($max)
     {
         $this->max = $max;
-    
+
         return $this;
     }
 
@@ -169,7 +171,7 @@ class Event
     public function setLocation($location)
     {
         $this->location = $location;
-    
+
         return $this;
     }
 
@@ -186,21 +188,21 @@ class Event
     /**
      * Set date
      *
-     * @param \DateTime $date
+     * @param string $date
      *
      * @return Event
      */
     public function setDate($date)
     {
         $this->date = $date;
-    
+
         return $this;
     }
 
     /**
      * Get date
      *
-     * @return \DateTime
+     * @return string
      */
     public function getDate()
     {
@@ -217,7 +219,7 @@ class Event
     public function setImage($image)
     {
         $this->image = $image;
-    
+
         return $this;
     }
 
@@ -241,7 +243,7 @@ class Event
     public function setCreatedby($createdby)
     {
         $this->createdby = $createdby;
-    
+
         return $this;
     }
 
@@ -265,7 +267,7 @@ class Event
     public function setNbr($nbr)
     {
         $this->nbr = $nbr;
-    
+
         return $this;
     }
 

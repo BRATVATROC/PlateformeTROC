@@ -10,12 +10,7 @@ namespace TrocBundle\Repository;
  */
 class AnnonceRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function myfindall($id)
-    {
-        $query=$this->getEntityManager()->createQuery("select a from TrocBundle:Annonce a where a.idAnnonce=$id");
-
-        return $query->getSingleResult();
-    }
+  
 
     public function findMyCart($id)
     {
@@ -35,7 +30,31 @@ class AnnonceRepository extends \Doctrine\ORM\EntityRepository
         TrocBundle:Items i where i.idUser=$idClient and a.iditems=i.iditems and a. idcommande != 0 ");
         return $query->getResult();
     }
+    public function myfindall($id)
+    {
+        $query=$this->getEntityManager()->createQuery("select a from TrocBundle:Annonce a where a.idAnnonce=$id");
+        return $query->getResult();
+    }
 
+    public function orderDate()
+    {
+        $query=$this->getEntityManager()->createQuery("select a from TrocBundle:Annonce a ORDER BY a.date DESC ");
+        return $query->getResult();
+    }
+
+    public function topView()
+    {
+        $query=$this->getEntityManager()->createQuery("select a from TrocBundle:Annonce a WHERE a.view=
+            (SELECT MAX(B.view) as nbre FROM TrocBundle:Annonce B )");
+        return $query->getResult();
+    }
+
+    public function search($word)
+    {
+        $query=$this->getEntityManager()->createQuery("select a from TrocBundle:Annonce a WHERE a.titreAnnonce like :keyword");
+        $query->setParameter(':keyword', '%'.$word.'%');
+        return $query->getResult();
+    }
     public function findMyAnnonces($id)
     {
         $query=$this->getEntityManager()->createQuery("select a from TrocBundle:Annonce a where a.idcommande IS NULL ");

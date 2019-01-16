@@ -1,100 +1,102 @@
 {% extends 'base.html.twig' %}
 
-{% block titre %}details  {% endblock %}
-
 {% block Main %}
-<div class="w3layouts-breadcrumbs text-center">
-    <div class="container">
+    <div class="w3layouts-breadcrumbs text-center">
+        <div class="container">
 			<span class="agile-breadcrumbs">
-			<a href=""><i class="fa fa-home home_1"></i></a>
-    </div>
-</div>
-<!-- //breadcrumbs -->
-<!--single-page-->
-    <style>
-        .image img {
-            -webkit-transition: all 1s ease; /* Safari and Chrome */
-            -moz-transition: all 1s ease; /* Firefox */
-            -ms-transition: all 1s ease; /* IE 9 */
-            -o-transition: all 1s ease; /* Opera */
-            transition: all 1s ease;
-        }
-
-        .image:hover img {
-            margin-left: 100px;
-            -webkit-transform:scale(1.5); /* Safari and Chrome */
-            -moz-transform:scale(2); /* Firefox */
-            -ms-transform:scale(2); /* IE 9 */
-            -o-transform:scale(2); /* Opera */
-            transform:scale(2);
-        }
-    </style>
-<div class="single-page main-grid-border">
-    <div class="container">
-        <div class="product-desc">
-            <div class="col-md-7 product-view">
-                <h2>{{ annonce.titreAnnonce }}y</h2>
-                <p> <i class="glyphicon glyphicon-map-marker"></i><a target="_blank" href="https://maps.google.com/?q={{ annonce.adresse }}">Adresse</a> {{ annonce.adresse }} | Ajoute le {% if annonce.date %}{{ annonce.date|date('Y-m-d') }}{% endif %}</p>
-
-                <div class="flexslider">
-                    <div class="image">
-                        <img  src="{% if annonce.iditems.imgiems %}{{ asset('upload/' ~ annonce.iditems.imgiems) }}{% endif %}" />
-                    </div>
-                </div>
-                <!-- FlexSlider -->
-                <script defer src="js/jquery.flexslider.js"></script>
-
-                <script>
-                    // Can also be used with $(document).ready()
-                    $(window).load(function() {
-                        $('.flexslider').flexslider({
-                            animation: "slide",
-                            controlNav: "thumbnails"
-                        });
-                    });
-                </script>
-                <!-- //FlexSlider -->
-                <div class="product-details">
-                    <h4><span class="w3layouts-agileinfo">Views </span> : <strong>{{ annonce.view }}</strong></h4>
-                    <h4><span class="w3layouts-agileinfo">Description</span> :<p>
-                            {{ annonce.description }}
-                          </p>
-                        <div class="clearfix"></div></h4>
-                    <a style="text-decoration: none; color: rgba(255, 76, 76, 0.53);" target="_blank" href="https://maps.google.com/?q={{ annonce.adresse }}"><span style="font-size: 18px"><i class="fa fa-map-marker"></i> View On Google Maps</span></a>
-                </div>
-            </div>
-            <div class="col-md-5 product-details-grid">
-                <div class="item-price">
-                    <div class="product-price">
-                        <p class="p-price">Price</p>
-                        <h3 class="rate">$ {{ annonce.prix }}</h3>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="condition">
-                        <p class="p-price">Condition</p>
-                        <h4>{{ annonce.etatAnnonce}}</h4>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="itemtype">
-                        <p class="p-price">Type of ad</p>
-                        <h4>{{ annonce.typeAnnonce}}</h4>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="condition">
-                        <p class="p-price">Category</p>
-                        <h4 style="margin-left: -10px">{{ annonce.iditems.idsouscat.idCat.nomcat }} >> {{ annonce.iditems.idsouscat.Nomsouscat }}</h4>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-                <div class="interested text-center">
-                    <h4>Interested in this ad?<small> Contact the seller!
-                        </small></h4>
-                    <p><i class="glyphicon glyphicon-earphone"></i>00-85-9875462655</p>
-                </div>
-            </div>
-            <div class="clearfix"></div>
+			<a href="index.html"><i class="fa fa-home home_1"></i></a> /
+			<a href="all-classifieds.html">All Ads</a> /
+			<a href="cars.html">Cars</a> /
+			<span>Car name</span></span>
         </div>
     </div>
-</div>
+    <!-- //breadcrumbs -->
+    <!--single-page-->
+    <div class="single-page main-grid-border">
+        <div class="container">
+            <div class="product-desc">
+                <div style="margin-left: 50%">
+                    <button id="reclaim" class="fa fa-exclamation-triangle" style="font-size: 18px;background-color:orange;border:medium">Reclaim!</button></div>
+                <div hidden id="show">{{ render(controller('TrocBundle:Reclamation:new',{'request':app.request})) }}</div>
+                <div class="col-md-7 product-view">
+                    <h2>{{ annonce.titreAnnonce }}</h2>
+                    <p> <i class="glyphicon glyphicon-map-marker"></i><a href="#">state</a> {{ annonce.adresse }} | Ajoute le {% if annonce.date %}{{ annonce.date|date('Y-m-d') }}{% endif %}</p>
+                    <div class="flexslider">
+                        <img src="{% if annonce.iditems.imgiems %}{{ asset('upload/' ~ annonce.iditems.imgiems) }}{% endif %}" />
+                    </div>
+                    <!-- FlexSlider -->
+                    <script defer src="js/jquery.flexslider.js"></script>
 
+                    <script>
+                        // Can also be used with $(document).ready()
+                        $(window).load(function() {
+                            $('.flexslider').flexslider({
+                                animation: "slide",
+                                controlNav: "thumbnails"
+                            });
+                        });
+                    </script>
+                    <!-- //FlexSlider -->
+                    <div class="product-details">
+                        <h4><span class="w3layouts-agileinfo">Views </span> : <strong>150</strong></h4>
+                        <h4><span class="w3layouts-agileinfo">Summary</span> :<p>
+                                {{ annonce.description }}
+                            </p>
+
+                            <div class="clearfix"></div></h4>
+                        {{ render(controller('TrocBundle:Feedback:CountLike',{'request':app.request})) }}
+                        <div></div>
+
+                    </div>
+                    <br>
+                    <div>
+
+
+                        {{ render(controller('TrocBundle:Commentaire:createc',{'request':app.request})) }}
+
+
+                    </div>
+                    <br>
+
+                </div>
+                <div class="col-md-5 product-details-grid">
+                    <div class="item-price">
+                        <div class="product-price">
+                            <p class="p-price">Prix</p>
+                            <h3 class="rate">$ {{ annonce.prix }}</h3>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="condition">
+                            <p class="p-price">Condition</p>
+                            <h4>{{ annonce.etatAnnonce}}</h4>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="itemtype">
+                            <p class="p-price">Type d'annonce</p>
+                            <h4>{{ annonce.typeAnnonce}}</h4>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="condition">
+                            <p class="p-price">Categorie</p>
+                            <h4 style="margin-left: -10px">{{ annonce.iditems.idsouscat.idCat.nomcat }} >> {{ annonce.iditems.idsouscat.Nomsouscat }}</h4>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="interested text-center">
+                        <h4>Interested in this Ad?<small> Contact the Seller!</small></h4>
+                        <p><i class="glyphicon glyphicon-earphone"></i>00-85-9875462655</p>
+                    </div>
+
+
+                </div>
+                <div class="clearfix"></div>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        $('#reclaim').click(function () {
+            $('#show').toggle();
+        })
+    </script>
 {% endblock %}

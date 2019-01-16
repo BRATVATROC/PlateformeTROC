@@ -16,34 +16,20 @@ class CommentaireRepository extends \Doctrine\ORM\EntityRepository
 
         return $query->getResult();
     }
- public function countSignaler($id)
-    {
-        $query = $this->getEntityManager()->createQuery("select c from TrocBundle:Commentaire c where c.idAnnonce=$id");
-
-        return $query->getResult();
-    }
 
     public function  TopCommented()
     {
         $query = $this->getEntityManager()
-            ->createQuery("select  COUNT(c.idCommentaire) AS nbre_commentaire ,IDENTITY(c.idAnnonce)
-          from TrocBundle:Commentaire as c GROUP BY c.idAnnonce  ORDER BY nbre_commentaire DESC ");
+            ->createQuery("select  COUNT c.idCommentaire AS nbre_commentaire 
+          from TrocBundle:Commentaire as c GROUP BY c.idAnnonce|PartialObjectExpression  ORDER BY nbre_commentaire DESC ");
 
+        $nbr=$query->getResult();
 
-
-        return $query->getResult();
-    }
-
-    public function countComment()
-    {
-        $query = $this->getEntityManager()->createQuery(" select  COUNT(c) AS nbre_commentaire  from TrocBundle:Commentaire c GROUP BY c.idAnnonce ORDER BY nbre_commentaire DESC ");
+        $query = $this->getEntityManager()
+            ->createQuery("select  c.idAnnonce from TrocBundle:Commentaire as c where COUNT c.idAnnonce.idCommentaire=$nbr");
+        $annonce=$query->getResult();
 
         return $query->getResult();
-    }
-    public function idComment()
-    {
-       // $query = $this->getEntityManager()->createQuery(" select c.idannonce from TrocBundle:Commentaire c  ");
-      //  return $query->getResult();
     }
 
 

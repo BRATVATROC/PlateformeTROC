@@ -16,4 +16,11 @@ class ReclamationRepository extends \Doctrine\ORM\EntityRepository
           r as obj from TrocBundle:Reclamation as r INNER JOIN AppBundle:User as u where r.idUser=u GROUP BY r.idUser");
         return $query->getResult();
     }
+    public function findRuser($id)
+    {
+        $query=$this->getEntityManager()
+            ->createQuery("select r  from TrocBundle:Reclamation as r  where r.idRuser=$id");
+        return $query->getResult();
+    }
+
 }

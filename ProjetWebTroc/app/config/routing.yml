@@ -32,15 +32,10 @@ troc_feedback:
     resource: "@TrocBundle/Controller/FeedbackController.php"
     type:     annotation
 
-#troc_feedback:
-#    resource: "@TrocBundle/Controller/FeedbackController.php"
-#    type:     annotation
+troc_feedback:
+    resource: "@TrocBundle/Controller/FeedbackController.php"
+    type:     annotation
 
 rec:
     resource: '@TrocBundle/Controller/'
     type: annotation
-
-event:
-    resource: "@EventBundle/Resources/config/routing.yml"
-    prefix:   /event
-

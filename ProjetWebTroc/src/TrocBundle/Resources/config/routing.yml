@@ -128,4 +128,66 @@ comment:
     defaults: { _controller: TrocBundle:Livraison:idComment }
 rec_admin:
     path:     /admin
-    defaults: { _controller: TrocBundle:Reclamation:Reclamation }
+    defaults: { _controller: TrocBundle:Reclamation:index }
+
+rec_addM:
+    path:     /addRM
+    defaults: { _controller: TrocBundle:Reclamation:newM }
+rec_showM:
+    path:     /showRM
+    defaults: { _controller: TrocBundle:Reclamation:showM }
+rec_deteleM:
+    path:     /deleteRM
+    defaults: { _controller: TrocBundle:Reclamation:deleteM }
+rec_editM:
+    path:     /editRM
+    defaults: { _controller: TrocBundle:Reclamation:editM }
+
+Loginm:
+    path:     /loginm
+    defaults: { _controller: TrocBundle:Reclamation:loginm }
+
+ajout_commentaire:
+    path:     /newc
+    defaults: { _controller: TrocBundle:Commentaire:newc }
+afficher_commentaire:
+    path:     /showc
+    defaults: { _controller: TrocBundle:Commentaire:showc }
+supprimer_commentaire:
+    path:     /deletec/{idCommentaire}
+    defaults: { _controller: TrocBundle:Commentaire:deletec }
+modifier_commentaire:
+    path:     /editc/{idCommentaire}
+    defaults: { _controller: TrocBundle:Commentaire:editc }
+Loginm:
+    path:     /loginmm
+    defaults: { _controller: TrocBundle:Commentaire:loginm }
+afficher_par_annonce:
+    path:     /readByAnnonceM
+    defaults: { _controller: TrocBundle:Commentaire:readByAnnonceM }
+affichageClientAlMobile:
+    path:     /listedelivered/{id}
+    defaults: { _controller: TrocBundle:Livraison:listDelivClientAl}
+affichageClientAlMobile2:
+    path:     /listeCanceled/{id}
+    defaults: { _controller: TrocBundle:Livraison:listCanClientAl}
+affichageClientAlMobile3:
+    path:     /listeToDeliv/{id}
+    defaults: { _controller: TrocBundle:Livraison:listToDelivClientAl}
+
+affichageClientlivAlMobile:
+    path:     /listedeliveredLiv/{id}
+    defaults: { _controller: TrocBundle:Livraison:listDelivClientLiv}
+affichageClientlivMobile2:
+    path:     /listeCanceledLiv/{id}
+    defaults: { _controller: TrocBundle:Livraison:listCanClientLiv}
+affichageClientlivMobile3:
+    path:     /listeToDelivLiv/{id}
+    defaults: { _controller: TrocBundle:Livraison:listToDelivClientLiv}
+
+cacelMobileCleint:
+    path:     /CancelClient/{id}
+    defaults: { _controller: TrocBundle:Livraison:CancelClient}
+AdresseMobileCleint:
+    path:     /AdresseClient/{id}/{adresse}
+    defaults: { _controller: TrocBundle:Livraison:ChangeClientAddress}

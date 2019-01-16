@@ -2,6 +2,9 @@
 
 namespace TrocBundle\Controller;
 
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Validator\Constraints\DateTime;
 use TrocBundle\Entity\Annonce;
 use TrocBundle\Entity\Reclamation;
@@ -83,6 +86,38 @@ class ReclamationController extends Controller
             'reclamation' => $reclamation,
             'form' => $form->createView(),
         ));
+    }  /**
+ * Creates a new reclamation entity.
+ *
+ * @Route("/new", name="reclamation_new")
+ * @Method({"GET", "POST"})
+ */
+    public function newMAction(Request $request)
+    {
+        $reclamation = new Reclamation();
+
+            $em = $this->getDoctrine()->getManager();
+
+            $annonce=$this->getDoctrine()->getRepository(Annonce::class)->find($request->get('idA'));//ici
+            $currentU=$this->getDoctrine()->getRepository(\AppBundle\Entity\User::class)->find($request->get('idU'));
+
+            $reclamation->setIdRuser($currentU);//ici
+            $reclamation->setIdAnnonce($annonce);
+            $reclamation->setEtatReclamation('unsolved');
+            $reclamation->setDescription($request->get("description"));
+            $reclamation->setTypeReclamation($request->get("type"));
+            $User=$annonce->getIditems()->getIdUser();
+            $reclamation->setIdUser($User);
+            $date=new \DateTime("now");
+            $reclamation->setDate( $date);
+            $em->persist($reclamation);
+            $em->flush();
+        $serializer=new Serializer([new ObjectNormalizer()]);
+        $formatted=$serializer->normalize($reclamation);
+        return new JsonResponse($formatted);
+
+
+
     }
 
     /**
@@ -99,6 +134,18 @@ class ReclamationController extends Controller
             'reclamation' => $reclamation,
             'delete_form' => $deleteForm->createView(),
         ));
+    }
+    public function showMAction(Request $request)
+    {
+        $idCon=$request->get('id');
+        $user=$this->getDoctrine()->getRepository(\AppBundle\Entity\User::class)->find($idCon);
+
+        $reclaims=$this->getDoctrine()->getRepository(Reclamation::class)
+            ->findRuser($idCon);
+
+        $serializer=new Serializer([new ObjectNormalizer()]);
+        $formatted=$serializer->normalize($reclaims);
+        return new JsonResponse($formatted);
     }
 
     /**
@@ -144,6 +191,8 @@ class ReclamationController extends Controller
         $id=$request->get('idRec');
 
         if (!empty($id)) {
+            var_dump($id);
+            die();
             $reclamation=$this->getDoctrine()->getRepository(Reclamation::class)->find($id);
             $em = $this->getDoctrine()->getManager();
             $em->remove($reclamation);
@@ -152,6 +201,24 @@ class ReclamationController extends Controller
         }
 
         return $this->redirectToRoute('rec_admin');
+    }
+
+
+    public function deleteMAction(Request $request)
+    {
+        $id=$request->get('id');
+
+        if (!empty($id)) {
+
+            $reclamation=$this->getDoctrine()->getRepository(Reclamation::class)->find($id);
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($reclamation);
+            $em->flush();
+                   }
+        $serializer=new Serializer([new ObjectNormalizer()]);
+        $formatted=$serializer->normalize($reclamation);
+        return new JsonResponse($formatted);
+
     }
 
 
@@ -185,6 +252,72 @@ class ReclamationController extends Controller
         return $this->render('::your_template.html.twig', array(
             'chart' => $ob
         ));
+    }
+
+    public function editMAction(Request $request)
+    {
+        $id=$request->get('id');
+
+        if (!empty($id))
+        {   $rec=new Reclamation();
+
+            $rec=$this->getDoctrine()->getRepository(Reclamation::class)->find($id);
+            $rec->setTypeReclamation($request->get('type'));
+            $rec->setDescription($request->get('description'));
+            $rec->setEtatReclamation('unsolved');
+            $this->getDoctrine()->getManager()->flush();
+
+            $serializer=new Serializer([new ObjectNormalizer()]);
+            $formatted=$serializer->normalize($rec);
+            return new JsonResponse($formatted);
+        }
+
+
+
+    }
+    public function loginmAction(Request $request)
+    {
+
+        $em =$this->getDoctrine()->getManager();
+        $username = $request->get('username');
+        $password = $request->get('password');
+
+        $user= $em->getRepository(\AppBundle\Entity\User::class)->findOneBy(["username" => $username]);
+
+        if($user)
+        {
+            $encoder_service = $this->get('security.encoder_factory');
+            $encoder = $encoder_service->getEncoder($user);
+
+            if($encoder->isPasswordValid($user->getPassword(), $password, $user->getSalt()))
+            {
+
+                $serializer=new Serializer([new ObjectNormalizer()]);
+                $formatted=$serializer->normalize($user);
+                return new JsonResponse($formatted);
+            }
+
+            else
+            {
+
+                $incorrect = new User();
+                $incorrect->setId(-1);
+
+                $serializer=new Serializer([new ObjectNormalizer()]);
+                $formatted=$serializer->normalize($incorrect);
+                return new JsonResponse($formatted);
+            }
+        }
+        else
+        {
+            //username incorrect
+            $empty = new User();
+            $empty->setId(0);
+
+            $serializer=new Serializer([new ObjectNormalizer()]);
+            $formatted=$serializer->normalize($empty);
+            return new JsonResponse($formatted);
+        }
     }
 
 }

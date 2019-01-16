@@ -4,7 +4,10 @@ namespace CommandeBundle\Controller;
 
 use AppBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\Validator\Constraints\DateTime;
 use TrocBundle\Entity\Annonce;
 use TrocBundle\Entity\Commande;
@@ -29,9 +32,11 @@ class CommandeController extends Controller
 
     public function createAction()
     {
-        return $this->render('CommandeBundle:Commande:create.html.twig', array(
-            // ...
-        ));
+        $commande = new Commande();
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($commande);
+        $em->flush();
+        return $this->redirectToRoute('read_commande');
     }
 
     public function updateAction(Request $req,$id)
@@ -44,7 +49,11 @@ class CommandeController extends Controller
         $btn2 = $req->get("livraison2");
         if (isset($btn))
         {
+            if ($commande->getLivraison()==0){
+                $commande->setMontant($commande->getMontant()+10);
+            }
             $commande->setLivraison(1);
+            $commande->setMontant($commande->getMontant()+10);
             $idcoursier=$this->getDoctrine()->getRepository(User::class)->affectercoursier();
             //$n=$idcoursier[0]['id'];
             //$livraison = new Livraison("12-11-2018",null,$commande->getMontant()+10,0,null,null,1,$commande->getIdcommande(),0,$commande->getIdclient()->getId());
@@ -52,6 +61,10 @@ class CommandeController extends Controller
             $em->flush();
         }
         if (isset($btn2)) {
+            if ($commande->getLivraison()==1){
+                $commande->setMontant($commande->getMontant()-10);
+            }
+
             $commande->setLivraison(0);
             $em->flush();
         }
@@ -97,7 +110,7 @@ class CommandeController extends Controller
         return $this->render('@Commande/Commande/affichannonce.html.twig', array(
             // ...
             "annonce"=>$annonce,
-            "commande"=>$commande
+            "commande"=>$commande[0]
         ));
     }
 
@@ -142,7 +155,8 @@ class CommandeController extends Controller
     public function troquerAction($id)
     {
         $em = $this->getDoctrine()->getManager();
-        $annonces = $em->getRepository(Annonce::class)->findMyAnnonces(1);
+        $user = $this->getUser();
+        $annonces = $em->getRepository(Annonce::class)->findMyAnnonces($user->getId());
         return $this->render('@Commande/Commande/mesCommandesVente.html.twig', array(
             // ...
             "annonces"=>$annonces,
@@ -153,7 +167,6 @@ class CommandeController extends Controller
     public function validerTrocAction(Request $req)
     {
         $em = $this->getDoctrine()->getManager();
-        $user = $em->getRepository(User::class)->find(1);
         $user = $this->getUser();
         $idA1 = $req->get("idA1");
         $idA2 = $req->get('idA2');
@@ -163,7 +176,7 @@ class CommandeController extends Controller
         $commande->setIdannonce1($annonce1);
         $commande->setIdannonce2($annonce2);
         $tz = new \TimeZone('Europe/Paris');
-        $date = new \DateTime('2018-11-28', $tz);
+        $date = new \DateTime('2018-12-05', $tz);
         $commande->setDatecommande($date);
         $commande->setMontant(0);
         $commande->setPaye(0);
@@ -179,12 +192,14 @@ class CommandeController extends Controller
     public function testAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $var1 = $em->getRepository(Annonce::class)->calculAnnoncesPosté(1);
-        $var2 = $em->getRepository(Annonce::class)->calculAnnoncesVendu(1);
+        $user = $this->getUser();
+        $var1 = $em->getRepository(Annonce::class)->calculAnnoncesPosté($user->getId());
+        $var2 = $em->getRepository(Annonce::class)->calculAnnoncesVendu($user->getId());
         return $this->render('@Commande/Commande/create.html.twig', array(
-             //...
+            //...
             "var1"=>$var1,
-            "var2"=>$var2
+            "var2"=>$var2,
+            "user"=>$user
         ));
 
     }
@@ -291,6 +306,148 @@ class CommandeController extends Controller
         ));
 
     }
+
+
+    //Partie mobile
+    public function allAction(){
+        $commandes = $this->getDoctrine()->getManager()->getRepository("TrocBundle:Commande")->findAll();
+        //$items = $this->getDoctrine()->getManager()->getRepository("TrocBundle:Categorie")->findAll();
+        $normalizer = new ObjectNormalizer();
+        $normalizer->setCircularReferenceLimit(2);
+        $normalizer->setCircularReferenceHandler(function ($object) {
+            return $object->getIdcommande();
+        });
+        $serializer = new Serializer([$normalizer]);
+        $formatted = $serializer->normalize($commandes);
+        return new JsonResponse($formatted);
+    }
+
+    public function findAction($id){
+        $commande = $this->getDoctrine()->getManager()->getRepository("TrocBundle:Commande")->find(1);
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($commande);
+        return new JsonResponse($formatted);
+    }
+
+    public function newAction(Request $req){
+        $em = $this->getDoctrine()->getManager();
+        $commande = new Commande();
+        //Setting the attributes of a commande
+        //$tz = new \TimeZone('Europe/Paris');
+        $date = new \DateTime('2018-12-05');
+        $commande->setDatecommande($date);
+        $commande->setPaye($req->get('paye'));
+        $commande->setMontant($req->get('montant'));
+        $commande->setIdannonce1(null);
+        $commande->setIdannonce2(null);
+        $commande->setIdclient(null);
+        $commande->setLivraison($req->get('ivraison'));
+        $em->persist($commande);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($commande);
+        return new JsonResponse($formatted);
+    }
+
+    public function addCartMobileAction(Request $req){
+        $em = $this->getDoctrine()->getManager();
+        $commande = $em->getRepository("TrocBundle:Commande")->find(12);
+        //Setting the attributes of a commande
+        //$tz = new \TimeZone('Europe/Paris');
+        $date = new \DateTime('2019-01-02');
+        $commande->setDatecommande($date);
+        $annonce = $em->getRepository("TrocBundle:Annonce")->find($req->get("id"));
+        $commande->setMontant($annonce->getPrix()+$commande->getMontant());
+        $annonce->setIdcommande($commande);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($commande,$annonce);
+        return new JsonResponse($formatted);
+    }
+
+    public function removeCartMobileAction(Request $req){
+        $em = $this->getDoctrine()->getManager();
+        $commande = $em->getRepository("TrocBundle:Commande")->find(12);
+        //Setting the attributes of a commande
+        //$tz = new \TimeZone('Europe/Paris');
+        $date = new \DateTime('2019-01-02');
+        $commande->setDatecommande($date);
+        $annonce = $em->getRepository("TrocBundle:Annonce")->find($req->get("id"));
+        $commande->setMontant($commande->getMontant()-$annonce->getPrix());
+        $annonce->setIdcommande(null);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($commande,$annonce);
+        return new JsonResponse($formatted);
+    }
+
+    public function removeMobileAction($id){
+        $em = $this->getDoctrine()->getManager();
+        $commande = $em->getRepository("TrocBundle:Commande")->find($id);
+        $em->remove($commande);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($commande);
+        return new JsonResponse($formatted);
+    }
+
+    public function getOrderAction($id){
+        $em = $this->getDoctrine()->getManager();
+        $annonces=$em->getRepository("TrocBundle:Annonce")->findBy(array("idcommande"=>$id));
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($annonces);
+        return new JsonResponse($formatted);
+    }
+
+
+    public function updateMobileAction(Request $req){
+        $em = $this->getDoctrine()->getManager();
+        $commande=$em->getRepository("TrocBundle:Commande")->find($req->get("id"));
+        if ($req->get("delivery")=="true"){
+            $commande->setLivraison(1);
+        }
+        else{
+            $commande->setLivraison(0);
+        }
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($commande);
+        return new JsonResponse($formatted);
+    }
+
+    public function getAnnoncesMobileAction(){
+        $em = $this->getDoctrine()->getManager();
+        $annonces=$em->getRepository("TrocBundle:Annonce")->findBy(array("idcommande"=>null));
+
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($annonces);
+        return new JsonResponse($formatted);
+    }
+
+    public function validerTrocMobileAction(Request $req){
+        $em = $this->getDoctrine()->getManager();
+        $commande= new Commande();
+        $commande->setLivraison(0);
+        $annonce1=$em->getRepository("TrocBundle:Annonce")->find($req->get(idA1));
+        $commande->setIdannonce1($annonce1);
+        $annonce2=$em->getRepository("TrocBundle:Annonce")->find($req->get(idA2));
+        $commande->setIdannonce2($annonce2);
+        $annonce1->setIdcommande(13);
+        $annonce2->setIdcommande(13);
+        $commande->setMontant(0);
+        $user=$em->getRepository("AppBundle:User")->find(1);
+        $commande->setIdclient($user);
+        $tz = new \TimeZone('Europe/Paris');
+        $date = new \DateTime('2019-01-02', $tz);
+        $commande->setDatecommande($date);
+        $commande->setPaye(0);
+        $em->persist($commande);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($commande);
+        return new JsonResponse($formatted);
+    }
+
 
 
 }

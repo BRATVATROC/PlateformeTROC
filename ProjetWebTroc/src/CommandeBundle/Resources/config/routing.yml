@@ -50,3 +50,43 @@ imprimer_facture:
 stats:
     path:     /stats
     defaults: { _controller: CommandeBundle:Commande:stats }
+
+find_all_mobile:
+    path:     /findall
+    defaults: { _controller: CommandeBundle:Commande:all }
+
+find_mobile:
+    path:     /find/{id}
+    defaults: { _controller: CommandeBundle:Commande:find }
+
+new_mobile:
+    path:     /new
+    defaults: { _controller: CommandeBundle:Commande:new }
+
+add_cart_mobile:
+    path:     /addCart/{id}
+    defaults: { _controller: CommandeBundle:Commande:addCartMobile }
+
+remove_cart_mobile:
+    path:     /removeCart/{id}
+    defaults: { _controller: CommandeBundle:Commande:removeCartMobile }
+
+remove_mobile:
+    path:     /removeMobile/{id}
+    defaults: { _controller: CommandeBundle:Commande:removeMobile }
+
+get_order_mobile:
+    path:     /getOrder/{id}
+    defaults: { _controller: CommandeBundle:Commande:getOrder }
+
+update_mobile:
+    path:     /updateMobile
+    defaults: { _controller: CommandeBundle:Commande:updateMobile }
+
+get_annonces_mobile:
+    path:     /getAnnonces
+    defaults: { _controller: CommandeBundle:Commande:getAnnoncesMobile }
+
+valider_troc_mobile:
+    path:     /validerTroc
+    defaults: { _controller: CommandeBundle:Commande:validerTrocMobile }

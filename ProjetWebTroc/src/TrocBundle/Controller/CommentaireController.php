@@ -10,6 +10,12 @@ use TrocBundle\Entity\Grosmots;
 use TrocBundle\Form\CommentaireType;
 use AppBundle\Entity\User;
 
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
+
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+
 class CommentaireController extends Controller
 {
     public function  readcAction()
@@ -21,6 +27,15 @@ class CommentaireController extends Controller
     {
         $commentaires=$this->getDoctrine()->getRepository(Commentaire::class)->getByAnnonce($idA);
         return $commentaires;
+    }
+    public function  readByAnnonceMAction(Request $request)
+    {
+        $idA=$request->get('id');
+        $commentaires=$this->getDoctrine()->getRepository(Commentaire::class)->getByAnnonce($idA);
+        //return $commentaires;
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($commentaires);
+        return new JsonResponse($formatted);
     }
 
 
@@ -98,19 +113,129 @@ class CommentaireController extends Controller
         return $this->redirectToRoute('annonce_single',array('idAnnonce'=>$idA));
 
     }
-    public function topCommentaireAction()
+
+    public function newcAction( Request $request)
     {
         $em=$this->getDoctrine()->getManager();
-        $count=$em->getRepository(Commentaire::class)->TopCommented();
-        var_dump($count[0]);
-        $annonce =$em->getRepository(Annonce::class)->find($count[0][1]);
-        //var_dump($annonce);
-        return $this->redirectToRoute('annonce_single',array('idAnnonce'=>$annonce->getIdAnnonce()));
+        $comment= new Commentaire();
 
+
+        // récupérer les paramètres passé dans la requête
+        $comment->setCommentaire($request->get('commentaire'));
+        $time = new \DateTime("now");
+        $comment->setDateCommentaire($time);
+        // $user=$this->getUser();
+        // $comment->setIdUser($user);
+
+        $idu=$request->get('id');
+
+        $em=$this->getDoctrine()->getManager();
+        $user=$em->getRepository('AppBundle:User')->find($idu);
+        $comment->setIdUser($user);
+
+
+        //$user=$this->getDoctrine()->getRepository(FosUser::class)->find(4);
+        //$comment->setIdUser(4);
+        $annonce=$this->getDoctrine()->getRepository('TrocBundle:Annonce')->find($request->get('idA'));
+
+        //un problème au niveau annonce
+        $comment->setIdAnnonce($annonce);
+        $em->persist($comment);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($comment);
+        return new JsonResponse($formatted);
 
     }
 
+    public function showcAction()
+    {
+        $comments=$this->getDoctrine()->getManager()->getRepository('TrocBundle:Commentaire')
+            ->findAll();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($comments);
+        return new JsonResponse($formatted);
+    }
 
+    public function deletecAction(Commentaire $commentaire)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $comment=$em->getRepository('TrocBundle:Commentaire')->find($commentaire->getIdCommentaire());
+        $em->remove($comment);
+        $em->flush();
+
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($comment);
+        return new JsonResponse($formatted);
+
+    }
+
+    public function editcAction(Request $request,$idCommentaire)
+    {
+        $em=$this->getDoctrine()->getManager();
+
+        $comment=$em->getRepository('TrocBundle:Commentaire')->find($idCommentaire);
+
+
+        $comment->setCommentaire($request->get('commentaire'));
+
+        $time = new \DateTime("now");
+        $comment->setDateCommentaire($time);
+
+        $em->persist($comment);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($comment);
+        return new JsonResponse($formatted);
+
+
+
+
+    }
+    public function loginmAction(Request $request)
+    {
+        $em =$this->getDoctrine()->getManager();
+        $username = $request->get('username');
+        $password = $request->get('password');
+
+        $user= $em->getRepository(FosUser::class)->findOneBy(["username" => $username]);
+
+        if($user)
+        {
+            $encoder_service = $this->get('security.encoder_factory');
+            $encoder = $encoder_service->getEncoder($user);
+
+            if($encoder->isPasswordValid($user->getPassword(), $password, $user->getSalt()))
+            {
+
+                $serializer=new Serializer([new ObjectNormalizer()]);
+                $formatted=$serializer->normalize($user);
+                return new JsonResponse($formatted);
+            }
+
+            else
+            {
+
+                $incorrect = new User();
+                $incorrect->setId(-1);
+
+                $serializer=new Serializer([new ObjectNormalizer()]);
+                $formatted=$serializer->normalize($incorrect);
+                return new JsonResponse($formatted);
+            }
+        }
+        else
+        {
+            //username incorrect
+            $empty = new User();
+            $empty->setId(0);
+
+            $serializer=new Serializer([new ObjectNormalizer()]);
+            $formatted=$serializer->normalize($empty);
+            return new JsonResponse($formatted);
+        }
+    }
 
 
 

@@ -11,6 +11,9 @@ use TrocBundle\Entity\Livraison;
 use TrocBundle\Form\LivraisonType;
 use Symfony\Component\HttpFoundation\Request;
 
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 class LivraisonController extends Controller
 {
@@ -136,6 +139,105 @@ class LivraisonController extends Controller
             //$nbr=$l9['nb']-1;
 
             return $this->render('@Troc/Coursier/test.html.twig', array('liste1'=>$l1,'liste2'=>$l2));
+
+    }
+    public function listDelivClientLivAction($id)
+
+    {
+        $products = $this->getDoctrine()
+            ->getRepository('TrocBundle:Livraison')
+            ->findDeliveredOrdersLiv($id);
+        $serializer= new Serializer([new ObjectNormalizer()]);
+        $formatted=$serializer->normalize($products);
+        return new JsonResponse($formatted);
+
+    }
+    public function listCanClientLivAction($id)
+
+    {
+        $products = $this->getDoctrine()
+            ->getRepository('TrocBundle:Livraison')
+            ->findCanceledOrdersLiv($id);
+        $serializer= new Serializer([new ObjectNormalizer()]);
+        $formatted=$serializer->normalize($products);
+        return new JsonResponse($formatted);
+
+    }
+    public function listToDelivClientLivAction($id)
+
+    {
+        $products = $this->getDoctrine()
+            ->getRepository('TrocBundle:Livraison')
+            ->findToDeliverOrdersLiv($id);
+        $serializer= new Serializer([new ObjectNormalizer()]);
+        $formatted=$serializer->normalize($products);
+        return new JsonResponse($formatted);
+
+    }
+
+    public function listAction()
+
+    {
+        $products = $this->getDoctrine()
+            ->getRepository('TrocBundle:Livraison')
+            ->findAll();
+
+        $serializer= new Serializer([new ObjectNormalizer()]);
+        $formatted=$serializer->normalize($products);
+        return new JsonResponse($formatted);
+
+    }
+    public function CancelClientAction($id)
+
+    {
+        $al=$this->getDoctrine()->getManager();
+        $allo=$this->getDoctrine()->getRepository(Livraison::class)->CancelLivraisonMobile($id);
+        $al->flush($allo);
+        $serializer= new Serializer([new ObjectNormalizer()]);
+        $formatted=$serializer->normalize($allo);
+        return new JsonResponse($formatted);
+    }
+    public function ChangeClientAddressAction($id,$adresse)
+
+    {
+        $al=$this->getDoctrine()->getManager();
+        $allo=$this->getDoctrine()->getRepository(Livraison::class)->ChangeClientAddress($id,$adresse);
+        $al->flush($allo);
+        $serializer= new Serializer([new ObjectNormalizer()]);
+        $formatted=$serializer->normalize($allo);
+        return new JsonResponse($formatted);
+    }
+    public function listDelivClientAlAction($id)
+
+    {
+        $products = $this->getDoctrine()
+            ->getRepository('TrocBundle:Livraison')
+            ->findDeliveredOrdersAl($id);
+        $serializer= new Serializer([new ObjectNormalizer()]);
+        $formatted=$serializer->normalize($products);
+        return new JsonResponse($formatted);
+
+    }
+    public function listCanClientAlAction($id)
+
+    {
+        $products = $this->getDoctrine()
+            ->getRepository('TrocBundle:Livraison')
+            ->findCanceledOrdersAl($id);
+        $serializer= new Serializer([new ObjectNormalizer()]);
+        $formatted=$serializer->normalize($products);
+        return new JsonResponse($formatted);
+
+    }
+    public function listToDelivClientAlAction($id)
+
+    {
+        $products = $this->getDoctrine()
+            ->getRepository('TrocBundle:Livraison')
+            ->findToDeliverOrdersAl($id);
+        $serializer= new Serializer([new ObjectNormalizer()]);
+        $formatted=$serializer->normalize($products);
+        return new JsonResponse($formatted);
 
     }
 

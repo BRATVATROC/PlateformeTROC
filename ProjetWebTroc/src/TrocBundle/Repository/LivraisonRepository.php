@@ -111,5 +111,55 @@ class LivraisonRepository extends \Doctrine\ORM\EntityRepository
 
         return $query->getResult();
     }
+    public function findDeliveredOrdersLiv($id)
+    {
+
+        $query = $this->getEntityManager()->createQuery("select an.titreAnnonce,l.idlivraison,l.dateenregistrement,l.datelivraison,l.fraislivraison,l.adresselivraison from TrocBundle:Livraison l inner join TrocBundle:Commande c WHERE l.numcommande=c.idcommande inner join  TrocBundle:Annonce an where c.idannonce1=an.idAnnonce or c.idannonce2=an.idAnnonce  where l.livraisonrecue=1 and l.idclient=$id ") ;
+        return $query->getResult();
+    }
+    public function findCanceledOrdersLiv($id)
+    {
+
+        $query = $this->getEntityManager()->createQuery(" select an.titreAnnonce,l.idlivraison,l.dateenregistrement,l.datelivraison,l.fraislivraison,l.adresselivraison from TrocBundle:Livraison l inner join TrocBundle:Commande c WHERE l.numcommande=c.idcommande inner join  TrocBundle:Annonce an  where c.idannonce1=an.idAnnonce or c.idannonce2=an.idAnnonce  where l.etatlivraison=1 and l.idclient=$id") ;
+        return $query->getResult();
+    }
+    public function findToDeliverOrdersLiv($id)
+    {
+
+        $query = $this->getEntityManager()->createQuery("select an.titreAnnonce,l.idlivraison,l.dateenregistrement,l.datelivraison,l.fraislivraison,l.adresselivraison from TrocBundle:Livraison l inner join TrocBundle:Commande c  WHERE l.numcommande=c.idcommande inner join  TrocBundle:Annonce an  where c.idannonce1=an.idAnnonce or c.idannonce2=an.idAnnonce  where l.livraisonrecue=0 and l.etatlivraison=0 and l.idclient=$id") ;
+        return $query->getResult();
+    }
+
+    public function CancelLivraisonMobile($idlivraison)
+    {
+        $query1= $this->getEntityManager()->createQuery(  " UPDATE TrocBundle:Livraison l SET  l.etatlivraison=1  WHERE  l.idlivraison=$idlivraison ");
+        return $query1->getResult();
+    }
+    public function ChangeClientAddress($idlivraison,$adresse)
+    {
+        $query1= $this->getEntityManager()->createQuery(  " UPDATE TrocBundle:Livraison l SET  l.adresselivraison='$adresse'  WHERE  l.idlivraison=$idlivraison");
+        return $query1->getResult();
+    }
+
+    public function findDeliveredOrdersAl($id)
+    {
+
+        $query = $this->getEntityManager()->createQuery("select a.description,l.idlivraison,l.dateenregistrement,l.datelivraison,l.fraislivraison,l.adresselivraison from TrocBundle:Livraison  l inner join TrocBundle:Allocoursier a WHERE l.numal=a.idalloservice and l.livraisonrecue=1  and l.idclient=$id") ;
+        return $query->getResult();
+    }
+    public function findCanceledOrdersAl($id)
+    {
+
+        $query = $this->getEntityManager()->createQuery("select a.description,l.idlivraison,l.dateenregistrement,l.datelivraison,l.fraislivraison,l.adresselivraison from TrocBundle:Livraison l inner join TrocBundle:Allocoursier  a WHERE l.numal=a.idalloservice and l.etatlivraison=1  and l.idclient=$id") ;
+        return $query->getResult();
+    }
+    public function findToDeliverOrdersAl($id)
+    {
+
+        $query = $this->getEntityManager()->createQuery(" select a.description,l.idlivraison,l.dateenregistrement,l.datelivraison,l.fraislivraison,l.adresselivraison from TrocBundle:Livraison l inner join TrocBundle:Allocoursier a WHERE l.numal=a.idalloservice and l.livraisonrecue=0  and l.idclient=$id") ;
+        return $query->getResult();
+    }
+
+
 
 }
