@@ -9,46 +9,39 @@
     <h3 id="addcmt">Add a comment</h3>
     <br>
     {% if form %}
+
+
+
+
+            <script src="{{ asset('js/js/jquery.js') }}"></script>
+            <label  id="text" type="text" name="alert"></label>
+            {% if update != false %}
+                <form method="get" action="{{ path('update_commentaire',
+                {'idCommentaire':idCommentaire,}) }}">
+                    <textarea id="nc" name="nc" >{{ update }}</textarea><br><br>
+                  <input id="btnU" type="submit" name="updt"value="Update Comment">
+                </form>
+
+            {% else %}
         {{ form_start(form ) }}
         <div id="id" class="form-group">
             {{ form_errors(form.commentaire) }}
             {{ form_widget(form.commentaire, { 'attr':  {
                 'rows': '4',
                 'class': 'form-control',
-                'placeholder': 'Enter your comment'
+                'placeholder': 'Enter your comment',
+
             }}) }}
+                <input id="btnP" type="submit" value="Publish Comment">
+                {{ form_end(form) }}
+            {% endif %}
 
-            <input id="btn" type="submit" value="Publish Comment">
-            <label  id="text" type="text" name="alert"></label>
 
-
-            <script src="{{ asset('js/js/jquery.js') }}"></script>
-            <script>
-                var editor = CKEDITOR.replace( 'textarea' );
-                alert( editor.elementMode );
-
-                $('.cke_editable cke_editable_themed cke_contents_ltr cke_show_borders').mouseenter(function() {
-                        var ch1 = $('.cke_editable cke_editable_themed cke_contents_ltr cke_show_borders').val();
-                        console.log( ch1);
-
-/*
-                        var n = ch1.indexOf('{');
-                        if (n != -1)
-                        {
-                            $('#text').val('Attention');
-                            $('#btn').hide();
-                        }
-                        else{$('#text').val('');
-                            $('#btn').show();
-                        }*/
-
-                    }
-                );
-            </script>
 
 
         </div>
-        {{ form_end(form) }}
+
+
     {% endif %}
     {% endif %}
 
@@ -64,7 +57,7 @@
                 {% if app.user.username==comment.idUser.username %}
                     <a href="{{ path ('delete_commentaire',{'idCommentaire':comment.idCommentaire}) }}" style="color: #00a5f7"> <strong>Delete</strong></a><br>
 
-                    <a href="{{ path ('update_commentaire',{'idCommentaire':comment.idCommentaire}) }}" style="color: #00a5f7"><strong>Update</strong></a>
+                    <a href="{{ path ('update_commentaire',{'idCommentaire':comment.idCommentaire,'contenu':comment.commentaire}) }}" style="color: #00a5f7"><strong>Update</strong></a>
 
 
 

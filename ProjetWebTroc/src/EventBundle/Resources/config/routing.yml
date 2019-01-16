@@ -1,3 +1,95 @@
-event_homepage:
-    path:     /
-    defaults: { _controller: EventBundle:Default:index }
+event_listEvent:
+    path:     /listEvent
+    defaults: { _controller: EventBundle:Event:listEvent }
+
+event_listEventM:
+    path:     /listEventM
+    defaults: { _controller: EventBundle:Event:listEventM }
+
+event_createEvent:
+    path:     /createEvent
+    defaults: { _controller: EventBundle:Event:createEvent }
+
+event_newCreate:
+    path:     /newCreate
+    defaults: { _controller: EventBundle:Event:newCreate }
+
+event_myEvent:
+    path:     /myEvent
+    defaults: { _controller: EventBundle:Event:myEvent }
+
+event_myEventM:
+    path:     /myEventM/{id}
+    defaults: { _controller: EventBundle:Event:myEventM }
+
+event_deleteEvent:
+    path:     /deleteEvent/{id}
+    defaults: { _controller: EventBundle:Event:deleteEvent }
+
+event_deleteEventM:
+    path:     /deleteEventM/{id}
+    defaults: { _controller: EventBundle:Event:deleteEventM }
+
+event_updateEvent:
+    path:     /updateEvent/{id}
+    defaults: { _controller: EventBundle:Event:updateEvent }
+
+event_updateEventM:
+    path:     /updateEventM/{id}
+    defaults: { _controller: EventBundle:Event:updateEventM }
+
+event_updateEventNbr:
+    path:     /updateEventNbr/{id}
+    defaults: { _controller: EventBundle:Event:updateEventNbr }
+
+event_updateEventNbr1:
+    path:     /updateEventNbr1/{id}
+    defaults: { _controller: EventBundle:Event:updateEventNbr1 }
+
+participant_listParticipant:
+    path:     /listParticipant
+    defaults: { _controller: EventBundle:Participant:listParticipant }
+
+participant_getParticipant:
+    path:     /getParticipant
+    defaults: { _controller: EventBundle:Participant:getParticipant }
+
+participant_listParticipantM:
+    path:     /listParticipantM
+    defaults: { _controller: EventBundle:Participant:listParticipantM }
+
+participant_adminParticipant:
+    path:     /adminParticipant
+    defaults: { _controller: EventBundle:Participant:adminParticipant }
+
+participant_deleteParticipant:
+    path:     /deleteParticipant/{id}
+    defaults: { _controller: EventBundle:Participant:deleteParticipant }
+
+participant_deleteParticipantM:
+    path:     /deleteParticipantM/{id}
+    defaults: { _controller: EventBundle:Participant:deleteParticipantM }
+
+event_choiceHome:
+    path:     /choiceHome
+    defaults: { _controller: EventBundle:Event:choiceHome }
+
+event_participate:
+    path:   /participate/{id_Event}
+    defaults: { _controller: EventBundle:Event:participate }
+
+event_goingTo:
+    path:   /goingTo
+    defaults: { _controller: EventBundle:Event:goingTo }
+
+event_goingToM:
+    path:   /goingToM/{id}
+    defaults: { _controller: EventBundle:Event:goingToM }
+
+event_searchEvent:
+    path:   /searchEvent
+    defaults: { _controller: EventBundle:Event:searchEvent }
+
+participant_join:
+    path:     /join
+    defaults: { _controller: EventBundle:Participant:join }

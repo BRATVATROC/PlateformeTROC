@@ -26,7 +26,7 @@ annonce_delete:
 annonce_single:
     path: /single/{idAnnonce}
     defaults: { _controller: "AnnonceBundle:Annonce:single" }
-    methods:  GET
+    methods:  [GET, POST]
 
 annonce_search:
     path: /search

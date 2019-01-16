@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+{% block title %}Search Events {% endblock %}
+{% block Main %}
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+
+    <div class="container">
+        <div class="row">
+            <h2>Search For Interresting Events</h2>
+            <div id="custom-search-input">
+                <div class="input-group col-md-12">
+                    <input type="text" id="srch" class="  search-query form-control" placeholder="Search.."/>
+                    <span class="input-group-btn">
+                    <button class="btn btn-danger" type="button">
+                        <span class=" glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
+
+                </div>
+            </div>
+        </div>
+        <table hidden id="tb" class="table table-striped">
+            <tr>
+                <th scope="col">Location</th>
+                <th scope="col">Description</th>
+                <th scope="col">Max</th></tr>
+            <tr>
+                <td id="location"></td>
+                <td id="des"></td>
+                <td id="max"></td>
+            </tr>
+
+        </table>
+    </div>
+    <div>
+
+    </div>
+    <script src={{ asset('js/jquery.min.js') }}></script>
+    <script>
+        $('#srch').keyup(function () {
+            var input=$('#srch').val();
+            $.ajax(
+                {
+                    url:"{{ path('event_searchEvent') }}",
+                    type:"POST",
+                    data:{'srch':input},
+                    success:function (data) {
+                        console.log(data);
+                        if(data!=null){
+                        $('#location').html(data[0].location);
+                        $('#des').html(data[0].description);
+                        $('#max').html(data[0].max);
+                        $('#tb').show();
+                        }
+                    }}
+            );
+        });
+    </script>
+    <style>
+        #custom-search-input {
+            margin: 0;
+            margin-top: 10px;
+            padding: 0;
+        }
+
+        #custom-search-input .search-query {
+            padding-right: 3px;
+            padding-right: 4px \9;
+            padding-left: 3px;
+            padding-left: 4px \9;
+            /* IE7-8 doesn't have border-radius, so don't indent the padding */
+
+            margin-bottom: 0;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+        }
+
+        #custom-search-input button {
+            border: 0;
+            background: none;
+            /** belows styles are working good */
+            padding: 2px 5px;
+            margin-top: 2px;
+            position: relative;
+            left: -28px;
+            /* IE7-8 doesn't have border-radius, so don't indent the padding */
+            margin-bottom: 0;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            color: #D9230F;
+        }
+
+        .search-query:focus + button {
+            z-index: 3;
+        }
+
+    </style>
+{% endblock %}

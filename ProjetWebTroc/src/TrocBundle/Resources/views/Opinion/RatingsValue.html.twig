@@ -29,7 +29,10 @@
     </style>
 
 
- <h1><a href="{{ path('opinon_ajout') }}" ><button style="font-size: 70%"><label style="color:dodgerblue">Rate</label>
-             <label style="color:red">US !</label></button></a><br><div class="stars-outer" >
+ <h1>
+    <a type="button" class="btn btn-info"  style="width: 200px; margin-bottom: 20px" href="{{ path('opinon_ajout') }}">
+        Rate US <i class="fa fa-angle-double-down"></i>
+   </a>
+         </button></a><br><div class="stars-outer" >
              <div class="stars-inner"></div>
          </div><label>{{ note}}/5</label> </h1>

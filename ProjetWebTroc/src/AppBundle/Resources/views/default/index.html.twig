@@ -28,7 +28,7 @@
 
                             </div>
                             <span class="date"><i class="fa fa-calendar"></i> {% if annonce.date %}{{ annonce.date|date('Y-m-d') }}{% endif %}</span>
-                            <p style=" font-size: 20px; color: red; ">$ {{ annonce.prix }}</p>
+                            <p style=" font-size: 20px; color: red; "> {{ annonce.prix }} DT</p>
                             <div class="clearfix"></div><br><br><br><br>
                         </a>
                     {% endfor %}
@@ -67,7 +67,7 @@
                                                     <img width="257px" src="{% if annonce.iditems.imgiems %}{{ asset('upload/' ~ annonce.iditems.imgiems) }}{% endif %}" title="" alt="" />
                                                     <section class="list-left">
                                                         <h5 class="title">{{ annonce.titreAnnonce }}</h5>
-                                                        <span class="adprice">${{ annonce.prix }}</span>
+                                                        <span class="adprice">{{ annonce.prix }} DT</span>
                                                         <p class="catpath">{{ annonce.iditems.idsouscat.idCat.nomcat }} >> {{ annonce.iditems.idsouscat.Nomsouscat }}</p>
                                                         <p class="catpath"></p>
                                                     </section>

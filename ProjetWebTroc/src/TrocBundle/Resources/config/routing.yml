@@ -11,7 +11,7 @@ create_commentaire:
     path:     /createc
     defaults: { _controller: TrocBundle:Commentaire:createc }
 delete_commentaire:
-    path:     /delete/{idCommentaire}
+    path:     /deleteCom/{idCommentaire}
     defaults: { _controller: TrocBundle:Commentaire:delete }
 update_commentaire:
     path:     /update/{idCommentaire}

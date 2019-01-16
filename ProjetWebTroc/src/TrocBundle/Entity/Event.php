@@ -50,9 +50,9 @@ class Event
     private $location;
 
     /**
-     * @var string
+     * @var datetime
      *
-     * @ORM\Column(name="date", type="string", length=255, nullable=false)
+     * @ORM\Column(name="date", type="datetime", nullable=false)
      */
     private $date;
 

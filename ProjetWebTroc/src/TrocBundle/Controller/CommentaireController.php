@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use TrocBundle\Entity\Annonce;
 use TrocBundle\Entity\Commentaire;
 use TrocBundle\Entity\Grosmots;
+use TrocBundle\Form\Commentaire1Type;
 use TrocBundle\Form\CommentaireType;
 use AppBundle\Entity\User;
 
@@ -45,12 +46,20 @@ class CommentaireController extends Controller
         //1-a passer un objet vide car la methode createForm prend en parametre cet objet
         $commentaire= new Commentaire();
         //1.b creer le formulaire
+        $comm=$request->get('contenu');
+        if($comm !=null)
+        {$commentaire->setCommentaire($comm);
+        $commentaire->setIdCommentaire($request->get('idCommentaire'));
+
+        }
+        $idC=$request->get('idCommentaire');
+
         $form=$this->createForm(CommentaireType::class,$commentaire);
         $form=$form->handleRequest($request);
         $idA=$request->get('idAnnonce');
         $mots=$this->getDoctrine()->getRepository(Grosmots::class)->findAll();
         $commentaires=$this->readByAnnonceAction($idA);
-        if($form->isValid()&&$form->isSubmitted())
+        if($form->isValid()&&$form->isSubmitted()&&$comm==null)
         {   //Recuperer Id Annonce
 
 
@@ -67,13 +76,13 @@ class CommentaireController extends Controller
             $vide=new Commentaire();
             $form=$this->createForm(CommentaireType::class,$vide);
             return $this->render('@Troc/Commentaire/createc.html.twig', array(
-                'form' => $form->createView(),'commentaires'=>$commentaires,
+                'form' => $form->createView(),'commentaires'=>$commentaires,'update'=>$comm,'idCommentaire'=>$idC
             ));
 
 
         }
         return $this->render('@Troc/Commentaire/createc.html.twig', array(
-            'form' => $form->createView(),'commentaires'=>$commentaires,'mots'=>$mots,
+            'form' => $form->createView(),'commentaires'=>$commentaires,'mots'=>$mots,'update'=>$comm,'idCommentaire'=>$idC
 
         ));
 
@@ -90,27 +99,44 @@ class CommentaireController extends Controller
         return $this->redirectToRoute('annonce_single',array('idAnnonce'=>$idA));
 
     }
-    public function updateAction(Request $request)
+    public function updateAction($idCommentaire,Request $request)
     { //1-form
         //recuperer id commentaire à partir de request
-        $idC=$request->get('idCommentaire');
-
         $em=$this->getDoctrine()->getManager();
+        $idC=$request->get('idCommentaire');
+        $comm=$request->get('contenu');
+
+        if(isset($_GET['nc']))
+        {
+            $commentaire=$this->getDoctrine()->getRepository(Commentaire::class)->find($idC);
+            $commentaire->setCommentaire($_GET['nc']);
+            $em->flush();
+        }
+
         $commentaire=$this->getDoctrine()->getRepository(Commentaire::class)->find($idC);
         //recuperer id de l'annonce à partir de l'objet commentaire
         $idA=$commentaire->getIdAnnonce()->getIdAnnonce();
+
         $form=$this->createForm(CommentaireType::class,$commentaire);
         //2
         $form=$form->handleRequest($request);
         //3
-        if($form->isValid())
+
+            if($form->isValid())
         {
+            $commentaire=$this->getDoctrine()->getRepository(Commentaire::class)->find($idC);
 
             $em->flush();
+
         }
 
+if($comm!=null)
+{
+
+    return $this->redirectToRoute('annonce_single',array('idAnnonce'=>$idA,'contenu'=>$comm,'idCommentaire'=>$idCommentaire));}
         //1.c
-        return $this->redirectToRoute('annonce_single',array('idAnnonce'=>$idA));
+
+        return $this->redirectToRoute('annonce_single',array('idAnnonce'=>$idA,));
 
     }
 

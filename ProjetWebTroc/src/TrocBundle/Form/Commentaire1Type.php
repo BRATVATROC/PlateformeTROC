@@ -9,7 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CommentaireType extends AbstractType
+class Commentaire1Type extends AbstractType
 {
     /**
      * {@inheritdoc}

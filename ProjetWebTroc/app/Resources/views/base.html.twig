@@ -645,8 +645,11 @@
                 <div style="margin-left: 80%">{{render(controller('TrocBundle:Opinion:moyNote')) }}</div>
                 <div class="logo">
                     <h1><a href="{{ path('troc_homepage') }}"><span>We</span>Troc</a></h1>
-
                 </div>
+
+                <a type="button" class="btn btn-danger"  style="width: 200px; margin-bottom: 20px" href="{{ path('event_choiceHome') }}"> Event <i class="fa fa-forward"></i></a>
+
+
                 <div class="agileits_search">
                     {% block search %}
                         <form action="#" method="post">
@@ -717,7 +720,9 @@
             <div class="container">
                 <div class="w3-footer-logo">
                     <h1><a href="troc_homepage"><span>We</span>Troc</a></h1>
+
                 </div>
+
                 <div class="w3-footer-social-icons">
                     <ul>
                         <li><a class="facebook" href="#"><i class="fa fa-facebook" aria-hidden="true"></i><span>Facebook</span></a></li>

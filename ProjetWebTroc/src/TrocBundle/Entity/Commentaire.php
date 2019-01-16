@@ -68,6 +68,14 @@ class Commentaire
     }
 
     /**
+     * @param int $idCommentaire
+     */
+    public function setIdCommentaire($idCommentaire)
+    {
+        $this->idCommentaire = $idCommentaire;
+    }
+
+    /**
      * Set commentaire
      *
      * @param string $commentaire

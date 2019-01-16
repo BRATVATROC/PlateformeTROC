@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+{% block title %} Going TO!{% endblock %}
+{% block Main %}
+
+    <link rel="stylesheet" href="{{ asset('css/popUPBootsnipt.css') }}">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <div class="container">
+        <h1 class="eventTitle">Events you are planning to attend</h1>
+            <a type="button" class="btn btn-danger"  style="width: 200px; margin-bottom: 20px" href="{{ path('event_myEvent') }}"> check my Created event <i class="fa fa-forward"></i></a>
+            <a type="button" class="btn btn-danger"  style="width: 200px; margin-bottom: 20px" href="{{ path('event_listEvent') }}">Check All Events   <i class="fa fa-forward"></i> </a>
+            &emsp;&emsp;
+            <a type="button" class="btn btn-danger"  style="width: 200px; margin-bottom: 20px" href="{{ path('event_createEvent') }}">Create a new event</a>
+        {% for event in events %}
+            {% for participant in part %}
+                {% if participant.id == event.idEvent.id %}
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="well well-sm">
+                                <div class="row">
+                                    <div class="col-xs-3 col-md-3 text-center">
+                                        <img src={{ asset('uploads/'~ event.idEvent.image) }} alt="bootsnipp" class="img-rounded img-responsive" style="width: 114px; height: 114px"/>
+                                    </div>
+                                    <div class="col-xs-9 col-md-9 section-box">
+                                        <h2 id="titre   ">
+                                            {{ event.idEvent.titre }} <a href={{ path('participant_deleteParticipant',{'id':participant.id}) }}><span class="glyphicon glyphicon-remove"></span></a>
+                                        </h2>
+                                        <p>{{ event.idEvent.description }}</p>
+                                        <hr/>
+                                        <div class="row rating-desc">
+                                            <div class="col-md-12">
+                                                <span class="glyphicon glyphicon-time"></span>&emsp;<label style="font-size: 15px;">Date & Time:</label> <label style="font-size: 15px; color:#FF4C4C "> {{ event.idEvent.date|date }}</label>
+                                                <br>
+                                                <span class="glyphicon glyphicon-home"></span>&emsp; <label style="font-size: 15px;">Location:</label> <label style="font-size: 15px; color: #FF4C4C"> {{ event.idEvent.location }}</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+    </div>
+{% endblock %}

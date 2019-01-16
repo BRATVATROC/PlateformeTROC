@@ -31,7 +31,7 @@ class EventController extends Controller
             $pagination = $paginator->paginate(
                 $events, /* query NOT result */
                 $request->query->getInt('page', 1)/*page number*/,
-                5 /*limit per page*/);
+                10 /*limit per page*/);
 
             if (isset($_GET['join']))
             {
@@ -60,7 +60,7 @@ class EventController extends Controller
                     $error = 1;
 
                 } else
-                {
+                    {
                     $error = 2;
                 }
             }
@@ -78,11 +78,12 @@ class EventController extends Controller
     public function listEventMAction()
     {
 
-        //$events = $this->getDoctrine()->getRepository(Event::class)->findAll();
+        $events = $this->getDoctrine()->getRepository(Event::class)->findAll();
 
-        $query = $this->getDoctrine()->getManager()->createQuery("Select R from TrocBundle:Event R where R.date >= :today");
-        $query->setParameter('today', new \DateTime());
-        $events = $query->getResult();
+//        $query = $this->getDoctrine()->getManager()->createQuery("Select R from TrocBundle:Event R where R.date >= :today");
+//        $query = $this->getDoctrine()->getManager()->createQuery("Select R from TrocBundle:Event R where R.date >= :today");
+//        $query->setParameter('today', new \DateTime());
+
 
         $serializer=new Serializer([new ObjectNormalizer()]);
         $formatted=$serializer->normalize($events);
@@ -320,8 +321,8 @@ class EventController extends Controller
             $event = $em->getRepository(Event::class)->find($id);
             $event->setNbr($event->getNbr()-1);
 
-            $em->flush();
-        }
+                $em->flush();
+            }
 
     }
 
