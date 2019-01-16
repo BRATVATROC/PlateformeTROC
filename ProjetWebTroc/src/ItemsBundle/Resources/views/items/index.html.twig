@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{% block titre %} Articles {% endblock %}
+{% block Main %}
+    <div class="container">
+        <div class="row" style="margin-top: 40px; margin-bottom: 50px">
+            <div class="col-md-4">
+                <a style="border-radius: 5px" class="btn btn-success" href="{{ path('items_new') }}"><i class="fa fa-plus-square"></i>&emsp;Ajouter un nouveau </a> <br/>
+                <a style="border-radius: 5px; margin-top: 5px;  width: 182px;" class="btn btn-success" href="{{ path('annonce_new') }}"><i class="fa fa-plus-square"></i>&emsp;Ajouter une annonce</a><br/>
+            </div>
+            <div class="col-md-4">
+                <h1 style="margin-bottom: 20px">Liste des articles</h1>
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in items %}
+                        <tr>
+                            <td scope="row"><a href="{{ path('items_show', { 'iditems': item.iditems }) }}">{{ item.iditems }}</a></td>
+                            <td>{{ item.nomitems }}</td>
+                            <td><img src="{{ asset('upload/' ~ item.imgiems) }}" style="max-width: 200px; max-height: 200px" alt="stack photo" class="img"></td>
+                            <td>
+                                <a style="margin-bottom: -4px; " class="btn btn-warning btn-block" href="{{ path('items_show', { 'iditems': item.iditems }) }}">Visionner</a>
+                                <a class="btn btn-danger btn-block" href="{{ path('items_edit', { 'iditems': item.iditems }) }}">Modifier</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
